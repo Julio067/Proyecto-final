@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\productosController;
+use App\Http\Controllers\registerController;
+use App\Http\Controllers\loginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/senaapp', function () {
     return view('welcome');
 });
+
+Route::get('/usuario', function () {
+    return view('principal.usuario');
+});
+
+
+Route::resource('/registro', registerController::class);
+Route::resource('/iniciar-sesion', loginController::class);
+Route::resource('/home', productosController::class);
