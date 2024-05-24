@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\register;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class registerController extends Controller
 {
@@ -24,7 +26,7 @@ class registerController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +37,31 @@ class registerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255:users,name',
+            'email' => 'required|unique:users,email',
+            'password'=>'required|string|min:6',
+            'password_confirmation'=>'required|string|min:6|same:password'
+        ],[
+            'name.required'=>'el nombre es requerido',
+            'email.required'=>'el email es requerido',
+            'email.unique'=>'el email ya fue usado,inicia sesion',
+            'password.required'=>'la contraseña es requerida',
+            'password.min'=>'la contraseña debe tener por lo menos 6 caracteres',
+            'password_confirmation.min'=>'la contraseña debe tener por lo menos 6 caracteres',
+            'password_confirmation.required'=>'este campo es requerido',
+            'password_confirmation.same'=>'no es la misma contraseña'
+        ],);
+    
+
+        $usuario = new User();
+        $usuario->name = $request->get('name');
+        $usuario->email = $request->get('email');
+        $usuario->password = bcrypt($request->get('password'));
+        $usuario->save();
+
+        Auth::login($usuario);
+        return redirect('/home');
     }
 
     /**

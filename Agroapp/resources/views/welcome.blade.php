@@ -21,7 +21,6 @@
                 <div class="btn-register"><a href="/registro">Registrarse</a></div>
             </div>
         </header>
-
 		<main class="main-content">
 			<section class="container top-categories">
 				<h1 class="heading-1">Mejores Categorías</h1>

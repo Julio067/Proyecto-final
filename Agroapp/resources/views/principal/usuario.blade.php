@@ -14,11 +14,13 @@
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo" id="title">Julian David Guzman Ortiz</h3>
+                @auth
+                <h3 class="titulo" id="title">{{Auth::user()->name}}<br/>{{Auth::user()->email}}</h3>
+                @endauth
             </div>
             <div class="perfil-usuario-data">
                 <ul class="lista-datos">
-                    <li  id="location"><i class="icono fas fa-map-marker-alt"></i></li>
+                    <li  id="location"><i class="icono fas fa-map-marker-alt"><p></p></i></li>
                     <li id="number" ><i class="icono fas fa-phone-alt"></i></li>
                     <li id="address"><i class="icono fas fa-building"></i></li>
                 </ul>
@@ -73,9 +75,13 @@
             <div class="btn-usuario">
                 <a href="home/create">Subir novedad</a> <br> <br>
             </div>
-            <div class="btn-usuario">
-                <a href="home/create">Cerrar sesión</a>
-            </div>
+            <form action="{{ route('logout')}}" method="POST">
+            @csrf
+                <div class="btn-usuario">
+                    <button type="sumbit" >Cerrar sesion</button>
+                </div>
+            </form>
+            
         </div>
     </section>
 

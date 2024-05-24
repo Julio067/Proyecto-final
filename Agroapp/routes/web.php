@@ -28,3 +28,4 @@ Route::get('/usuario', function () {
 Route::resource('/registro', registerController::class);
 Route::resource('/iniciar-sesion', loginController::class);
 Route::resource('/home', productosController::class);
+Route::post('/signout', [loginController::class, 'logout'])->name('logout');

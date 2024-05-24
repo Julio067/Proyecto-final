@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\login;
-
+use Illuminate\Support\Facades\Auth;
 
 class loginController extends Controller
 {
@@ -36,51 +36,27 @@ class loginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'email' => 'required|email',
+            'password'=>'required|string|min:6',
+        ],[
+            'email.required'=>'el email es requerido',
+            'email.unique'=>'el email ya fue usado,inicia sesion',
+            'password.required'=>'la contraseña es requerida',
+            'password.min'=>'la contraseña debe tener por lo menos 6 caracteres',
+        ],);
+        if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+            return redirect('/home');
+        } else {
+            return back()->withErrors(['invalid_credentials' => 'Usuario o contraseña no válidos']);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function logout(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return view('welcome')->with('success','sesion cerrada :)');
     }
 }
