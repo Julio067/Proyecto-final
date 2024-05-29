@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\producto;
+use Illuminate\Support\Str;
 
 class productosController extends Controller
 {
@@ -14,8 +15,8 @@ class productosController extends Controller
      */
     public function index()
     {
-        $productos=producto::all();
-        return view('principal.home', ['productosCont'=>$productos]);
+        $productosU=producto::all();
+        return view('principal.usuario', ['productosContU'=>$productosU]);
     }
 
     /**
@@ -37,15 +38,28 @@ class productosController extends Controller
      */
     public function store(Request $request)
     {
+        $valip = $request->validate([
+            'nomb'=>'required|min:8',
+            'desc'=>'required|min:8|max:40',
+            'prec'=>'required|numeric|min:0',
+            'cant'=>'required|numeric|min:0',
+            'imag'=>'required|image|mimes:jpeg,png,svg|max:1024'
+        ]);
         //
         $newproducto = new producto();
         $newproducto->nombre=$request->get('nomb');
         $newproducto->descripcion=$request->get('desc');
         $newproducto->precio=$request->get('prec');
         $newproducto->cantidad=$request->get('cant');
-        $newproducto->imagen=$request->get('imag');
+        if($request->hasFile('imag')){
+            $imagen=$request->file('imag');
+            $nombreimagen=Str::slug($request->get('nomb')).".".$imagen->guessExtension();
+            $ruta=public_path('image_creada/');
+            $imagen->move($ruta,$nombreimagen);
+            $newproducto->imagen=$nombreimagen;
+        }
         $newproducto->save();
-        return redirect('/home');
+        return redirect('/usuario');
     }
 
     /**
@@ -56,7 +70,10 @@ class productosController extends Controller
      */
     public function show($id)
     {
-        //
+        $nombreP = producto:: findOrFail($id);
+        return view ('principal.delete', [
+            'productoEliminarV'=>$nombreP
+        ]);
     }
 
     /**
@@ -67,7 +84,10 @@ class productosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $productoEdit = producto:: findOrFail($id);
+        return view ('principal.edit', [
+            'productoEditarV'=>$productoEdit
+        ]);
     }
 
     /**
@@ -79,7 +99,20 @@ class productosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $valipE = $request->validate([
+            'nombEd'=>'required',
+            'descEd'=>'required|max:40',
+            'precEd'=>'required|numeric|min:0',
+            'cantEd'=>'required|numeric|min:0'
+        ]);
+        
+        $editproducto =  producto:: findOrFail($id);
+        $editproducto->nombre=$request->get('nombEd');
+        $editproducto->descripcion=$request->get('descEd');
+        $editproducto->precio=$request->get('precEd');
+        $editproducto->cantidad=$request->get('cantEd');
+        $editproducto->save();
+        return redirect('/usuario');
     }
 
     /**
@@ -90,6 +123,8 @@ class productosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteproducto = producto:: findOrFail($id);
+        $deleteproducto-> delete();
+        return redirect('/usuario');
     }
 }

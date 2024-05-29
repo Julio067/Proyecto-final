@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section ('content')
-
+@auth
     <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
@@ -14,9 +14,9 @@
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                @auth
+                
                 <h3 class="titulo" id="title">{{Auth::user()->name}}<br/>{{Auth::user()->email}}</h3>
-                @endauth
+                
             </div>
             <div class="perfil-usuario-data">
                 <ul class="lista-datos">
@@ -27,8 +27,8 @@
             </div>
         </div>
 
-        <div class="perfil-usuario-data">    
-            <center><h1 style="margin: 20px;" >Tabla de vuelos</h1></center>
+        <div class="container">    
+            <h1 class="heading-1">Tus productos</h1>
             <table class="table table-dark table-striped table-bordered">
                 <thead>
                     <tr style="text-align:center">
@@ -39,41 +39,35 @@
                         <td>Cantidad</td>
                         <td>Editar</td>
                         <td>Eliminar</td>
-                        <td>Consultar</td>
                     </tr>
                 </thead>
                 
                 <tbody>
+                    @foreach($productosContU as $productosVistU)
                     <tr>
-                        <th scope="row" style="margin: auto;"> </th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <th scope="row" style="margin: auto;">{{$productosVistU->id}}</th>
+                        <td>{{$productosVistU->nombre}}</td>
+                        <td>{{$productosVistU->descripcion}}</td>
+                        <td>{{$productosVistU->precio}}</td>
+                        <td>{{$productosVistU->cantidad}}</td>
                         <td style="text-align:center">
-                            <a href="/vuelos/ /edit"><button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                            <a href="/usuario/{{$productosVistU->id}}/edit"><button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button></a>
                         </td>
                         <td style="text-align:center">
-                            <form action="/vuelos/ " method="post">
+                            <form action="/usuario/{{$productosVistU->id}}" method="post">
                                 @csrf
                                 @method('get')
                                 <button class="btn btn-danger" ><i class="fa-solid fa-trash"></i></button>
                             </form>
                         </td>
-                        <td style="text-align:center">
-                            <form action="consult.php" method="post">
-                                <button type="sumbit" class="btn btn-warning" name=bConsultar><i class="fa-solid fa-upload"></i></button>
-                            </form>
-                        </td>
                     </tr>
+                    @endforeach
                 </tbody> 
-
-                
             </table>
 
         </div>
             <div class="btn-usuario">
-                <a href="home/create">Subir novedad</a> <br> <br>
+                <a href="usuario/create">Subir un producto</a>
             </div>
             <form action="{{ route('logout')}}" method="POST">
             @csrf
@@ -84,5 +78,5 @@
             
         </div>
     </section>
-
+    @endauth
 @endsection

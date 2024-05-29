@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section ('content')
-
+@auth
 <main class="main-content">
     <section class="container top-categories">
         <h1 class="heading-1">Mejores Categorías</h1>
@@ -20,26 +20,30 @@
 		</div>
 	</section>
 
-	
+	<h1 class="heading-1" style="margin-bottom: 20px;">Productos recientes</h1>
 	<section class="container cards">
-		<h1 class="heading-1">Productos recientes</h1>
         <div class="cards">
 		@foreach($productosCont as $productosVist)
 			<div class="cards-cuerpo">
 				<div class="cards-img">
-                    <img src="" alt="">
+                    <img src="image_creada/{{$productosVist->imagen}}" alt="">
 				</div>
 				<h2>{{$productosVist->nombre}}</h2>
 				<h3>{{$productosVist->descripcion}}</h3>
+				<p>Cantidad: {{$productosVist->cantidad}}</p>
 				<h2>{{$productosVist->precio}}</h2>
-				<h2>{{$productosVist->cantidad}}</h2>
-				<i class="fa-solid fa-cart-shopping"></i>
+
+				
+				<form action="/comprar/{{$productosVist->id}}" method="post">
+                    @csrf
+                    @method('get')
+                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                </form>
 			</div>
 
         </div>
 		@endforeach
     </section>
-		
 
 	<section class="contactanos">
 		<h1 class="heading-1">Contactanos</h1>
@@ -63,5 +67,5 @@
 		</div>
 	</section>
 </main>
-
+@endauth
 @endsection

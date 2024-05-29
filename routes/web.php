@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productosController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\homeController;
+use App\Http\Controllers\comprarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +18,15 @@ use App\Http\Controllers\loginController;
 |
 */
 
-Route::get('/senaapp', function () {
+Route::get('/agroapp', function () {
     return view('welcome');
 });
 
-Route::get('/usuario', function () {
-    return view('principal.usuario');
-});
 
 
 Route::resource('/registro', registerController::class);
 Route::resource('/iniciar-sesion', loginController::class);
-Route::resource('/home', productosController::class);
-Route::post('/signout', [loginController::class, 'logout'])->name('logout');
+Route::resource('/usuario', productosController::class);
+Route::resource('/home', homeController::class);
+Route::resource('/comprar', comprarController::class);
+Route::post('/agroapp', [loginController::class, 'logout'])->name('logout');
