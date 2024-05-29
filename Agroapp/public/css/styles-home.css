@@ -121,7 +121,7 @@ html {
 	content: '';
 	width: 1.5rem;
 	height: 1px;
-	background-color: #fff;
+	background-color:  var(--blanco-color);
 	position: absolute;
 	bottom: -3px;
 	left: 50%;
@@ -135,16 +135,16 @@ html {
 }
 
 .menu a:hover {
-	color: #fff;
+	color:  var(--blanco-color);
 }
 
 .search-form {
 	position: relative;
 	display: flex;
 	align-items: center;
-	border: 2px solid #fff;
+	border: 2px solid  var(--blanco-color);
 	border-radius: 2rem;
-	background-color: #fff;
+	background-color:  var(--blanco-color);
 	height: 4.4rem;
 	overflow: hidden;
 }
@@ -176,7 +176,7 @@ html {
 
 .btn-search i {
 	font-size: 2rem;
-	color: #fff;
+	color:  var(--blanco-color);
 }
 
 /*Categorias*/
@@ -239,7 +239,7 @@ html {
 
 .card-category p {
 	font-size: 2.5rem;
-	color: #fff;
+	color:  var(--blanco-color);
 	text-transform: capitalize;
 	position: relative;
 }
@@ -248,7 +248,7 @@ html {
 	content: '';
 	width: 2.5rem;
 	height: 2px;
-	background-color: #fff;
+	background-color:  var(--blanco-color);
 	position: absolute;
 	bottom: -1rem;
 	left: 50%;
@@ -257,7 +257,7 @@ html {
 
 .card-category span {
 	font-size: 1.6rem;
-	color: #fff;
+	color:  var(--blanco-color);
 	cursor: pointer;
 }
 
@@ -302,29 +302,45 @@ html {
 	transition: 0.5s;
 }
 
-.cards-cuerpo h3{
-	font-size: 15px;
-	font-weight: 500;
-	color: var(--negro-color);
-	padding: 10px;
-}
-
 .cards-cuerpo h2{
 	font-size: 18px;
 	color: var(--color-secundario);
 	letter-spacing: 1px;
-	padding: 10px;
+	padding: 8px;
 }
 
-.cards-cuerpo .fa-cart-shopping{
+.cards-cuerpo h3{
+	font-size: 15px;
+	font-weight: 500;
+	color: var(--negro-color);
+	padding: 0px 10px 0px 10px;
+}
+
+.cards-cuerpo p{
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--negro-color);
+	padding-left: 10px;
+}
+
+
+.cards-cuerpo button{
 	position: absolute;
 	right: 0;
 	bottom: 0;
+	background: var(--color-secundario);
+	border-radius: 4px 0 4px 0;
+	border: none;
+}
+
+.cards-cuerpo button:hover{
+	background: var(--color-primario);
+}
+
+.cards-cuerpo .fa-cart-shopping{
 	font-size: 20px;
 	padding: 10px;
 	color: var(--blanco-color);
-	background: var(--color-secundario);
-	border-radius: 4px 0 4px 0;
 }
 
 .cards-cuerpo .fa-cart-shopping:hover{
@@ -391,7 +407,7 @@ html {
     border: none;
     outline: 0px;
     background: var(--color-primario);
-    color: #fdfdfd;
+    color:  var(--blanco-color);
     border-radius: 3px;
     cursor: pointer;
     transition: all 300ms ease;
@@ -418,7 +434,7 @@ hr{
     background-color: var(--color-secundario);
     padding: 15px 10px;
     text-align: center;
-    color: #fdfdfd;
+    color:  var(--blanco-color);
 }
 
 .pie-pagina .grupo-2 small{
@@ -457,7 +473,7 @@ hr{
 
 	.navbar .fa-bars {
 		display: block;
-		color: #fff;
+		color:  var(--blanco-color);
 		font-size: 3rem;
 	}
 
@@ -497,6 +513,8 @@ hr{
 
 }
 
+/**** Usuario apartado ****/
+
 .seccion-perfil-usuario .perfil-usuario-body,
 .seccion-perfil-usuario {
     display: flex;
@@ -531,7 +549,7 @@ hr{
     height: 180px;
     align-items: center;
     justify-content: center;
-    border: 7px solid #FFFFFF;
+    border: 7px solid  var(--blanco-color);
     background-color: #DFE5F2;
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
@@ -553,7 +571,7 @@ hr{
     left: -2px;
     top: -2px;
     border: 0;
-    background-color: #fff;
+    background-color:  var(--blanco-color);
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     width: 45px;
     height: 45px;
@@ -585,7 +603,7 @@ hr{
     flex-wrap: wrap;
     padding: 1.5rem 2rem;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    background-color: #fff;
+    background-color:  var(--blanco-color);
     border-radius: 15px;
     width: 100%;
 	margin-bottom: 20px;
@@ -614,7 +632,7 @@ hr{
 }
 
 .btn-usuario{
-	margin-bottom: 20px;
+	margin: 20px;
 }
 
 .btn-usuario a{
@@ -624,8 +642,152 @@ hr{
     font-size: 14px;
     font-weight: 100;
     border-radius: 5px;
-    background: #1c3e2c;
-    color: #fcfdfa;
+    background:  var(--color-secundario);
+    color:  var(--blanco-color);
     cursor: pointer;
-	
+}
+
+.contenedor-formP{
+	justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+	margin: 20px;
+}
+
+.contenedor-formP input{
+	border: 1px solid var(--color-secundario);
+	font-size: 17px;
+	width: 400px;
+}
+
+.contenedor-formP label{
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.contenedor-formP button{
+	font-size: 14px;
+	margin: 10px;
+}
+
+table {
+	font-size: 14px;
+	margin: 20px 0px;
+}
+
+table button i{
+	font-size: 15px;
+}
+
+
+/**** Comprar ****/
+
+
+.contenedor-compra{
+    padding-left: 5%;
+    padding-right: 5%;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 3%;
+    background: #131f19;
+}
+
+.form2{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 50px;
+    margin-top: 20px;
+}
+.contenedor-compra h1{
+    color:  var(--blanco-color);
+    margin-top: 12px;
+}
+
+.form2 h1{
+    color:  var(--blanco-color);
+    margin-top: 12px;
+}
+
+.form2 p{
+	color:  var(--blanco-color);
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.form2 .campo{
+    width: 100%;
+    padding: 10px 10px;
+    background: var(--color-secundario);
+    font-size: 15px;
+    border: 1px solid var(--blanco-color);
+    margin-bottom: 20px;
+    border-radius: 3px;
+    outline: 0px;
+}
+
+.form2 .btn-enviar{
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    background: transparent;
+    transition: transform 0.5s, background 0.5s;
+    border-color: var(--blanco-color);
+    color: var(--blanco-color);
+	margin-bottom: 20px;
+}
+
+.form2 .btn-enviar:hover{
+    background: var(--color-primario);
+}
+
+.form2 input{
+    color: var(--blanco-color);
+    text-align: left;
+}
+
+.row{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);    
+    grid-gap: 30px;
+    margin: 10px 0 20px 0;
+}
+
+.pago{
+    text-align: center;
+    border-radius: 5px;
+    font-size: 9px;
+    cursor: pointer;
+    background: transparent;
+    transition: transform 0.5s, background 0.5s;
+    border-color: var(--blanco-color);
+}
+
+.pago h3{
+    color: var(--blanco-color);
+}
+
+.pago:hover{
+    border-color: var(--color-secundario);
+    background: var(--color-primario);
+    transform: scale(1.05);
+}
+
+.result{
+    width: 96%;
+    color: var(--blanco-color);
+    font-size: 25px;
+    background-color: var(--color-secundario);
+    display: grid;  
+    padding: 10%;
+    margin-right: 50vh;
+    text-align: center;
+	margin-bottom: 50px;
+}
+
+.result .text{
+    text-align: right;
 }

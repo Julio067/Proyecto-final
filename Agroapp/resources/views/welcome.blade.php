@@ -5,13 +5,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-		<title>SENAAPP</title>
+		<title>Agrapp</title>
         <link rel="stylesheet" href="{{ asset('css/appbarfree.css') }}">
 	</head>
 	<body>
         <header class="header">
             <div class="container-logo">
-                <h1 class="logo"><a href="/senaapp">SENA<b>APP</b></a></h1>
+                <h1 class="logo"><a href="/agroapp">AGRO<b>APP</b></a></h1>
             </div>
             
             <div class="service">
@@ -21,6 +21,7 @@
                 <div class="btn-register"><a href="/registro">Registrarse</a></div>
             </div>
         </header>
+
 		<main class="main-content">
 			<section class="container top-categories">
 				<h1 class="heading-1">Mejores Categorías</h1>
