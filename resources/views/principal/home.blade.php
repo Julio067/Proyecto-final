@@ -2,6 +2,12 @@
 @section ('content')
 @auth
 <main class="main-content">
+	<div class="go-contact-container">
+		<div class="go-contact-button">
+			<i class="fa-solid fa-comment"></i>
+		</div>
+	</div>
+	
     <section class="container top-categories">
         <h1 class="heading-1">Mejores Categorías</h1>
         <div class="container-categories">

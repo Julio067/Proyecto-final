@@ -40,7 +40,7 @@
             
             <div class="result">
                 <p>Valor de la compra x Unidad</p>
-                <h1 class="number" id="precio" >{{$productoComprarV->precio}}</h1>
+                <h1 class="number" id="precio" value="{{$productoComprarV->precio}}">{{$productoComprarV->precio}}</h1>
                 <p>Cantidad a compra</p>
                 <h1 class="text" id="canti">0.00</h1>
                 <p>Cuota de manejo</p>

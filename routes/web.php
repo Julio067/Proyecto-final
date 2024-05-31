@@ -5,7 +5,6 @@ use App\Http\Controllers\productosController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\homeController;
-use App\Http\Controllers\datosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +25,5 @@ Route::get('/agroapp', function () {
 Route::resource('/registro', registerController::class);
 Route::resource('/iniciar-sesion', loginController::class);
 Route::resource('/usuario', productosController::class);
-Route::resource('/datos', datosController::class);
 Route::resource('/home', homeController::class);
 Route::post('/agroapp', [loginController::class, 'logout'])->name('logout');

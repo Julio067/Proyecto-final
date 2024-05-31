@@ -144,6 +144,71 @@ a{
 	
 }
 
+/* GOTOP */
+ 
+.go-contact-container {
+    position: fixed;
+    bottom: 4rem;
+    right: 4rem;
+    width: 6.6rem;
+    height: 6.6rem;
+    z-index: -1;
+}
+ 
+.go-contact-button {
+    width: 0rem;
+    height: 0rem;
+    background: var(--color-primario);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+ 
+.go-contact-button i {
+    position: absolute;
+    font-size: 30px;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: var(--blanco-color);
+    transition: 0.2s;
+}
+ 
+.show {
+    z-index: 10;
+}
+ 
+.show .go-contact-button {
+    animation: popup 0.3s ease-in-out;
+    width: 6.6rem;
+    height: 6.6rem;
+    z-index: 11;
+}
+ 
+.show i {
+    transform: translate(-50%, -50%) scale(1);
+}
+ 
+@keyframes popup {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 8rem;
+        height: 8rem;
+    }
+    100% {
+        width: 6.6rem;
+        height: 6.6rem;
+    }
+}
+
 /*Categorias*/
 
 .heading-1 {
@@ -576,7 +641,7 @@ hr{
 
 .seccion-perfil-usuario .lista-datos li>.icono {
     margin-right: 1rem;
-    font-size: 1.2rem;
+    font-size: 20px;
     vertical-align: middle;
 }
 

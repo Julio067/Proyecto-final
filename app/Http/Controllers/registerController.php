@@ -58,10 +58,15 @@ class registerController extends Controller
         $usuario->name = $request->get('name');
         $usuario->email = $request->get('email');
         $usuario->password = bcrypt($request->get('password'));
+        $usuario->num_cedula=$request->get('cedula');
+        $usuario->direccion=$request->get('dire');
+        $usuario->numero_telefono=$request->get('numT');
+        $usuario->municipio=$request->get('muni');
+        $usuario->foto_perfil=$request->get('foto');
         $usuario->save();
 
         Auth::login($usuario);
-        return redirect('/datos');
+        return redirect('/home');
     }
 
     /**
@@ -83,7 +88,10 @@ class registerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $UsuarioEdit = User:: findOrFail($id);
+        return view ('principal.usuario', [
+            'usuarioEditarV'=>$UsuarioEdit
+        ]);
     }
 
     /**
@@ -95,7 +103,14 @@ class registerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $editUser =  User:: findOrFail($id);
+        $editUser->name = $request->get('nameAc');
+        $editUser->direccion=$request->get('direAc');
+        $editUser->numero_telefono=$request->get('numTAc');
+        $editUser->municipio=$request->get('muniAc');
+        $editUser->save();
+        return redirect('/usuario');
     }
 
     /**

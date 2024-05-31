@@ -54,5 +54,6 @@
 		></script>
 		<script src="{{ asset('js/usuario.js') }}"></script>
 		<script src="{{ asset('js/comprar.js') }}"></script>
+		<script src="{{ asset('js/home.js') }}"></script>
 	</body>
 </html>

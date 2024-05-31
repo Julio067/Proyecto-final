@@ -18,9 +18,9 @@ function Valor(valor){
 
 function calcular(){
     Valor(metodov)
-    cuota = ((+price.value * (tipsv / 100))).toFixed(2)
-    total = (((+price.value * (tipsv / 100)) + +price.value)).toFixed(2)
-
+    cuota = ((+price.value * (metodov / 100))).toFixed(2)
+    total = (((+price.value * (metodov / 100)) + +price.value)).toFixed(2)
+    console.log(metodov)
     cantidadMostrar.innerHTML = +cantidad
     cuotaMostrar.innerHTML = +cuota
     resultadoMostrar.innerHTML = +total

@@ -4,7 +4,7 @@
 <div class="content">
     <div class="container-login">
         <div class="wrap-login">
-            <form action="/datos" method="post">
+            <form action="/datos" method="post" enctype="multipart/form-data">
             @csrf
             <center>
                 <h1>Llenar datos los campos</h1>
