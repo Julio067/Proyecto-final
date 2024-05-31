@@ -14,7 +14,7 @@
 			<div class="container-header">
 				<div class="container header">
 					<div class="container-logo">
-						<h1 class="logo">AGRO<b>APP</b></h1>
+						<a href="/home"><h1 class="logo">AGRO<b>APP</b></h1></a>
 					</div>
 
 					<div class="container-user">
@@ -30,12 +30,6 @@
 
 			<div class="container-navbar">
 				<nav class="navbar container">
-					<i class="fa-solid fa-bars"></i>
-					<ul class="menu">
-						<li><a href="/home">Inicio</a></li>
-						<li><a href="#">Sobre nosotros</a></li>
-						<li><a href="#">Contactanos</a></li>
-					</ul>
 
 					<form class="search-form">
 						<input type="search" placeholder="Buscar..." />
@@ -58,5 +52,7 @@
 			src="https://kit.fontawesome.com/81581fb069.js"
 			crossorigin="anonymous"
 		></script>
+		<script src="{{ asset('js/usuario.js') }}"></script>
+		<script src="{{ asset('js/comprar.js') }}"></script>
 	</body>
 </html>

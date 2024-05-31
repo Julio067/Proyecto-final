@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\producto;
+use App\Models\dato;
 
-class homeController extends Controller
+class datosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class homeController extends Controller
      */
     public function index()
     {
-        $productos=producto::all();
-        return view('principal.home', ['productosCont'=>$productos]);
+        $datosU=dato::all();
+        return view('gratis.datos', ['datosContU'=>$datosU]);
     }
 
     /**
@@ -37,6 +37,14 @@ class homeController extends Controller
     public function store(Request $request)
     {
         //
+        $datosUsuario = new dato();
+        $datosUsuario->num_cedula=$request->get('cedula');
+        $datosUsuario->direccion=$request->get('dire');
+        $datosUsuario->numero_telefono=$request->get('numT');
+        $datosUsuario->municipio=$request->get('muni');
+        $datosUsuario->foto_perfil=$request->get('foto');
+        $datosUsuario->save();
+        return redirect('/home');
     }
 
     /**
@@ -47,10 +55,7 @@ class homeController extends Controller
      */
     public function show($id)
     {
-        $comprarP = producto:: findOrFail($id);
-        return view ('principal.comprar', [
-            'productoComprarV'=>$comprarP
-        ]);
+        //
     }
 
     /**

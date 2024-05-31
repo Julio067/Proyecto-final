@@ -30,11 +30,11 @@
 				</div>
 				<h2>{{$productosVist->nombre}}</h2>
 				<h3>{{$productosVist->descripcion}}</h3>
-				<p>Cantidad: {{$productosVist->cantidad}}</p>
-				<h2>{{$productosVist->precio}}</h2>
+				<p>Cantidad: {{$productosVist->cantidad}} | Medida: {{$productosVist->medida}} | Categoria: {{$productosVist->categoria}}</p>
+				<h2>$ {{$productosVist->precio}}</h2>
 
 				
-				<form action="/comprar/{{$productosVist->id}}" method="post">
+				<form action="/home/{{$productosVist->id}}" method="post">
                     @csrf
                     @method('get')
                     <button><i class="fa-solid fa-cart-shopping"></i></button>

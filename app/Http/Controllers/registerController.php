@@ -61,7 +61,7 @@ class registerController extends Controller
         $usuario->save();
 
         Auth::login($usuario);
-        return redirect('/home');
+        return redirect('/datos');
     }
 
     /**

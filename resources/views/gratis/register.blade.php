@@ -46,7 +46,7 @@
                 <div class="container-login-form-btn">
                     <div class="wrap-login-form-btn">
                         <div class="login-form-bgbtn"></div>
-						<a href="/home"><button type="submit" name="submit" class="login-form-btn">Registrarse</button></a>
+						<button type="submit" name="submit" class="login-form-btn">Registrarse</button>
                     </div>
                 </div>
             </form>

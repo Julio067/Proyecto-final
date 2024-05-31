@@ -17,7 +17,6 @@
 
 <center><h1 class="heading-1">Ingreso de nuevo producto</h1></center>
 <div class="contenedor-formP">
-    
     <form action="/usuario" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3 mt-2">
@@ -35,6 +34,29 @@
         <div class="mb-3">
             <label>Cantidad</label>
             <input type="number" class="form-control" id="exampleInputPassword1" name="cant">
+        </div>
+        <div class="mb-3">
+            <label>Categoria</label>
+            <select class="form-select" type="text" aria-label="Default select example" name="cate">
+                <option selected>Seleccione la categoria del producto</option>
+                <option value="Fruta">Fruta</option>
+                <option value="Verdura">Verdura</option>
+                <option value="Legumbre">Legumbre</option>
+                <option value="Lacteos">Lacteos</option>
+                <option value="Artesanales">Artesanales</option>
+                <option value="Granos">Granos</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Medida</label>
+            <select class="form-select" type="text" aria-label="Default select example" name="medi">
+                <option selected>Medida que usara para vender el producto</option>
+                <option value="Kilos">Kilos</option>
+                <option value="Libra">LIbra</option>
+                <option value="Bultos">Bultos</option>
+                <option value="Onzas">Onzas</option>
+                <option value="Litros">Litros</option>
+            </select>
         </div>
         <div class="mb-3">
             <label class="">Imagen</label>

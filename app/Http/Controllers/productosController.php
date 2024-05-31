@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\producto;
 use Illuminate\Support\Str;
+use App\Models\dato;
 
 class productosController extends Controller
 {
@@ -51,6 +52,8 @@ class productosController extends Controller
         $newproducto->descripcion=$request->get('desc');
         $newproducto->precio=$request->get('prec');
         $newproducto->cantidad=$request->get('cant');
+        $newproducto->categoria=$request->get('cate');
+        $newproducto->medida=$request->get('medi');
         if($request->hasFile('imag')){
             $imagen=$request->file('imag');
             $nombreimagen=Str::slug($request->get('nomb')).".".$imagen->guessExtension();
@@ -111,6 +114,15 @@ class productosController extends Controller
         $editproducto->descripcion=$request->get('descEd');
         $editproducto->precio=$request->get('precEd');
         $editproducto->cantidad=$request->get('cantEd');
+        $editproducto->categoria=$request->get('cateEd');
+        $editproducto->medida=$request->get('mediEd');
+        if($request->hasFile('imagEd')){
+            $imagen=$request->file('imagEd');
+            $nombreimagen=Str::slug($request->get('nombEd')).".".$imagen->guessExtension();
+            $ruta=public_path('image_creada/');
+            $imagen->move($ruta,$nombreimagen);
+            $editproducto->imagen=$nombreimagen;
+        }
         $editproducto->save();
         return redirect('/usuario');
     }
