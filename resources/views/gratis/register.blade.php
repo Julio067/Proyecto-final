@@ -4,7 +4,7 @@
 <div class="content">
     <div class="container-login">
         <div class="wrap-login">
-            <form action="/registro" method="post" >
+            <form action="/registro" method="post" enctype="multipart/form-data">
             @csrf
             <center>
                 <h1>Registrate</h1>
@@ -65,6 +65,9 @@
                 <div class="wrap-input100">
                     <input type="file" class="input100" name="foto">
                 </div>
+                @error('foto')
+                <div class="alert alert-danger">{{$message}}</div>
+                @enderror
                 <div class="o-confirmacion">
                     <center><input type="checkbox" onclick="agreesubmit(this)" style="margin-right: 15px;"/>Estoy de acuerdo con los <a href="terminos.html" target="_blank" class="enlace-terminos">términos y condiciones</a></center>
                 </div>

@@ -5,7 +5,7 @@
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                    <img src="" alt="img-avatar">
+                    <img src="image_perfil/{{Auth::user()->foto_perfil}}" alt="imgsadsada-avatar">
                 </div>
             </div>
         </div>
@@ -15,26 +15,25 @@
             </div>
             <div class="perfil-usuario-data">
                 <ul class="lista-datos">
-                    <li id="cedula"><i class="fa-solid fa-id-card-clip"></i>{{Auth::user()->num_cedula}}</></i></li>
-                    <li id="location"><i class="icono fas fa-map-marker-alt">{{Auth::user()->municipio}}</></i></li>
-                    <li id="number" ><i class="icono fas fa-phone-alt">{{Auth::user()->numero_telefono}}</i> </li>
-                    <li id="address"><i class="icono fas fa-building">{{Auth::user()->direccion}}</i></li>
+                    <li id="cedula"><i class="fa-solid fa-id-card-clip"></i>  {{Auth::user()->num_cedula}}</></i></li>
+                    <li id="location"><i class="icono fas fa-map-marker-alt">  {{Auth::user()->municipio}}</></i></li>
+                    <li id="number" ><i class="icono fas fa-phone-alt"> {{Auth::user()->numero_telefono}}</i> </li>
+                    <li id="address"><i class="icono fas fa-building"> {{Auth::user()->direccion}}</i></li>
                 </ul>
             </div>
         </div>
-
         <div class="row2">
             <div class="service">
                 <i class="fa-solid fa-shop"></i>
                 <h2>Productos subidos</h2>
             </div>
             <div class="service">
-                <i class="fa-solid fa-truck-fast"></i>
-                <h2>Ventas</h2>
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h2>Ventas</h2>
             </div>
             <div class="service">
                 <i class="fa-solid fa-gears"></i>
-                <h2>Tu cuenta</h2>
+                <a href="/registro/{{$productosVistU->id}}/edit"><button type="button" class="btn btn-success">Tu cuenta</button></a>
             </div>
             
         </div>
@@ -94,8 +93,9 @@
             <div class="content">
                 <center><h1 class="heading-1">Actualizar datos mis datos</h1></center>
                 <div class="contenedor-formP"> 
-                    <form action="/registro" method="POST">
+                    <form action="/registro/{{Auth::user()->id}}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="mb-3 mt-2">
                             <label>Nombre de usuario</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" value="{{Auth::user()->name}}" name="nameAC">
@@ -114,7 +114,7 @@
                         </div>
                         <div class="mb-3">
                             <label>Numero de telefono</label>
-                            <input type="number" class="form-control" id="exampleInputPassword1" value="{{Auth::user()->num_telefono}}" name="numTAc">
+                            <input type="number" class="form-control" id="exampleInputPassword1" value="{{Auth::user()->numero_telefono}}" name="numTAc">
                         </div>
                         <div class="mb-3 mt-2">
                             <label>Direccion</label>

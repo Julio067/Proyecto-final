@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\register;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class registerController extends Controller
 {
@@ -41,7 +42,8 @@ class registerController extends Controller
             'name' => 'required|string|max:255:users,name',
             'email' => 'required|unique:users,email',
             'password'=>'required|string|min:6',
-            'password_confirmation'=>'required|string|min:6|same:password'
+            'password_confirmation'=>'required|string|min:6|same:password',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ],[
             'name.required'=>'el nombre es requerido',
             'email.required'=>'el email es requerido',
@@ -50,7 +52,10 @@ class registerController extends Controller
             'password.min'=>'la contraseña debe tener por lo menos 6 caracteres',
             'password_confirmation.min'=>'la contraseña debe tener por lo menos 6 caracteres',
             'password_confirmation.required'=>'este campo es requerido',
-            'password_confirmation.same'=>'no es la misma contraseña'
+            'password_confirmation.same'=>'no es la misma contraseña',
+            'foto.image' => 'El archivo debe ser una imagen',
+            'foto.mimes' => 'La imagen debe ser de tipo jpeg, png, jpg, gif, o svg',
+            'foto.max' => 'La imagen no debe ser mayor de 2048 kilobytes'
         ],);
     
 
@@ -62,7 +67,15 @@ class registerController extends Controller
         $usuario->direccion=$request->get('dire');
         $usuario->numero_telefono=$request->get('numT');
         $usuario->municipio=$request->get('muni');
-        $usuario->foto_perfil=$request->get('foto');
+        if($request->hasFile('foto')){
+            $imagen=$request->file('foto');
+            $nombreimagen=Str::slug($request->get('name')).".".$imagen->guessExtension();
+            $ruta=public_path('image_perfil/');
+            $imagen->move($ruta,$nombreimagen);
+            $usuario->foto_perfil=$nombreimagen;
+        }else {
+            return back()->withErrors(['foto' => 'La imagen es requerida']);
+        }
         $usuario->save();
 
         Auth::login($usuario);
@@ -103,14 +116,20 @@ class registerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $editUser =  User:: findOrFail($id);
+        $valipE = $request->validate([
+            'nameAc'=>'required',
+            'direAc'=>'required',
+            'numTAc'=>'required',
+            'muniAc'=>'required'
+        ]);
+        dd($request->all());
+        /*$editUser =  User:: findOrFail($id);
         $editUser->name = $request->get('nameAc');
         $editUser->direccion=$request->get('direAc');
         $editUser->numero_telefono=$request->get('numTAc');
         $editUser->municipio=$request->get('muniAc');
         $editUser->save();
-        return redirect('/usuario');
+        return redirect('/usuario')->with('success', 'Datos actualizados correctamente');*/
     }
 
     /**
