@@ -82,6 +82,7 @@ class registerController extends Controller
         return redirect('/home');
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -101,10 +102,7 @@ class registerController extends Controller
      */
     public function edit($id)
     {
-        $UsuarioEdit = User:: findOrFail($id);
-        return view ('principal.usuario', [
-            'usuarioEditarV'=>$UsuarioEdit
-        ]);
+        
     }
 
     /**
@@ -116,20 +114,23 @@ class registerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $valipE = $request->validate([
-            'nameAc'=>'required',
-            'direAc'=>'required',
-            'numTAc'=>'required',
-            'muniAc'=>'required'
-        ]);
-        dd($request->all());
-        /*$editUser =  User:: findOrFail($id);
-        $editUser->name = $request->get('nameAc');
-        $editUser->direccion=$request->get('direAc');
-        $editUser->numero_telefono=$request->get('numTAc');
-        $editUser->municipio=$request->get('muniAc');
-        $editUser->save();
-        return redirect('/usuario')->with('success', 'Datos actualizados correctamente');*/
+
+        $usuarioActualizar = User::findOrFail($id);
+        $usuarioActualizar->name = $request->get('nameAc');
+        $usuarioActualizar->municipio = $request->get('muniAc');
+        $usuarioActualizar->numero_telefono = $request->get('numTAc');
+        $usuarioActualizar->direccion = $request->get('direAc');
+        if($request->hasFile('fotoAc')){
+            $imagen=$request->file('fotoAc');
+            $nombreimagen=Str::slug($request->get('nameAc')).".".$imagen->guessExtension();
+            $ruta=public_path('image_perfil/');
+            $imagen->move($ruta,$nombreimagen);
+            $usuarioActualizar->foto_perfil=$nombreimagen;
+        }else {
+            return back()->withErrors(['fotoAc' => 'La imagen es requerida']);
+        }
+        $usuarioActualizar->save();
+        return redirect('/usuario');
     }
 
     /**

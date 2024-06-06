@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\producto;
 use Illuminate\Support\Str;
-use App\Models\dato;
 
 class productosController extends Controller
 {
@@ -40,7 +39,7 @@ class productosController extends Controller
     public function store(Request $request)
     {
         $valip = $request->validate([
-            'nomb'=>'required|min:8',
+            'nomb'=>'required|min:4',
             'desc'=>'required|min:8|max:40',
             'prec'=>'required|numeric|min:0',
             'cant'=>'required|numeric|min:0',

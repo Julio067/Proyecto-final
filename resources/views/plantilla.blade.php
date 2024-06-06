@@ -21,7 +21,7 @@
 						<a href="/usuario"><i class="fa-solid fa-user"></i></a>
 						<a href="/usuario"><i class="fa-solid fa-basket-shopping"></i></a>
 						<div class="content-shopping-cart">
-							<span  class="text">Carrito</span>
+							<span class="text">Carrito</span>
 							<span class="number">(0)</span>
 						</div>
 					</div>
@@ -30,10 +30,9 @@
 
 			<div class="container-navbar">
 				<nav class="navbar container">
-
-					<form class="search-form">
-						<input type="search" placeholder="Buscar..." />
-						<button class="btn-search">
+					<form class="search-form" action="/home" method="get">
+						<input type="text" name="search_value" value="{{ old('search_value', request()->search_value) }}" placeholder="Buscar..." />
+						<button class="btn-search" type="submit">
 							<i class="fa-solid fa-magnifying-glass"></i>
 						</button>
 					</form>
@@ -44,10 +43,10 @@
     @yield('content')
 
 		<footer class="pie-pagina">
-      <div class="grupo-2">
-        <small>&copy; 2024 <b>SENAAPP</b> - Todos los derechos reservados, las imagenes y/o videos usados en esta pagina son usadas son propias del SENA</small>
-      </div>
-    </footer>
+      		<div class="grupo-2">
+        		<small>&copy; 2024 <b>SENAAPP</b> - Todos los derechos reservados, las imagenes y/o videos usados en esta pagina son usadas son propias del SENA</small>
+			</div>
+		</footer>
 		<script
 			src="https://kit.fontawesome.com/81581fb069.js"
 			crossorigin="anonymous"
