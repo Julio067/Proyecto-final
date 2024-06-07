@@ -39,7 +39,7 @@
         <div class="mb-3">
             <label>Categoria</label>
             <select class="form-select" type="text" aria-label="Default select example" name="cateEd">
-                <option selected>Seleccione la categoria del producto</option>
+                <option value="{{$productoEditarV->municipio}}" selelected>{{$productoEditarV->municipio}}</option>
                 <option value="Fruta">Fruta</option>
                 <option value="Verdura">Verdura</option>
                 <option value="Legumbre">Legumbre</option>
@@ -51,7 +51,7 @@
         <div class="mb-3">
             <label>Medida</label>
             <select class="form-select" type="text" aria-label="Default select example" name="mediEd">
-                <option selected>Medida que usara para vender el producto</option>
+                <option value="{{$productoEditarV->medida}}" selected>{{$productoEditarV->medida}}</option>
                 <option value="Kilos">Kilos</option>
                 <option value="LIbra">LIbra</option>
                 <option value="Bultos">Bultos</option>

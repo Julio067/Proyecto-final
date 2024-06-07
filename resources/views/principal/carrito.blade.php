@@ -36,14 +36,14 @@
                                     <form action="/home/{{$id}}" method="post">
                                         @csrf
                                         @method('get')
-                                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                                        <button class="btn btn-success"><i class="fa-solid fa-cart-shopping"></i></button>
                                     </form>
                                 </td>
                                 <td style="text-align:center">
                                     <form action="remove/{{$id}}" method="post">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger" ><i class="fa-solid fa-trash"></i></button>
+                                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </td>
                                 @endforeach

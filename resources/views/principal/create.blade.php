@@ -28,14 +28,6 @@
             <input type="text" class="form-control" id="exampleInputPassword1" name="desc">
         </div>
         <div class="mb-3">
-            <label class="">Precio</label>
-            <input type="number" class="form-control" id="exampleInputPassword1" name="prec">
-        </div>
-        <div class="mb-3">
-            <label>Cantidad</label>
-            <input type="number" class="form-control" id="exampleInputPassword1" name="cant">
-        </div>
-        <div class="mb-3">
             <label>Categoria</label>
             <select class="form-select" type="text" aria-label="Default select example" name="cate">
                 <option selected>Seleccione la categoria del producto</option>
@@ -59,12 +51,20 @@
             </select>
         </div>
         <div class="mb-3">
+            <label>Cantidad</label>
+            <input type="number" class="form-control" id="exampleInputPassword1" name="cant">
+        </div>
+        <div class="mb-3">
+            <label class="">Precio</label>
+            <input type="number" class="form-control" id="exampleInputPassword1" name="prec">
+        </div>
+        <div class="mb-3">
             <label class="">Imagen</label>
             <input type="file" class="form-control" id="exampleInputPassword1" name="imag">
         </div>
         <center>
-        <a href="/usuario"><button type="button" class="btn btn-secondary">cancelar</button></a>
-        <button type="sumbit" class="btn btn-success">Enviar</button>
+            <a href="/usuario"><button type="button" class="btn btn-secondary">cancelar</button></a>
+            <button type="sumbit" class="btn btn-success">Enviar</button>
         </center>
     </form>
 </div>

@@ -29,7 +29,7 @@
         </div>
         <div class="mb-3">
             <label>Imagen</label>
-            <input type="file" class="form-control" id="exampleInputPassword1" name="imagCa">
+            <input type="file" class="form-control" id="exampleInputPassword1" name="imagCa" require>
         </div>
         <center>
             <a href="/administrador"><button type="button" class="btn btn-secondary">cancelar</button></a>

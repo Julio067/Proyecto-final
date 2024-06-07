@@ -62,8 +62,13 @@
                         <option value="Bojaca">Bojaca</option>
                     </select>
                 </div>
-                <div class="wrap-input100">
-                    <input type="file" class="input100" name="foto">
+                <div class="col">
+                    <label for="file" class="custum-file-upload">
+                        <div class="text">
+                            <span>Sube una foto de perfil</span>
+                        </div>
+                        <input id="file" type="file" name="foto">
+                    </label>
                 </div>
                 @error('foto')
                 <div class="alert alert-danger">{{$message}}</div>

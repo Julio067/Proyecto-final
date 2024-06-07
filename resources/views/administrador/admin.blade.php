@@ -1,3 +1,4 @@
+@role('admin')
 <!doctype html>
 <html lang="en">
 	<head>
@@ -126,3 +127,4 @@
         <script src="{{ asset('js/usuario.js') }}"></script>
 	</body>
 </html>
+@endrole
