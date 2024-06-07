@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 		<title>Agroapp</title>
+		<link rel="icon" href="{{ URL::asset('img/logo.png') }}">
         <link rel="stylesheet" href="{{ asset('css/appbarfree.css') }}">
 	</head>
 	<body>

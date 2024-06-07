@@ -120,7 +120,7 @@ class registerController extends Controller
         $usuarioActualizar->municipio = $request->get('muniAc');
         $usuarioActualizar->numero_telefono = $request->get('numTAc');
         $usuarioActualizar->direccion = $request->get('direAc');
-        if($request->hasFile('fotoAc')){
+        /*if($request->hasFile('fotoAc')){
             $imagen=$request->file('fotoAc');
             $nombreimagen=Str::slug($request->get('nameAc')).".".$imagen->guessExtension();
             $ruta=public_path('image_perfil/');
@@ -128,7 +128,7 @@ class registerController extends Controller
             $usuarioActualizar->foto_perfil=$nombreimagen;
         }else {
             return back()->withErrors(['fotoAc' => 'La imagen es requerida']);
-        }
+        }*/
         $usuarioActualizar->save();
         return redirect('/usuario');
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\producto;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class productosController extends Controller
 {
@@ -15,7 +16,8 @@ class productosController extends Controller
      */
     public function index()
     {
-        $productosU=producto::all();
+        $user=Auth::user();
+        $productosU=producto::where('productos_id',$user->id)->get();
         return view('principal.usuario', ['productosContU'=>$productosU]);
     }
 
@@ -47,6 +49,7 @@ class productosController extends Controller
         ]);
         //
         $newproducto = new producto();
+        $newproducto->productos_id=Auth::id();
         $newproducto->nombre=$request->get('nomb');
         $newproducto->descripcion=$request->get('desc');
         $newproducto->precio=$request->get('prec');
