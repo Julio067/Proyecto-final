@@ -46,13 +46,16 @@
 				<h3>{{$productosVist->descripcion}}</h3>
 				<p>Cantidad: {{$productosVist->cantidad}} | Medida: {{$productosVist->medida}} | Categoria: {{$productosVist->categoria}}</p>
 				<h2>$ {{$productosVist->precio}}</h2>
-
-				
-				<form action="/home/{{$productosVist->id}}" method="post">
+				<form action="/carrito/{{$productosVist->id}}" method="post">
                     @csrf
                     @method('get')
                     <button><i class="fa-solid fa-cart-shopping"></i></button>
                 </form>
+				<!--<form action="/home/{{$productosVist->id}}" method="post">
+                    @csrf
+                    @method('get')
+                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                </form>-->
 			</div>
 
         </div>

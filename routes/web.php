@@ -6,6 +6,7 @@ use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\categoriasController;
+use App\Http\Controllers\carritoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +23,9 @@ Route::get('/agroapp', function () {
 });
 
 
-
+Route::get('/carrito', [carritoController::class, 'cart']);
+Route::get('/carrito/{id}', [carritoController::class, 'anadircart']);
+Route::delete('/remove/{id}', [carritoController::class, 'remove']);
 Route::resource('/registro', registerController::class);
 Route::resource('/iniciar-sesion', loginController::class);
 Route::resource('/usuario', productosController::class);
