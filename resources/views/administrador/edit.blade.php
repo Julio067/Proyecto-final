@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section ('content')
-
+@role('admin')
 @if ($errors->any())
     <div class="container">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -15,31 +15,15 @@
     </div>
 @endif
 
-<center><h1 class="heading-1">Actualizar producto</h1></center>
+<center><h1 class="heading-1">Actualizar categoria</h1></center>
 <div class="contenedor-formP"> 
-    <form action="/usuario/{{$productoEditarV->id}}" method="POST" enctype="multipart/form-data">
+    <form action="/administrador/{{$cateEditar->id}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('put')
-        <div class="mb-3 mt-2">
-            <label>Nombre del producto</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" value="{{$productoEditarV->nombre}}" name="nombEd">
-        </div>
         <div class="mb-3">
-            <label>Descripcion</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" value="{{$productoEditarV->descripcion}}" name="descEd">
-        </div>
-        <div class="mb-3">
-            <label>Precio</label>
-            <input type="number" class="form-control" id="exampleInputPassword1" value="{{$productoEditarV->precio}}" name="precEd">
-        </div>
-        <div class="mb-3">
-            <label>Cantidad</label>
-            <input type="number" class="form-control" id="exampleInputPassword1" value="{{$productoEditarV->cantidad}}" name="cantEd">
-        </div>
-        <div class="mb-3">
-            <label>Categoria</label>
-            <select class="form-select" type="text" aria-label="Default select example" name="cateEd">
-                <option selected>Seleccione la categoria del producto</option>
+            <label>Nombre</label>
+            <select class="form-select" type="text" aria-label="Default select example" name="nombCaE">
+                <option value="{{$cateEditar->nombre}}">{{$cateEditar->nombre}}</option>
                 <option value="Fruta">Fruta</option>
                 <option value="Verdura">Verdura</option>
                 <option value="Legumbre">Legumbre</option>
@@ -49,25 +33,18 @@
             </select>
         </div>
         <div class="mb-3">
-            <label>Medida</label>
-            <select class="form-select" type="text" aria-label="Default select example" name="mediEd">
-                <option selected>Medida que usara para vender el producto</option>
-                <option value="Kilos">Kilos</option>
-                <option value="LIbra">LIbra</option>
-                <option value="Bultos">Bultos</option>
-                <option value="Onzas">Onzas</option>
-                <option value="Litros">Litros</option>
-            </select>
+            <label>Descripcion</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" value="{{$cateEditar->descripcion}}" name="descCaE">
         </div>
         <div class="mb-3">
             <label class="">Imagen</label>
-            <input type="file" class="form-control" id="exampleInputPassword1" name="imagEd">
+            <input type="file" class="form-control" id="exampleInputPassword1" name="imagCaE">
         </div>
         <center>
-            <a href="/usuario"><button type="button" class="btn btn-secondary">cancelar</button></a>
-            <button type="sumbit" class="btn btn-success">Enviar</button>
+            <a href="/administrador"><button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">cancelar</button></a>
+            <button type="sumbit" class="btn btn-success" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">Enviar</button>
         </center>
     </form>
 </div>
-
+@endrole
 @endsection

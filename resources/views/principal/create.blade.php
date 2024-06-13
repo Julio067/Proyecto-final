@@ -26,13 +26,13 @@
         <div class="mb-3">
             <label class="">Descripcion</label>
             <input type="text" class="form-control" id="exampleInputPassword1" name="desc">
-        </div>
+        </div>        
         <div class="mb-3">
             <label>Categoria</label>
             <select class="form-select" type="text" aria-label="Default select example" name="cate">
                 <option selected>Seleccione la categoria del producto</option>
-                <option value="Fruta">Fruta</option>
-                <option value="Verdura">Verdura</option>
+                <option value="Frutas">Frutas</option>
+                <option value="Verduras">Verduras</option>
                 <option value="Legumbre">Legumbre</option>
                 <option value="Lacteos">Lacteos</option>
                 <option value="Artesanales">Artesanales</option>
@@ -63,8 +63,8 @@
             <input type="file" class="form-control" id="exampleInputPassword1" name="imag">
         </div>
         <center>
-            <a href="/usuario"><button type="button" class="btn btn-secondary">cancelar</button></a>
-            <button type="sumbit" class="btn btn-success">Enviar</button>
+            <a href="/usuario"><button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">cancelar</button></a>
+            <button type="sumbit" class="btn btn-success" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">Enviar</button>
         </center>
     </form>
 </div>

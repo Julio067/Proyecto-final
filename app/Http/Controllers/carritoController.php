@@ -16,7 +16,6 @@ class carritoController extends Controller
         if (!$cart){
             $cart=[
                 $id=>[
-                    
                     'nombre'=>$producto->nombre,
                     'descripcion'=>$producto->descripcion,
                     'precio'=>$producto->precio,

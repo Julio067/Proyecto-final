@@ -91,7 +91,8 @@ class registerController extends Controller
      */
     public function show($id)
     {
-        //
+        $eliminarusu = User :: findOrFail($id);
+        return view ('administrador.deleteusu', ['usuarioeli'=>$eliminarusu]);
     }
 
     /**
@@ -141,6 +142,8 @@ class registerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $elimausu =User::findOrFail($id);
+        $elimausu -> delete();
+        return redirect('/administrador');
     }
 }

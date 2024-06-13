@@ -8,9 +8,11 @@
                         <form action="/iniciar-sesion" method="POST">
                             @csrf
                             <center>
-                                <h1>Inicia sesion</h1>
-                                <br>
-                                <h4>Llena todos los campos de informacion</h4>
+                                <div class="input10">
+                                    <div class="uno">Inicia sesion</div>
+                                    <br>
+                                    <div class="dos">Llena todos los campos de informacion</div>
+                                </div>
                             </center>
                             @error('invalid_credentials')
                             <div class="alert alert-danger">{{$message}}</div>
@@ -30,7 +32,7 @@
                             <div class="alert alert-danger">{{$message}}</div>
                             @enderror 
                             <div class="o-password">
-                                <a href="contra.html">Olvide mi contraseña</a>
+                                <a href="/recuperar">Olvide mi contraseña</a>
                             </div>
             
                             <div class="container-login-form-btn">

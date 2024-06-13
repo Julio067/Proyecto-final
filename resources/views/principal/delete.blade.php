@@ -1,7 +1,7 @@
 @extends('plantilla')
 @section('content')
 <div class="container">
-<center><h1 style="margin-top: 12px;" >¿Desea eliminar el vuelo?</h1></center>
+<center><h1 style="margin-top: 12px;" >¿Desea eliminar el producto?</h1></center>
     <form action="/usuario/{{$productoEliminarV->id}}" method="POST">
         @csrf
         @method('delete')
@@ -26,8 +26,8 @@
             </tbody>
     </table>
     <center>
-    <a href="/usuario"><button type="button" class="btn btn-secondary">cancelar</button></a>  
-        <button type="sumbit" class="btn btn-danger">Eliminar</button>   
+    <a href="/usuario"><button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">cancelar</button></a>  
+        <button type="sumbit" class="btn btn-danger" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">Eliminar</button>   
     </center>
     </form>
     <br>

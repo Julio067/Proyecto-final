@@ -1,6 +1,7 @@
 @auth
 @extends('plantilla')
 @section ('content')
+@role('admin')
     @if ($errors->any())
     <div class="container">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -32,11 +33,11 @@
             <input type="file" class="form-control" id="exampleInputPassword1" name="imagCa" require>
         </div>
         <center>
-            <a href="/administrador"><button type="button" class="btn btn-secondary">cancelar</button></a>
-            <button type="sumbit" class="btn btn-success">Crear</button>
+            <a href="/administrador"><button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">cancelar</button></a>
+            <button type="sumbit" class="btn btn-success" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">Crear</button>
         </center>
     </form>
 </div>
-
+@endrole
 @endsection
 @endauth

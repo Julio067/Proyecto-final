@@ -4,6 +4,7 @@
 	margin: 0px; 
 	padding: 0px; 
 	box-sizing: border-box;
+    font-family: "Barlow", sans-serif;
 }
 a{
     text-decoration: none;
@@ -24,9 +25,24 @@ body{
     height: auto;
 }
 
-body, html {
-	height: 100%;
-	font-family: "Barlow", sans-serif;
+  
+.navigation {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    header {
+      flex-direction: column; 
+      align-items: center; 
+    }
+  
+    .navigation {
+      flex-direction: row-reverse;
+    }
+  
+    .service {
+      margin: 0.4rem; 
+    }
 }
 
 input {
@@ -121,8 +137,8 @@ header{
 }
 
 .wrap-login {
-    width: 400px;
-    background: #eceff18c;
+    width: 500px;
+    background: #ffffff8c;
     border-radius: 20px;
     overflow: hidden;
     padding: 10px 55px 30px 55px;
@@ -139,8 +155,8 @@ header{
 
 .form-select{
     font-family: "Barlow", sans-serif;
-    font-weight: 700;
-    font-size: 15px;
+    font-weight: 800;
+    font-size: 16px;
     border: none;
     color: black;
     line-height: 1.2;
@@ -160,14 +176,26 @@ header{
 
 .input100 {
     font-family: "Barlow", sans-serif;
-    font-weight: 700;
-    font-size: 15px;
+    font-weight: 800;
+    font-size: 16px;
     color: black;
     line-height: 1.2;
     display: block;
     width: 100%;
     height: 45px;
     background: transparent;
+}
+
+.input10 .uno{
+    font-family: "Barlow", sans-serif;
+    font-weight: 800;
+    font-size: 35px;
+}
+
+.input10 .dos{
+    font-family: "Barlow", sans-serif;
+    font-weight: 800;
+    font-size: 15px;
 }
 
 .input100::-webkit-input-placeholder {
@@ -338,9 +366,12 @@ header{
   }
   
   .custum-file-upload .text {
+    font-family: "Barlow", sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
   }
   
   .custum-file-upload .text span {

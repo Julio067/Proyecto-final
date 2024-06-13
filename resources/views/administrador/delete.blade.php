@@ -1,8 +1,9 @@
 @extends('plantilla')
 @section('content')
+@role('admin')
 <div class="container">
-<center><h1 style="margin-top: 12px;" >¿Desea eliminar el vuelo?</h1></center>
-    <form action="/usuario/{{$productoEliminarV->id}}" method="POST">
+<center><h1 style="margin-top: 12px;" >¿Desea eliminar la categoria?</h1></center>
+    <form action="/administrador/{{$categoriaeli->id}}" method="POST">
         @csrf
         @method('delete')
     <table class="table table-dark table-striped table-bordered mt-5">
@@ -11,25 +12,22 @@
                 <th>ID</th>
                 <td>Nombre</td>
                 <td>Descripcion</td>
-                <td>Precio</td>
-                <td>Cantidad</td>
             </tr>
         </thead>
             <tbody>
                 <tr>
-                    <th scope="row" >{{$productoEliminarV->id}}</th>
-                    <td>{{$productoEliminarV->nombre}}</td>
-                    <td>{{$productoEliminarV->descripcion}}</td>
-                    <td>{{$productoEliminarV->precio}}</td>
-                    <td>{{$productoEliminarV->cantidad}}</td>
+                    <th scope="row" >{{$categoriaeli->id}}</th>
+                    <td>{{$categoriaeli->nombre}}</td>
+                    <td>{{$categoriaeli->descripcion}}</td>
                 </tr>
             </tbody>
     </table>
     <center>
-    <a href="/usuario"><button type="button" class="btn btn-secondary">cancelar</button></a>  
-        <button type="sumbit" class="btn btn-danger">Eliminar</button>   
+        <a href="/administrador"><button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">cancelar</button></a>  
+        <button type="sumbit" class="btn btn-danger" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">Eliminar</button>   
     </center>
     </form>
     <br>
 </div>
+@endrole
 @endsection

@@ -16,7 +16,7 @@
                 <td>Cantidad</td>
                 <td>Categoria</td>
                 <td>Medida</td>
-                <td>Editar</td>
+                <td>Comprar</td>
                 <td>Eliminar</td>
             </tr>
         </thead>

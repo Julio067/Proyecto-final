@@ -7,9 +7,11 @@
             <form action="/registro" method="post" enctype="multipart/form-data">
             @csrf
             <center>
-                <h1>Registrate</h1>
-                <br>
-                <h4>Llena todos los campos de informacion</h4>
+                <div class="input10">
+                    <div class="uno">Registrate</div>
+                    <br>
+                    <div class="dos">Llena todos los campos de informacion</div>
+                </div>
             </center>
                 <div class="wrap-input100">
                     <input class="input100" type="text" name="name" placeholder="Nombre y Apellido de usuario">
@@ -74,7 +76,7 @@
                 <div class="alert alert-danger">{{$message}}</div>
                 @enderror
                 <div class="o-confirmacion">
-                    <center><input type="checkbox" onclick="agreesubmit(this)" style="margin-right: 15px;"/>Estoy de acuerdo con los <a href="terminos.html" target="_blank" class="enlace-terminos">términos y condiciones</a></center>
+                    <center><input type="checkbox" onclick="agreesubmit(this)" style="margin-right: 15px;"/>Estoy de acuerdo con los<a href="terminos.html" target="_blank" class="enlace-terminos">términos y condiciones</a></center>
                 </div>
         
                 <div class="container-login-form-btn">

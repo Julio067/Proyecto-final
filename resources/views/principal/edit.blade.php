@@ -39,7 +39,7 @@
         <div class="mb-3">
             <label>Categoria</label>
             <select class="form-select" type="text" aria-label="Default select example" name="cateEd">
-                <option value="{{$productoEditarV->municipio}}" selelected>{{$productoEditarV->municipio}}</option>
+                <option value="{{$productoEditarV->categoria}}">{{$productoEditarV->categoria}}</option>
                 <option value="Fruta">Fruta</option>
                 <option value="Verdura">Verdura</option>
                 <option value="Legumbre">Legumbre</option>
@@ -64,8 +64,8 @@
             <input type="file" class="form-control" id="exampleInputPassword1" name="imagEd">
         </div>
         <center>
-            <a href="/usuario"><button type="button" class="btn btn-secondary">cancelar</button></a>
-            <button type="sumbit" class="btn btn-success">Enviar</button>
+            <a href="/administrador"><button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">cancelar</button></a>
+            <button type="sumbit" class="btn btn-success" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">Enviar</button>
         </center>
     </form>
 </div>

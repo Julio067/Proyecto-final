@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\producto;
+use App\Models\categoria;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,8 @@ class productosController extends Controller
     {
         $user=Auth::user();
         $productosU=producto::where('productos_id',$user->id)->get();
-        return view('principal.usuario', ['productosContU'=>$productosU]);
+        $categorias = categoria::all();
+        return view('principal.usuario', ['productosContU'=>$productosU], ['categoriasCont'=>$categorias]);
     }
 
     /**
@@ -76,9 +78,7 @@ class productosController extends Controller
     public function show($id)
     {
         $nombreP = producto:: findOrFail($id);
-        return view ('principal.delete', [
-            'productoEliminarV'=>$nombreP
-        ]);
+        return view ('principal.delete', ['productoEliminarV'=>$nombreP]);
     }
 
     /**
@@ -90,9 +90,7 @@ class productosController extends Controller
     public function edit($id)
     {
         $productoEdit = producto:: findOrFail($id);
-        return view ('principal.edit', [
-            'productoEditarV'=>$productoEdit
-        ]);
+        return view ('principal.edit', ['productoEditarV'=>$productoEdit]);
     }
 
     /**

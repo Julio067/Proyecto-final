@@ -15,15 +15,16 @@
             <div class="container-logo">
                 <h1 class="logo"><a href="/agroapp">AGRO<b>APP</b></a></h1>
             </div>
-            
-            <div class="service">
-                <div class="btn"><a href="/iniciar-sesion">Iniciar sesion</a></div>
-            </div>
-            <div class="service">
-                <div class="btn-register"><a href="/registro">Registrarse</a></div>
-            </div>
+            <nav class="navigation">
+                <div class="service">
+                    <div class="btn"><a href="/iniciar-sesion">Iniciar sesión</a></div>
+                </div>
+                <div class="service">
+                    <div class="btn-register"><a href="/registro">Registrarse</a></div>
+                </div>
+            </nav>
         </header>
-
+        
         @yield('content')
 
 		<script

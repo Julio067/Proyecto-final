@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="icon" href="{{ URL::asset('img/logo.png') }}">
 		<title>Agroapp</title>
     <link rel="stylesheet" href="{{ asset('css/styles-home.css') }}">
 	</head>
@@ -34,7 +35,6 @@
                         <i class="fa-solid fa-list"></i>
                         <h2>Revisar categorias</h2>
                     </div>
-                    
                 </div>
 
                 <div class="content_box">
@@ -63,7 +63,7 @@
                                 <td>{{$usuariosVist->numero_telefono}}</td>
                                 <td>{{$usuariosVist->municipio}}</td>
                                 <td style="text-align:center">
-                                    <form action="/administrador/{{$usuariosVist->id}}" method="post">
+                                    <form action="/registro/{{$usuariosVist->id}}" method="post">
                                         @csrf
                                         @method('get')
                                         <button class="btn btn-danger" ><i class="fa-solid fa-trash"></i></button>

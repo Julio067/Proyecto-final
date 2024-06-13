@@ -44,7 +44,6 @@
                 <table class="table table-dark table-striped table-bordered">
                     <thead>
                         <tr style="text-align:center">
-                            <th>ID</th>
                             <td>Nombre</td>
                             <td>Descripcion</td>
                             <td>Precio</td>
@@ -59,7 +58,6 @@
                     <tbody>
                         @foreach($productosContU as $productosVistU)
                         <tr>
-                            <th scope="row" style="margin: auto;">{{$productosVistU->id}}</th>
                             <td>{{$productosVistU->nombre}}</td>
                             <td>{{$productosVistU->descripcion}}</td>
                             <td>{{$productosVistU->precio}}</td>
@@ -115,8 +113,8 @@
                             <input type="text" class="form-control" id="exampleInputEmail1" value="{{ Auth::user()->direccion }}" name="direAc">
                         </div>
                         <center>
-                            <a href="/usuario"><button type="button" class="btn btn-secondary">cancelar</button></a>
-                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                            <a href="/usuario"><button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">cancelar</button></a>
+                            <button type="submit" class="btn btn-success" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">Actualizar</button>
                         </center>
                     </form>
                 </div>

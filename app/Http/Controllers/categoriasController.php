@@ -41,7 +41,6 @@ class categoriasController extends Controller
     public function store(Request $request)
     {
         
-        //
         $newcategoria = new categoria();
         $newcategoria->nombre=$request->get('nombCa');
         $newcategoria->descripcion=$request->get('descCa');
@@ -64,7 +63,8 @@ class categoriasController extends Controller
      */
     public function show($id)
     {
-        //
+        $eliminar = categoria :: findOrFail($id);
+        return view ('administrador.delete', ['categoriaeli'=>$eliminar]);
     }
 
     /**
@@ -75,7 +75,8 @@ class categoriasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cateEdit = categoria:: findOrFail($id);
+        return view ('administrador.edit', ['cateEditar'=>$cateEdit]);
     }
 
     /**
@@ -87,7 +88,18 @@ class categoriasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cateedita = categoria :: findOrFail($id);
+        $cateedita->nombre=$request->get('nombCaE');
+        $cateedita->descripcion=$request->get('descCaE');
+        if($request->hasFile('imagCaE')){
+            $imagen=$request->file('imagCaE');
+            $nombreimagen=Str::slug($request->get('nombCaE')).".".$imagen->guessExtension();
+            $ruta=public_path('image_categoria/');
+            $imagen->move($ruta,$nombreimagen);
+            $cateedita->imagen=$nombreimagen;
+        }
+        $cateedita->save();
+        return redirect('/administrador');
     }
 
     /**
@@ -98,6 +110,20 @@ class categoriasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $elimicate =categoria::findOrFail($id);
+        $elimicate -> delete();
+        return redirect('/administrador');
+    }
+
+    public function destroy1($id)
+    {
+        $elimausu =User::findOrFail($id);
+        $elimausu -> delete();
+        return redirect('/administrador');
+    }
+    public function show1($id)
+    {
+        $eliminarusu = User :: findOrFail($id);
+        return view ('administrador.deleteusu', ['usuarioeli'=>$eliminarusu]);
     }
 }
