@@ -48,6 +48,6 @@ class carritoController extends Controller
             unset($cart[$id]);
             session()->put('cart', $cart);
         }
-        return redirect()->back()->with('success', 'El producto se eliminó correctamente');
+        return redirect()->back()->with('success', 'el producto se eliminó correctamente');
     }
 }
