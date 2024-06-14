@@ -30,5 +30,5 @@ Route::resource('/registro', registerController::class);
 Route::resource('/iniciar-sesion', loginController::class);
 Route::resource('/usuario', productosController::class);
 Route::resource('/home', homeController::class);
-Route::resource('/administrador', categoriasController::class);
+Route::resource('/administrador', categoriasController::class)->middleware('can:administrador');
 Route::post('/agroapp', [loginController::class, 'logout'])->name('logout');

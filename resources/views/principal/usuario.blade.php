@@ -127,6 +127,11 @@
                 <div class="btn-usuario">
                     <a href="usuario/create"><button>Subir un producto</button></a>
                 </div>
+                @can('administrador')
+                <div class="btn-usuario">
+                    <a href="administrador"><button>Gestionar web</button></a>
+                </div>
+                @endcan
                 <form action="{{ route('logout')}}" method="POST">
                 @csrf
                     <div class="btn-usuario">
