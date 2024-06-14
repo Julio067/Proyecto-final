@@ -110,85 +110,113 @@ header{
 /*Categorias*/
 
 .heading-1 {
-	margin-top: 20px;
+	margin: 20px 0px;
 	text-align: center;
 	font-weight: 500;
 	font-size: 3rem;
 }
 
-.top-categories {
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-	margin-bottom: 3rem;
+.carrusel{
+    width: 100%;
 }
 
-.container-categories {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 3rem;
+.carrusel h2{
+    font-size: 26px;
+    line-height: 38px;
+    padding-bottom: 24px;
+    opacity: .9;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-align: center;
 }
 
-.card-category {
-	height: 20rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	border-radius: 2rem;
-	gap: 2rem;
+.categorias-list{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: 275px;
+    padding: 10px 0px;
+    margin: 0px auto;
+    max-width: 90vw;
+    overflow: hidden;
 }
 
-.category-verduras {
-	background-image: linear-gradient(#00000080, #00000080),
-		url('../img/verduras.jpg');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+.categorias-deslizar{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    transition: .5s ease-in-out;
 }
 
-.category-frutas {
-	background-image: linear-gradient(#00000080, #00000080),
-		url('../img/frutas.jpg');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+.categoria{
+    position: relative;
+    width: 100%;
+    padding: 0 18px;
+    float: left;
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
 }
 
-.category-granos {
-	background-image: linear-gradient(#00000080, #00000080),
-		url('../img/granos.jpg');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+.categoria h4{
+    position: absolute;
+    z-index: 1;
+    font-size: 22px;
+    line-height: 23px;
+    color: var(--blanco-color);
+    padding: 15px;
 }
 
-.card-category p {
-	font-size: 2.5rem;
-	color: #fff;
-	text-transform: capitalize;
-	position: relative;
+.categoria h4 small{
+    font-size: 15px;
+    display: block;
 }
 
-.card-category p::after {
-	content: '';
-	width: 2.5rem;
-	height: 2px;
-	background-color: #fff;
-	position: absolute;
-	bottom: -1rem;
-	left: 50%;
-	transform: translate(-50%, 50%);
+.categoria a img{
+    object-fit: cover;
+    height: 275px;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.5);
+    transition: .3s ease-in-out;
 }
 
-.card-category span {
-	font-size: 1.6rem;
-	color: #fff;
-	cursor: pointer;
+.categoria a img:hover{
+    opacity: .85;
 }
 
-.card-category span:hover {
-	color: var(--color-primario);
+.flecha{
+    border-radius: 30px;
+    background-color: var(--blanco-color);
+    position: absolute;
+    z-index: 4;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
+    border: 0;
+    cursor: pointer;
+}
+
+.flecha:focus{
+    outline: 0;
+}
+
+.flecha svg{
+    width: 12px;
+    height: 100%;
+    color: rgba(0,0,0,.7);
+}
+
+.izquierda{
+    left: 0px;
+}
+
+.derecha{
+    right: 0px;
 }
 
 /*Cards*/
@@ -203,7 +231,7 @@ header{
 
 .cards-cuerpo{
 	width: 200px;
-	height: 300px;
+	height: 370px;
 	position: relative;
 	box-shadow: 0 4px 4px black;
 	border-radius: 8px;
@@ -228,29 +256,45 @@ header{
 	transition: 0.5s;
 }
 
-.cards-cuerpo h3{
-	font-size: 15px;
-	font-weight: 500;
-	color: var(--negro-color);
-	padding: 10px;
-}
-
 .cards-cuerpo h2{
 	font-size: 18px;
 	color: var(--color-secundario);
 	letter-spacing: 1px;
-	padding: 10px;
+	padding: 8px;
 }
 
-.cards-cuerpo .fa-cart-shopping{
+.cards-cuerpo h3{
+	font-size: 15px;
+	font-weight: 500;
+	color: var(--negro-color);
+	padding: 0px 10px 0px 10px;
+}
+
+.cards-cuerpo p{
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--negro-color);
+	padding-left: 10px;
+}
+
+
+.cards-cuerpo button{
 	position: absolute;
 	right: 0;
 	bottom: 0;
+	background: var(--color-secundario);
+	border-radius: 4px 0 4px 0;
+	border: none;
+}
+
+.cards-cuerpo button:hover{
+	background: var(--color-primario);
+}
+
+.cards-cuerpo .fa-cart-shopping{
 	font-size: 20px;
 	padding: 10px;
 	color: var(--blanco-color);
-	background: var(--color-secundario);
-	border-radius: 4px 0 4px 0;
 }
 
 .cards-cuerpo .fa-cart-shopping:hover{
@@ -317,7 +361,7 @@ header{
     border: none;
     outline: 0px;
     background: var(--color-primario);
-    color: #fdfdfd;
+    color:  var(--blanco-color);
     border-radius: 3px;
     cursor: pointer;
     transition: all 300ms ease;
@@ -344,58 +388,9 @@ hr{
     background-color: var(--color-secundario);
     padding: 15px 10px;
     text-align: center;
-    color: #fdfdfd;
+    color:  var(--blanco-color);
 }
 
 .pie-pagina .grupo-2 small{
     font-size: 15px;
-}
-
-
-/*Responsive*/
-
-@media (max-width: 768px) {
-	html {
-		font-size: 55%;
-	}
-
-	.header {
-		padding: 2rem;
-	}
-	.form{
-        width: 90%;
-        grid-template-columns: repeat(1,1fr);
-        grid-gap: 50px;
-    }
-
-	.heading-1 {
-		font-size: 2.4rem;
-	}
-
-	.card-category {
-		height: 12rem;
-	}
-
-	.card-category p {
-		font-size: 2rem;
-		text-align: center;
-		line-height: 1;
-	}
-
-	.card-category span {
-		font-size: 1.4rem;
-	}
-
-
-}
-
-@media (max-width: 468px) {
-	html {
-		font-size: 42.5%;
-	}
-	
-	.heading-1 {
-		font-size: 2.8rem;
-	}
-
 }

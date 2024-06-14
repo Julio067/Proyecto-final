@@ -8,17 +8,14 @@ use App\Models\categoria;
 class carritoController extends Controller
 {
     public function cart(){
-        $cart = session()->get('cart');
-        $total = 0;
-
-        foreach ($cart as $id => $detalles) {
-            $total += $detalles['precio'] * $detalles['cantidad'];
+        $cart=session()->get('cart');
+        $total=0;
+        foreach($cart as $id=>$detalles){
+            $total+=$detalles['precio']*$detalles['cantidad'];
         }
-
         return view('principal.carrito',compact('cart','total'));
     }
     public function anadircart($id){
-        
         $producto=producto::findorfail($id);
         $cart=session()->get('cart');
         if (!isset($cart[$id])){
@@ -35,7 +32,6 @@ class carritoController extends Controller
                 'imagen'=>$producto->imagen
             ];
         }
-        
         session()->put('cart',$cart);
         return redirect()->back()->with('sucess','el producto se añadio correctamente');
     }
@@ -48,6 +44,6 @@ class carritoController extends Controller
             unset($cart[$id]);
             session()->put('cart', $cart);
         }
-        return redirect()->back()->with('success', 'el producto se eliminó correctamente');
+        return redirect()->back()->with('success', 'El producto se eliminó correctamente');
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\categoriasController;
 use App\Http\Controllers\carritoController;
+use App\Http\Controllers\freeController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 /*
@@ -40,3 +41,6 @@ Route::resource('/administrador', categoriasController::class);
 Route::resource('/iniciar-sesion', loginController::class);
 Route::post('/agroapp', [loginController::class, 'logout'])->name('logout');
 Route::resource('/home', homeController::class);
+Route::resource('/administrador', categoriasController::class);
+Route::post('/agroapp', [loginController::class, 'logout'])->name('logout');
+Route::get('/agroapp', [freeController::class, 'index']);

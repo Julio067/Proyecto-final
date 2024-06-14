@@ -1,24 +1,25 @@
 @extends('plantilla')
-@section ('content')
+
+@section('content')
 @auth
     <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                    <img src="image_perfil/{{Auth::user()->foto_perfil}}" alt="imgsadsada-avatar">
+                    <img src="image_perfil/{{ Auth::user()->foto_perfil }}" alt="avatar">
                 </div>
             </div>
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo" id="title">{{Auth::user()->name}}<br/>{{Auth::user()->email}}</h3>
+                <h3 class="titulo" id="title">{{ Auth::user()->name }}<br>{{ Auth::user()->email }}</h3>
             </div>
             <div class="perfil-usuario-data">
                 <ul class="lista-datos">
-                    <li class="titulo"><i class="icono fa-solid fa-id-card-clip"></i>{{Auth::user()->num_cedula}}</li>
-                    <li class="titulo"><i class="icono fas fa-map-marker-alt"></i>{{Auth::user()->municipio}}</li>
-                    <li class="titulo"><i class="icono fas fa-phone-alt"></i>{{Auth::user()->numero_telefono}}</li>
-                    <li class="titulo"><i class="icono fas fa-building"></i>{{Auth::user()->direccion}}</li>
+                    <li class="titulo"><i class="icono fa-solid fa-id-card-clip"></i>{{ Auth::user()->num_cedula }}</li>
+                    <li class="titulo"><i class="icono fas fa-map-marker-alt"></i>{{ Auth::user()->municipio }}</li>
+                    <li class="titulo"><i class="icono fas fa-phone-alt"></i>{{ Auth::user()->numero_telefono }}</li>
+                    <li class="titulo"><i class="icono fas fa-building"></i>{{ Auth::user()->direccion }}</li>
                 </ul>
             </div>
         </div>
@@ -34,67 +35,64 @@
                 <i class="fa-solid fa-gears"></i>
                 <h2>Tu cuenta</h2>
             </div>
-            
         </div>
 
         <div class="content_box">
             <div class="content">
                 <div class="container">
-                <h1 class="heading-1">Tus productos</h1>
-                <table class="table table-dark table-striped table-bordered">
-                    <thead>
-                        <tr style="text-align:center">
-                            <td>Nombre</td>
-                            <td>Descripcion</td>
-                            <td>Precio</td>
-                            <td>Cantidad</td>
-                            <td>Categoria</td>
-                            <td>Medida</td>
-                            <td>Editar</td>
-                            <td>Eliminar</td>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-                        @foreach($productosContU as $productosVistU)
-                        <tr>
-                            <td>{{$productosVistU->nombre}}</td>
-                            <td>{{$productosVistU->descripcion}}</td>
-                            <td>{{$productosVistU->precio}}</td>
-                            <td>{{$productosVistU->cantidad}}</td>
-                            <td>{{$productosVistU->categoria}}</td>
-                            <td>{{$productosVistU->medida}}</td>
-                            <td style="text-align:center">
-                                <a href="/usuario/{{$productosVistU->id}}/edit"><button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                            </td>
-                            <td style="text-align:center">
-                                <form action="/usuario/{{$productosVistU->id}}" method="post">
-                                    @csrf
-                                    @method('get')
-                                    <button class="btn btn-danger" ><i class="fa-solid fa-trash"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody> 
-                </table>
+                    <h1 class="heading-1">Tus productos</h1>
+                    <table class="table table-dark table-striped table-bordered">
+                        <thead>
+                            <tr style="text-align:center">
+                                <td>Nombre</td>
+                                <td>Descripcion</td>
+                                <td>Precio</td>
+                                <td>Cantidad</td>
+                                <td>Categoria</td>
+                                <td>Medida</td>
+                                <td>Editar</td>
+                                <td>Eliminar</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($productosContU as $productosVistU)
+                            <tr>
+                                <td>{{ $productosVistU->nombre }}</td>
+                                <td>{{ $productosVistU->descripcion }}</td>
+                                <td>{{ $productosVistU->precio }}</td>
+                                <td>{{ $productosVistU->cantidad }}</td>
+                                <td>{{ $productosVistU->categoria }}</td>
+                                <td>{{ $productosVistU->medida }}</td>
+                                <td style="text-align:center">
+                                    <a href="/usuario/{{ $productosVistU->id }}/edit"><button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                </td>
+                                <td style="text-align:center">
+                                    <form action="/usuario/{{ $productosVistU->id }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody> 
+                    </table>
                 </div>
-                
             </div>
 
             <div class="content">
-                <center><h1 class="heading-1">Actualizar datos mis datos</h1></center>
+                <center><h1 class="heading-1">Actualizar mis datos</h1></center>
                 <div class="contenedor-formP"> 
                     <form action="/registro/{{ Auth::user()->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="mb-3 mt-2">
                             <label>Nombre de usuario</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" value="{{ Auth::user()->name }}" name="nameAc" required>
+                            <input type="text" class="form-control" value="{{ Auth::user()->name }}" name="nameAc" required>
                         </div>
                         <div class="mb-3">
                             <label>Municipio</label>
-                            <select class="form-select" type="text" aria-label="Default select example" name="muniAc" required>
+                            <select class="form-select" name="muniAc" required>
                                 <option value="{{ Auth::user()->municipio }}">{{ Auth::user()->municipio }}</option>
                                 <option value="Madrid">Madrid</option>
                                 <option value="Mosquera">Mosquera</option>
@@ -106,42 +104,39 @@
                         </div>
                         <div class="mb-3">
                             <label>Numero de telefono</label>
-                            <input type="number" class="form-control" id="exampleInputPassword1" value="{{ Auth::user()->numero_telefono }}" name="numTAc">
+                            <input type="number" class="form-control" value="{{ Auth::user()->numero_telefono }}" name="numTAc">
                         </div>
                         <div class="mb-3 mt-2">
                             <label>Direccion</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" value="{{ Auth::user()->direccion }}" name="direAc">
+                            <input type="text" class="form-control" value="{{ Auth::user()->direccion }}" name="direAc">
                         </div>
                         <center>
-                            <a href="/usuario"><button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">cancelar</button></a>
+                            <a href="/usuario"><button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">Cancelar</button></a>
                             <button type="submit" class="btn btn-success" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">Actualizar</button>
                         </center>
                     </form>
                 </div>
             </div>
+        </div>
 
-            
-        </div>
-            <center>
-                <div class="container-btns">
-                    <div class="btn-usuario">
-                        <a href="usuario/create"><button>Subir un producto</button></a>
-                    </div>
-                    @role('admin')
-                    <div class="btn-usuario">
-                        <a href="/administrador"><button type="sumbit" >Gestionar sitio web</button></a>
-                    </div>
-                    </form>
-                    @endrole
-                    <form action="{{ route('logout')}}" method="POST">
-                    @csrf
-                        <div class="btn-usuario">
-                            <a href=""><button type="sumbit" >Cerrar sesion</button></a>
-                        </div>
-                    </form>
+        <center>
+            <div class="container-btns">
+                <div class="btn-usuario">
+                    <a href="usuario/create"><button>Subir un producto</button></a>
                 </div>
-            </center>
-        </div>
+                @role('admin')
+                <div class="btn-usuario">
+                    <a href="/administrador"><button type="submit">Gestionar sitio web</button></a>
+                </div>
+                @endrole
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <div class="btn-usuario">
+                        <button type="submit">Cerrar sesión</button>
+                    </div>
+                </form>
+            </div>
+        </center>
     </div>
-    @endauth
+@endauth
 @endsection

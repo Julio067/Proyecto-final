@@ -115,6 +115,9 @@
                     <div class="btn-usuario">
                         <a href="administrador/create"><button>Crear nueva categoria</button></a>
                     </div>
+                    <div class="btn-usuario">
+                        <a href="usuario"><button>Regresar</button></a>
+                    </div>
                 </center>
             </div>
         </main>
