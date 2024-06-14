@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +14,8 @@ class CreateCategoriasTable extends Migration
     {
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('categorias_id')->unsigned();
+            $table->foreign('categorias_id')->references('id')->on('productos');
             $table->string('nombre');
             $table->string('descripcion');
             $table->string('imagen');

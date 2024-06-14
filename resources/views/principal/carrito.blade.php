@@ -16,7 +16,7 @@
                 <td>Cantidad</td>
                 <td>Categoria</td>
                 <td>Medida</td>
-                <td>Comprar</td>
+                <td>Editar</td>
                 <td>Eliminar</td>
             </tr>
         </thead>
@@ -36,14 +36,14 @@
                                     <form action="/home/{{$id}}" method="post">
                                         @csrf
                                         @method('get')
-                                        <button class="btn btn-success"><i class="fa-solid fa-cart-shopping"></i></button>
+                                        <button><i class="fa-solid fa-cart-shopping"></i></button>
                                     </form>
                                 </td>
                                 <td style="text-align:center">
                                     <form action="remove/{{$id}}" method="post">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                        <button class="btn btn-danger" ><i class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </td>
                                 @endforeach
@@ -52,5 +52,6 @@
                         </tbody> 
                     </table>
                     </div>
+                    <h3>TOTAL: ${{$total}}</h3>
 @endif
 @endsection
