@@ -31,12 +31,9 @@
             <label>Categoria</label>
             <select class="form-select" type="text" aria-label="Default select example" name="cate">
                 <option selected>Seleccione la categoria del producto</option>
-                <option value="Frutas">Frutas</option>
-                <option value="Verduras">Verduras</option>
-                <option value="Legumbre">Legumbre</option>
-                <option value="Lacteos">Lacteos</option>
-                <option value="Artesanales">Artesanales</option>
-                <option value="Granos">Granos</option>
+                @foreach($categoriasCont as $categoriasVist)
+                <option value="{{ $categoriasVist->id }}">{{ $categoriasVist->nombre }}</option>
+                @endforeach
             </select>
         </div>
         <div class="mb-3">

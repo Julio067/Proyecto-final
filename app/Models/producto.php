@@ -19,7 +19,6 @@ class producto extends Model
 
     public function scopeSearch($query, $valor){
         return $query->where('nombre', 'like', "%$valor%")
-                ->orwhere('descripcion', 'like', "%$valor%")
-                ->orwhere('categoria', 'like', "%$valor%");
+                ->orwhere('descripcion', 'like', "%$valor%");
     }
 }

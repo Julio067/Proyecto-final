@@ -19,8 +19,7 @@ class productosController extends Controller
     {
         $user=Auth::user();
         $productosU=producto::where('productos_id',$user->id)->get();
-        $categorias = categoria::all();
-        return view('principal.usuario', ['productosContU'=>$productosU], ['categoriasCont'=>$categorias]);
+        return view('principal.usuario', ['productosContU'=>$productosU]);
     }
 
     /**
@@ -30,7 +29,8 @@ class productosController extends Controller
      */
     public function create()
     {
-        return view('principal.create');
+        $categorias = categoria::all();
+        return view('principal.create', ['categoriasCont'=>$categorias]);
         
     }
 
@@ -56,7 +56,7 @@ class productosController extends Controller
         $newproducto->descripcion=$request->get('desc');
         $newproducto->precio=$request->get('prec');
         $newproducto->cantidad=$request->get('cant');
-        $newproducto->categoria=$request->get('cate');
+        $newproducto->categorias_id=$request->get('cate');
         $newproducto->medida=$request->get('medi');
         if($request->hasFile('imag')){
             $imagen=$request->file('imag');
@@ -90,7 +90,8 @@ class productosController extends Controller
     public function edit($id)
     {
         $productoEdit = producto:: findOrFail($id);
-        return view ('principal.edit', ['productoEditarV'=>$productoEdit]);
+        $categoriaEdit = categoria::all();
+        return view ('principal.edit', ['productoEditarV'=>$productoEdit], ['categoriaEditarV'=>$categoriaEdit]);
     }
 
     /**
@@ -114,7 +115,7 @@ class productosController extends Controller
         $editproducto->descripcion=$request->get('descEd');
         $editproducto->precio=$request->get('precEd');
         $editproducto->cantidad=$request->get('cantEd');
-        $editproducto->categoria=$request->get('cateEd');
+        $editproducto->categorias_id=$request->get('cateEd');
         $editproducto->medida=$request->get('mediEd');
         if($request->hasFile('imagEd')){
             $imagen=$request->file('imagEd');

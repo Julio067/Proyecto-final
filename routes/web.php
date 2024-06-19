@@ -21,10 +21,12 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 |
 */
 
-Route::get('/agroapp', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/agroapp', freeController::class);
+Route::post('/logout', [loginController::class, 'logout'])->name('logout');
 Route::middleware('guest')->group(function () {
     Route::get('recuperar', [PasswordResetLinkController::class, 'create'])->name('password.request');
     Route::post('recuperar', [PasswordResetLinkController::class, 'store'])->name('password.email');
@@ -32,15 +34,16 @@ Route::middleware('guest')->group(function () {
     Route::post('nueva_contra', [NewPasswordController::class, 'store'])->name('password.update');
 });
 
-Route::get('/carrito', [carritoController::class, 'cart']);
-Route::get('/carrito/{id}', [carritoController::class, 'anadircart']);
-Route::delete('/remove/{id}', [carritoController::class, 'remove']);
+
+Route::get('/carrito', [CarritoController::class, 'carrito'])->name('carrito');
+Route::get('/carrito/{id}', [CarritoController::class, 'anadircarrito'])->name('carrito.anadir');
+Route::delete('/remove/{id}', [CarritoController::class, 'remove'])->name('carrito.remove');
+Route::post('/carrito/incrementar/{id}', [CarritoController::class, 'incrementar'])->name('carrito.incrementar');
+Route::post('/carrito/disminuir/{id}', [CarritoController::class, 'disminuir'])->name('carrito.disminuir');
+Route::post('/carrito/limpiar', [CarritoController::class, 'limpiarcarrito'])->name('carrito.limpiar');
+
 Route::resource('/registro', registerController::class);
 Route::resource('/usuario', productosController::class);
 Route::resource('/administrador', categoriasController::class);
 Route::resource('/iniciar-sesion', loginController::class);
-Route::post('/agroapp', [loginController::class, 'logout'])->name('logout');
 Route::resource('/home', homeController::class);
-Route::resource('/administrador', categoriasController::class);
-Route::post('/agroapp', [loginController::class, 'logout'])->name('logout');
-Route::get('/agroapp', [freeController::class, 'index']);

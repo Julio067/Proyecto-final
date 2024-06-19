@@ -44,7 +44,7 @@
 				</div>
 				<h2>{{$productosVist->nombre}}</h2>
 				<h3>{{$productosVist->descripcion}}</h3>
-				<p>Cantidad: {{$productosVist->cantidad}} | Medida: {{$productosVist->medida}} | Categoria: {{$productosVist->categoria}}</p>
+				<p>Cantidad: {{$productosVist->cantidad}} | Medida: {{$productosVist->medida}} | Categoria: {{$productosVist->categorias_id}}</p>
 				<h2>$ {{$productosVist->precio}}</h2>
 				<form action="/carrito/{{$productosVist->id}}" method="post">
                     @csrf

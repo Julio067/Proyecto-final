@@ -7,43 +7,82 @@ use App\Models\producto;
 use App\Models\categoria;
 class carritoController extends Controller
 {
-    public function cart(){
-        $cart=session()->get('cart');
-        $total=0;
-        foreach($cart as $id=>$detalles){
-            $total+=$detalles['precio']*$detalles['cantidad'];
+    public function carrito()
+    {
+        $cart = session()->get('cart', []);
+        $total = 0;
+        foreach ($cart as $id => $detalles) {
+            $total += $detalles['precio'] * $detalles['cantidad'];
         }
-        return view('principal.carrito',compact('cart','total'));
+        return view('principal.carrito', compact('cart', 'total'));
     }
-    public function anadircart($id){
-        $producto=producto::findorfail($id);
-        $cart=session()->get('cart');
-        if (!isset($cart[$id])){
-            $contar=session('cartCount',0);
+
+    public function anadircarrito($id)
+    {
+        $producto = Producto::findOrFail($id);
+        $cart = session()->get('cart', []);
+
+        if (!isset($cart[$id])) {
+            $contar = session('cartCount', 0);
             $contar++;
-            session(['cartCount'=>$contar]);
-            $cart[$id]=[
-                'nombre'=>$producto->nombre,
-                'descripcion'=>$producto->descripcion,
-                'precio'=>$producto->precio,
-                'cantidad'=>$producto->cantidad,
-                'categoria'=>$producto->categoria,
-                'medida'=>$producto->medida,
-                'imagen'=>$producto->imagen
+            session(['cartCount' => $contar]);
+            $cart[$id] = [
+                'imagen' => $producto->imagen,
+                'nombre' => $producto->nombre,
+                'descripcion' => $producto->descripcion,
+                'precio' => $producto->precio,
+                'cantidad_disponible' => $producto->cantidad,
+                'cantidad' => 1,
             ];
+        } else {
+            $cart[$id]['cantidad']++;
         }
-        session()->put('cart',$cart);
-        return redirect()->back()->with('sucess','el producto se añadio correctamente');
+
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'El producto se añadió correctamente');
     }
-    public function remove($id){
-        $cart = session()->get('cart');
+
+    public function remove($id)
+    {
+        $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
-            $contar=session('cartCount',0);
+            $contar = session('cartCount', 0);
             $contar--;
-            session(['cartCount'=>$contar]);
+            session(['cartCount' => $contar]);
             unset($cart[$id]);
             session()->put('cart', $cart);
         }
         return redirect()->back()->with('success', 'El producto se eliminó correctamente');
+    }
+
+    public function incrementar($id)
+    {
+        $cart = session()->get('cart', []);
+        if (isset($cart[$id])) {
+            $cart[$id]['cantidad']++;
+            session()->put('cart', $cart);
+        }
+        return redirect()->back()->with('success', 'Cantidad aumentada correctamente');
+    }
+
+    public function disminuir($id)
+    {
+        $cart = session()->get('cart', []);
+        if (isset($cart[$id])) {
+            if ($cart[$id]['cantidad'] > 1) {
+                $cart[$id]['cantidad']--;
+                session()->put('cart', $cart);
+            } else {
+                return $this->remove($id);
+            }
+        }
+        return redirect()->back()->with('success', 'Cantidad disminuida correctamente');
+    }
+
+    public function limpiarcarrito()
+    {
+        session()->forget('cart');
+        session()->forget('cartCount');
+        return redirect()->back()->with('success', 'El carrito se vació correctamente');
     }
 }

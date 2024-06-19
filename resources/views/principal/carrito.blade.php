@@ -1,57 +1,66 @@
 @extends('plantilla')
 @section ('content')
-@if(session('cart'))
-<h1 class="heading-1">Tu carrito</h1>
-
-
-<div class="container">
-    
-    <table class="table table-dark table-striped table-bordered">
-        <thead>
-            <tr style="text-align:center">
-                <td>Imagen</td>
-                <td>Nombre</td>
-                <td>Descripcion</td>
-                <td>Precio</td>
-                <td>Cantidad</td>
-                <td>Categoria</td>
-                <td>Medida</td>
-                <td>Editar</td>
-                <td>Eliminar</td>
-            </tr>
-        </thead>
-        
-        <tbody>
-            
-            @foreach(session('cart') as $id=>$detalles)
-                            <tr>
+<div class="container mt-5">
+    <h1 class="heading-1">Carrito</h1>
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if(!$cart || count($cart) == 0)
+            <p>No hay productos en el carrito</p>
+        @else
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <td>Imagen</td>
+                        <td>Nombre</td>
+                        <td>Descripción</td>
+                        <td>Precio</td>
+                        <td>Cantidad disponible</td>
+                        <td>Cantidad</td>
+                        <td>Eliminar</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($cart as $id => $detalles)
+                        <tr>
                             <td><img src="image_creada/{{$detalles['imagen']}}" width='50' height='50' alt="foto"></td>
-                                <td>{{$detalles['descripcion']}}</td>
-                                <td>{{$detalles['descripcion']}}</td>
-                                <td>{{$detalles['precio']}}</td>
-                                <td>{{$detalles['cantidad']}}</td>
-                                <td>{{$detalles['categoria']}}</td>
-                                <td>{{$detalles['medida']}}</td>
-                                <td style="text-align:center">
-                                    <form action="/home/{{$id}}" method="post">
+                            <td>{{ $detalles['nombre'] }}</td>
+                            <td>{{ $detalles['descripcion'] }}</td>
+                            <td>${{ $detalles['precio'] }}</td>
+                            <td></td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <form action="{{ route('carrito.incrementar', $id) }}" method="POST" style="display:inline;">
                                         @csrf
-                                        @method('get')
-                                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                                        <button class="btn btn-success btn-sm mr-2"> + </button>
                                     </form>
-                                </td>
-                                <td style="text-align:center">
-                                    <form action="remove/{{$id}}" method="post">
+                                    <p class="cantidad m-0">{{ $detalles['cantidad'] }}</p>
+                                    <form action="{{ route('carrito.disminuir', $id) }}" method="POST" style="display:inline;">
                                         @csrf
-                                        @method('delete')
-                                        <button class="btn btn-danger" ><i class="fa-solid fa-trash"></i></button>
+                                        <button class="btn btn-warning btn-sm ml-2"> - </button>
                                     </form>
-                                </td>
-                                @endforeach
-                            </tr>
-                            
-                        </tbody> 
-                    </table>
-                    </div>
-                    <h3>TOTAL: ${{$total}}</h3>
-@endif
+                                </div>
+                            </td>
+                            <td>
+                                <form action="{{ route('carrito.remove', $id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <td class="table-dark">Total: ${{ $total }}</td>
+                    @endforeach
+                </tbody>
+            </table>
+            <center>
+                <form action="{{ route('carrito.limpiar') }}" method="POST">
+                    @csrf
+                    <button class="btn btn-danger mb-5">Vaciar Carrito</button>
+                </form>
+            </center>
+        @endif
+    </div>
 @endsection

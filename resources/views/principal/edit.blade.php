@@ -39,13 +39,10 @@
         <div class="mb-3">
             <label>Categoria</label>
             <select class="form-select" type="text" aria-label="Default select example" name="cateEd">
-                <option value="{{$productoEditarV->categoria}}">{{$productoEditarV->categoria}}</option>
-                <option value="Fruta">Fruta</option>
-                <option value="Verdura">Verdura</option>
-                <option value="Legumbre">Legumbre</option>
-                <option value="Lacteos">Lacteos</option>
-                <option value="Artesanales">Artesanales</option>
-                <option value="Granos">Granos</option>
+                <option value="{{$productoEditarV->categorias_id}}">{{$productoEditarV->categorias_id}}</option>
+                @foreach($categoriaEditarV as $categoriaEditarVist)
+                <option value="{{ $categoriaEditarVist->id }}">{{ $categoriaEditarVist->nombre }}</option>
+                @endforeach
             </select>
         </div>
         <div class="mb-3">

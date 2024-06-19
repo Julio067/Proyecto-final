@@ -9,7 +9,6 @@ document.querySelector('.go-contact-container').classList.add('show');
   });
 
   function App() {}
-
   window.onload = function (event) {
       var app = new App();
       window.app = app;

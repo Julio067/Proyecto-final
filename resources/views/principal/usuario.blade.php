@@ -1,5 +1,4 @@
 @extends('plantilla')
-
 @section('content')
 @auth
     <section class="seccion-perfil-usuario">
@@ -61,7 +60,7 @@
                                 <td>{{ $productosVistU->descripcion }}</td>
                                 <td>{{ $productosVistU->precio }}</td>
                                 <td>{{ $productosVistU->cantidad }}</td>
-                                <td>{{ $productosVistU->categoria }}</td>
+                                <td>{{ $productosVistU->categorias_id}}</td>
                                 <td>{{ $productosVistU->medida }}</td>
                                 <td style="text-align:center">
                                     <a href="/usuario/{{ $productosVistU->id }}/edit"><button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button></a>

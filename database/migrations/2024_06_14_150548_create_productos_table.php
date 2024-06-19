@@ -18,12 +18,11 @@ class CreateProductosTable extends Migration
             $table->bigInteger('productos_id')->unsigned();
             $table->foreign('productos_id')->references('id')->on('users');
             $table->string('nombre');
+            $table->string('descripcion');
             $table->bigInteger('categorias_id')->unsigned();
             $table->foreign('categorias_id')->references('id')->on('categorias');
-            $table->string('descripcion');
             $table->integer('precio');
             $table->integer('cantidad');
-            $table->string('categoria');
             $table->string('medida');
             $table->string('imagen');
             $table->timestamps();

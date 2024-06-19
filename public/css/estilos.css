@@ -30,21 +30,6 @@ body{
     display: flex;
 }
 
-@media (max-width: 768px) {
-    header {
-      flex-direction: column; 
-      align-items: center; 
-    }
-  
-    .navigation {
-      flex-direction: row-reverse;
-    }
-  
-    .service {
-      margin: 0.4rem; 
-    }
-}
-
 input {
 	outline: none;
 	border: none;
