@@ -31,7 +31,6 @@ class carritoController extends Controller
                 'nombre' => $producto->nombre,
                 'descripcion' => $producto->descripcion,
                 'precio' => $producto->precio,
-                'cantidad_disponible' => $producto->cantidad,
                 'cantidad' => 1,
             ];
         } else {
@@ -84,5 +83,30 @@ class carritoController extends Controller
         session()->forget('cart');
         session()->forget('cartCount');
         return redirect()->back()->with('success', 'El carrito se vació correctamente');
+    }
+
+    public function comprar()
+    {
+        $cart = session()->get('cart', []);
+
+        if (!$cart || count($cart) == 0) {
+            return redirect()->back()->with('error', 'No hay productos en el carrito para comprar.');
+        }
+
+        foreach ($cart as $id => $detalles) {
+            $producto = Producto::findOrFail($id);
+
+            if ($producto->cantidad < $detalles['cantidad']) {
+                return redirect()->back()->with('error', "No hay suficiente stock para el producto: {$producto->nombre}.");
+            }
+
+            $producto->cantidad -= $detalles['cantidad'];
+            $producto->save();
+        }
+
+        session()->forget('cart');
+        session()->forget('cartCount');
+
+        return redirect()->back()->with('success', 'Compra realizada correctamente.');
     }
 }

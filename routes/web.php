@@ -35,12 +35,14 @@ Route::middleware('guest')->group(function () {
 });
 
 
-Route::get('/carrito', [CarritoController::class, 'carrito'])->name('carrito');
-Route::get('/carrito/{id}', [CarritoController::class, 'anadircarrito'])->name('carrito.anadir');
-Route::delete('/remove/{id}', [CarritoController::class, 'remove'])->name('carrito.remove');
-Route::post('/carrito/incrementar/{id}', [CarritoController::class, 'incrementar'])->name('carrito.incrementar');
-Route::post('/carrito/disminuir/{id}', [CarritoController::class, 'disminuir'])->name('carrito.disminuir');
-Route::post('/carrito/limpiar', [CarritoController::class, 'limpiarcarrito'])->name('carrito.limpiar');
+Route::get('/carrito', [carritoController::class, 'carrito'])->name('carrito');
+Route::get('/carrito/{id}', [carritoController::class, 'anadircarrito'])->name('carrito.anadir');
+Route::delete('/remove/{id}', [carritoController::class, 'remove'])->name('carrito.remove');
+Route::post('/carrito/incrementar/{id}', [carritoController::class, 'incrementar'])->name('carrito.incrementar');
+Route::post('/carrito/disminuir/{id}', [carritoController::class, 'disminuir'])->name('carrito.disminuir');
+Route::post('/carrito/limpiar', [carritoController::class, 'limpiarcarrito'])->name('carrito.limpiar');
+Route::post('/carrito/comprar', [carritoController::class, 'comprar'])->name('carrito.comprar');
+
 
 Route::resource('/registro', registerController::class);
 Route::resource('/usuario', productosController::class);

@@ -56,6 +56,10 @@
                 </tbody>
             </table>
             <center>
+                <form action="{{ route('carrito.comprar') }}" method="POST" class="m-3">
+                    @csrf
+                    <button class="btn btn-success">Comprar</button>
+                </form>
                 <form action="{{ route('carrito.limpiar') }}" method="POST">
                     @csrf
                     <button class="btn btn-danger mb-5">Vaciar Carrito</button>
