@@ -34,6 +34,10 @@
                 <i class="fa-solid fa-gears"></i>
                 <h2>Tu cuenta</h2>
             </div>
+            <div class="service">
+                <i class="fa-solid fa-shop"></i>
+                <h2>Mis ventas</h2>
+            </div>
         </div>
 
         <div class="content_box">

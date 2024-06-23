@@ -21,7 +21,7 @@ class productosController extends Controller
         $productosU=producto::where('productos_id',$user->id)->get();
         return view('principal.usuario', ['productosContU'=>$productosU]);
     }
-
+                                                                                                    
     /**
      * Show the form for creating a new resource.
      *

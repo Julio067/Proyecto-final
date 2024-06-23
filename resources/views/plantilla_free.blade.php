@@ -15,13 +15,21 @@
             <div class="container-logo">
                 <h1 class="logo"><a href="/agroapp">AGRO<b>APP</b></a></h1>
             </div>
-            
+            @guest
             <div class="service">
                 <div class="btn"><a href="/iniciar-sesion">Iniciar sesion</a></div>
             </div>
             <div class="service">
                 <div class="btn-register"><a href="/registro">Registrarse</a></div>
             </div>
+			@else
+			<form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <div class="service">
+                		<div class="btn-salir"><button type='submit' >cerrar sesion</button></div>
+            		</div>
+            </form>
+			@endguest
         </header>
 
 		@yield('content')

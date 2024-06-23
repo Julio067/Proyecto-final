@@ -73,8 +73,6 @@
 				<a href="https://maps.app.goo.gl/ZU8PpVdFVrk6PxrE9"><i class="fa-solid fa-map"></i>Cra. 85c #25c-21, Bogotá</a>
 			</div>
 			<form action="https://formsubmit.co/julioguzmanortiz97@gmail.com" autocomplete="off" method="POST">
-				<input type="text" name="name" id="name" placeholder="Escribe tu nombre" class="campo">
-				<input type="email" name="email" name="email" placeholder="Escribe tu correo" class="campo">
 				<input type="text" name="subject" name="subject" placeholder="Escribe el asunto" class="campo">
 				<textarea name="coments" id="coments" placeholder="Escribe tu mensaje..."></textarea>
 				<center><input type="submit" name="enviar" class="btn-enviar"></center>

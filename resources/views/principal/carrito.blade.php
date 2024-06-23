@@ -29,7 +29,7 @@
                             <td>{{ $detalles['nombre'] }}</td>
                             <td>{{ $detalles['descripcion'] }}</td>
                             <td>${{ $detalles['precio'] }}</td>
-                            <td></td>
+                            <td>{{ $detalles['cantidad'] }}</td>
                             <td>
                                 <div class="d-flex align-items-center">
                                     <form action="{{ route('carrito.incrementar', $id) }}" method="POST" style="display:inline;">
@@ -51,8 +51,8 @@
                                 </form>
                             </td>
                         </tr>
+                        @endforeach
                         <td class="table-dark">Total: ${{ $total }}</td>
-                    @endforeach
                 </tbody>
             </table>
             <center>
