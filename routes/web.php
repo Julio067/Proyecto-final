@@ -40,7 +40,7 @@ Route::get('/carrito/{id}', [carritoController::class, 'anadircarrito'])->name('
 Route::delete('/remove/{id}', [carritoController::class, 'remove'])->name('carrito.remove');
 Route::post('/carrito/incrementar/{id}', [carritoController::class, 'incrementar'])->name('carrito.incrementar');
 Route::post('/carrito/disminuir/{id}', [carritoController::class, 'disminuir'])->name('carrito.disminuir');
-Route::post('/carrito/limpiar', [carritoController::class, 'limpiarcarrito'])->name('carrito.limpiar');
+Route::delete('/carrito/limpiar', [carritoController::class, 'limpiarcarrito'])->name('carrito.limpiar');
 Route::post('/carrito/comprar', [carritoController::class, 'comprar'])->name('carrito.comprar');
 
 
@@ -48,4 +48,5 @@ Route::resource('/registro', registerController::class);
 Route::resource('/usuario', productosController::class);
 Route::resource('/administrador', categoriasController::class);
 Route::resource('/iniciar-sesion', loginController::class);
+Route::get('/pasarela', [carritoController::class, 'pasarela'])->name('pasarela');
 Route::resource('/home', homeController::class);

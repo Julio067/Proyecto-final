@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\producto;
 use App\Models\categoria;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class homeController extends Controller
 {
@@ -18,6 +20,7 @@ class homeController extends Controller
     {
         $productos = producto::all();
         $categorias = categoria::all();
+        $user=Auth::user();
         $search_value=$request->search_value;
         $productos = producto::search($search_value)->orderBy('id', 'desc')->Paginate($this->NUMBER_PAGES)->withQueryString();
         return view('principal.home', ['productosCont'=>$productos], ['categoriasCont'=>$categorias]);

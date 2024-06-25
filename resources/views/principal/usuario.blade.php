@@ -84,7 +84,7 @@
             </div>
 
             <div class="content">
-                <center><h1 class="heading-1">Actualizar mis datos</h1></center>
+                <h1 class="heading-1">Actualizar mis datos</h1>
                 <div class="contenedor-formP"> 
                     <form action="/registro/{{ Auth::user()->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -103,6 +103,7 @@
                                 <option value="Facatativa">Facatativa</option>
                                 <option value="Zipacon">Zipacon</option>
                                 <option value="Bojaca">Bojaca</option>
+                                <option value="Rosal">Rosal</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -113,6 +114,10 @@
                             <label>Direccion</label>
                             <input type="text" class="form-control" value="{{ Auth::user()->direccion }}" name="direAc">
                         </div>
+                        <div class="mb-3">
+                            <label class="">Imagen</label>
+                            <input type="file" class="form-control" id="exampleInputPassword1" name="fotoAc">
+                        </div>
                         <center>
                             <a href="/usuario"><button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">Cancelar</button></a>
                             <button type="submit" class="btn btn-success" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 15px; --bs-btn-font-size: 15px;">Actualizar</button>
@@ -120,7 +125,46 @@
                     </form>
                 </div>
             </div>
+            
+            <div class="content">
+                <div class="container">
+                    <h1 class="heading-1">Ventas</h1>
+                    <table class="table table-dark table-striped table-bordered">
+                        <thead>
+                            <tr style="text-align:center">
+                                <td>Fecha de compra</td>
+                                <td>Cliente</td>
+                                <td>Cantidad</td>
+                                <td>Total</td>
+                                <td>Factura</td>
+                                <td>Eliminar</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($productosContU as $productosVistU)
+                            <tr>
+                                <td>{{ $productosVistU->nombre }}</td>
+                                <td>{{ $productosVistU->descripcion }}</td>
+                                <td>{{ $productosVistU->precio }}</td>
+                                <td>{{ $productosVistU->cantidad }}</td>
+                                <td style="text-align:center">
+                                    <a href="/usuario/{{ $productosVistU->id }}/edit"><button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                </td>
+                                <td style="text-align:center">
+                                    <form action="/usuario/{{ $productosVistU->id }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody> 
+                    </table>
+                </div>
+            </div>
         </div>
+
 
         <center>
             <div class="container-btns">

@@ -24,11 +24,14 @@
             </div>
 			@else
 			<form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <div class="service">
-                		<div class="btn-salir"><button type='submit' >cerrar sesion</button></div>
-            		</div>
+                @csrf
+                <div class="service">
+                	<div class="btn-salir"><button type='submit'>Cerrar sesion</button></div>
+            	</div>
             </form>
+			<div class="service">
+			<div class="btn"><a href="/home">Cancelar</a></div>
+            </div>
 			@endguest
         </header>
 

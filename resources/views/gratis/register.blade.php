@@ -62,6 +62,7 @@
                         <option value="Facatativa">Facatativa</option>
                         <option value="Zipacon">Zipacon</option>
                         <option value="Bojaca">Bojaca</option>
+                        <option value="Rosal">Rosal</option>
                     </select>
                 </div>
                 <div class="col">

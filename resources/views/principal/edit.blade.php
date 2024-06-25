@@ -49,8 +49,9 @@
             <label>Medida</label>
             <select class="form-select" type="text" aria-label="Default select example" name="mediEd">
                 <option value="{{$productoEditarV->medida}}" selected>{{$productoEditarV->medida}}</option>
+                <option value="Unidad">Unidad</option>
                 <option value="Kilos">Kilos</option>
-                <option value="LIbra">LIbra</option>
+                <option value="LIbra">Libra</option>
                 <option value="Bultos">Bultos</option>
                 <option value="Onzas">Onzas</option>
                 <option value="Litros">Litros</option>

@@ -40,8 +40,9 @@
             <label>Medida</label>
             <select class="form-select" type="text" aria-label="Default select example" name="medi">
                 <option selected>Medida que usara para vender el producto</option>
+                <option value="Unidad">Unidad</option>
                 <option value="Kilos">Kilos</option>
-                <option value="Libra">LIbra</option>
+                <option value="Libra">Libra</option>
                 <option value="Bultos">Bultos</option>
                 <option value="Onzas">Onzas</option>
                 <option value="Litros">Litros</option>

@@ -51,11 +51,6 @@
                     @method('get')
                     <button><i class="fa-solid fa-cart-shopping"></i></button>
                 </form>
-				<!--<form action="/home/{{$productosVist->id}}" method="post">
-                    @csrf
-                    @method('get')
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </form>-->
 			</div>
 
         </div>
@@ -70,13 +65,14 @@
 				<a href="tel:3102931271" class="btnllamar" onclick="return(navigator.userAgent.match(/Android | iPhone | movile /i)) != null;"><i class="fa-solid fa-phone"></i>+57 3102931271</a>
 				<a href="#"><i class="fa-solid fa-envelope"></i>altransportes.jg@gmail.com</a>
 				<a href="https://wa.me/573102931271?text=Hola%20necesito%20ayuda"><i class="fa-brands fa-whatsapp"></i>+57 3102931271</a>
-				<a href="https://maps.app.goo.gl/ZU8PpVdFVrk6PxrE9"><i class="fa-solid fa-map"></i>Cra. 85c #25c-21, Bogotá</a>
 			</div>
 			<form action="https://formsubmit.co/julioguzmanortiz97@gmail.com" autocomplete="off" method="POST">
-				<input type="text" name="subject" name="subject" placeholder="Escribe el asunto" class="campo">
+				<input type="text" name="name" id="name" value="{{ Auth::user()->name }}" class="campo-1">
+				<input type="email" name="email" value="{{ Auth::user()->email }}" class="campo-1">
+				<input type="text" name="subject" placeholder="Escribe el asunto" class="campo">
 				<textarea name="coments" id="coments" placeholder="Escribe tu mensaje..."></textarea>
 				<center><input type="submit" name="enviar" class="btn-enviar"></center>
-				<input type="hidden" name="_next" value="http://127.0.0.1:5500/">
+				<input type="hidden" name="_next" value="http://127.0.0.1:8000/home">
 				<input type="hidden" name="_captcha" value="false">
 			</form>
 		</div>

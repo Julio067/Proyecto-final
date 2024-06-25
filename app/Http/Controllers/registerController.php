@@ -115,23 +115,23 @@ class registerController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $usuarioActualizar = User::findOrFail($id);
         $usuarioActualizar->name = $request->get('nameAc');
         $usuarioActualizar->municipio = $request->get('muniAc');
         $usuarioActualizar->numero_telefono = $request->get('numTAc');
         $usuarioActualizar->direccion = $request->get('direAc');
-        /*if($request->hasFile('fotoAc')){
-            $imagen=$request->file('fotoAc');
-            $nombreimagen=Str::slug($request->get('nameAc')).".".$imagen->guessExtension();
-            $ruta=public_path('image_perfil/');
-            $imagen->move($ruta,$nombreimagen);
-            $usuarioActualizar->foto_perfil=$nombreimagen;
-        }else {
-            return back()->withErrors(['fotoAc' => 'La imagen es requerida']);
-        }*/
+
+        if($request->hasFile('fotoAc')){
+            $imagen = $request->file('fotoAc');
+            $nombreimagen = Str::slug($request->get('nameAc')) . "." . $imagen->guessExtension();
+            $ruta = public_path('image_perfil/');
+            $imagen->move($ruta, $nombreimagen);
+            $usuarioActualizar->foto_perfil = $nombreimagen;
+        }
         $usuarioActualizar->save();
+
         return redirect('/usuario');
+
     }
 
     /**

@@ -9,24 +9,21 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="icon" href="{{ URL::asset('img/logo.png') }}">
 		<title>Agroapp</title>
-    <link rel="stylesheet" href="{{ asset('css/styles-home.css') }}">
+        <link rel="icon" href="{{ URL::asset('img/logo.png') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles-home.css') }}">
 	</head>
 	<body>
-		<header>
-			<div class="container-header">
-				<div class="container header">
-					<div class="container-logo">
-						<h1 class="logo">AGRO<b>APP</b></h1>
-					</div>
-				</div>
-			</div>
-		</header>
+        <header class="header">
+            <div class="container-logo">
+                <h1 class="logo"><a href="/agroapp">AGRO<b>APP</b></a></h1>
+            </div>
+        </header>
 
         <main class="main-content">
             <h1 class="heading-1">Bienvenido a la bandeja de administracion</h1>
             <p class="heading-1">¿Que haremos el dia de hoy?</p>
             <div class="container">
-                <div class="row2">
+                <div class="row1">
                     <div class="service">
                         <i class="fa-solid fa-users"></i>
                         <h2>Revisar usuarios</h2>

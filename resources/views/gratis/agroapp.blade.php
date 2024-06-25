@@ -42,11 +42,6 @@
                         <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="fa-solid fa-cart-shopping"></i>
                         </button>
-                        <!--<form action="/home/{{$productosVist->id}}" method="post">
-                            @csrf
-                            @method('get')
-                            <button><i class="fa-solid fa-cart-shopping"></i></button>
-                        </form>-->
                     </div>
 
                 </div>
@@ -61,28 +56,15 @@
                         <a href="tel:3102931271" class="btnllamar" onclick="return(navigator.userAgent.match(/Android | iPhone | movile /i)) != null;"><i class="fa-solid fa-phone"></i>+57 3102931271</a>
                         <a href="#"><i class="fa-solid fa-envelope"></i>altransportes.jg@gmail.com</a>
                         <a href="https://wa.me/573102931271?text=Hola%20necesito%20ayuda"><i class="fa-brands fa-whatsapp"></i>+57 3102931271</a>
-                        <a href="https://maps.app.goo.gl/ZU8PpVdFVrk6PxrE9"><i class="fa-solid fa-map"></i>Cra. 85c #25c-21, Bogotá</a>
                     </div>
                     <form action="https://formsubmit.co/julioguzmanortiz97@gmail.com" autocomplete="off" method="POST">
-                        @guest
-                        <form action="https://formsubmit.co/julioguzmanortiz97@gmail.com" autocomplete="off" method="POST">
-                            <input type="text" name="name" id="name" placeholder="Escribe tu nombre" class="campo">
-                            <input type="email" name="email" name="email" placeholder="Escribe tu correo" class="campo">
-                            <input type="text" name="subject" name="subject" placeholder="Escribe el asunto" class="campo">
-                            <textarea name="coments" id="coments" placeholder="Escribe tu mensaje..."></textarea>
-                            <center><input type="submit" name="enviar" class="btn-enviar"></center>
-                            <input type="hidden" name="_next" value="http://127.0.0.1:5500/">
-                            <input type="hidden" name="_captcha" value="false">
-                        </form>
-                        @else
-                        <form action="https://formsubmit.co/julioguzmanortiz97@gmail.com" autocomplete="off" method="POST">
-                            <input type="text" name="subject" name="subject" placeholder="Escribe el asunto" class="campo">
-                            <textarea name="coments" id="coments" placeholder="Escribe tu mensaje..."></textarea>
-                            <center><input type="submit" name="enviar" class="btn-enviar"></center>
-                            <input type="hidden" name="_next" value="http://127.0.0.1:5500/">
-                            <input type="hidden" name="_captcha" value="false">
-                        </form>
-                        @endguest
+                        <input type="text" name="name" id="name" placeholder="Escribe tu nombre" class="campo">
+                        <input type="email" name="email" placeholder="Escribe tu correo" class="campo">
+                        <input type="text" name="subject" placeholder="Escribe el asunto" class="campo">
+                        <textarea name="coments" id="coments" placeholder="Escribe tu mensaje..."></textarea>
+                        <center><input type="submit" name="enviar" class="btn-enviar"></center>
+                        <input type="hidden" name="_next" value="http://127.0.0.1:5500/">
+                        <input type="hidden" name="_captcha" value="false">
                     </form>
                 </div>
             </section>
@@ -92,7 +74,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">No has iniciado sesion</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
