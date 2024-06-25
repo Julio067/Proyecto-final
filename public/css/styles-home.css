@@ -264,15 +264,17 @@ header{
 .categoria h4{
     position: absolute;
     z-index: 1;
-    font-size: 22px;
+    font-size: 24px;
     line-height: 23px;
     color: var(--blanco-color);
     padding: 15px;
+    font-weight: bold;
 }
 
 .categoria h4 small{
-    font-size: 15px;
+    font-size: 17px;
     display: block;
+    font-weight: bold;
 }
 
 .categoria a img{
@@ -285,7 +287,7 @@ header{
 }
 
 .categoria a img:hover{
-    opacity: .85;
+    background: rgba(0,0,0,.5);
 }
 
 .flecha{
@@ -908,4 +910,20 @@ table button i{
         grid-gap: 30px;
     }
 
+}
+
+/*carrito input*/
+
+.cantidad-input{
+    width: 60px; 
+    text-align: center; 
+    margin: 0 10px; 
+    background-color: var(--negro-color);
+    color: #ffff;
+}
+
+/*modal*/
+
+.btn{
+    color: var(--color-secundario);
 }

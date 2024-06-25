@@ -35,7 +35,10 @@
                                     <button type="submit" class="btn btn-success btn-sm mr-2">+</button>
                                 </form>
 
-                                <p class="cantidad m-0">{{ $item->cantidad }}</p>
+                                <form action="{{ route('carrito.actualizar', $item->producto_id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    <input type="number" name="cantidad" class="form-control cantidad-input" value="{{ $item->cantidad }}"/>
+                                </form>
 
                                 <form action="{{ route('carrito.disminuir', $item->producto_id) }}" method="POST" style="display:inline;">
                                     @csrf

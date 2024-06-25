@@ -33,7 +33,7 @@
                 <p>Especificaciones</p>
                 <input type="text" class="campo">
                 <p>Codigo postal</p>
-                <input type="text" class="campo">
+                <input type="number" class="campo">
                 <a href="/carrito"><button type="button" class="btn-enviar">Cancelar</button></a>
             </div>
             

@@ -132,26 +132,22 @@
                     <table class="table table-dark table-striped table-bordered">
                         <thead>
                             <tr style="text-align:center">
-                                <td>Fecha de compra</td>
                                 <td>Cliente</td>
-                                <td>Cantidad</td>
+                                <td>Producto</td>
                                 <td>Total</td>
-                                <td>Factura</td>
+                                <td>Fecha de compra</td>
                                 <td>Eliminar</td>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($productosContU as $productosVistU)
+                            @foreach($facturas as $factura)
                             <tr>
-                                <td>{{ $productosVistU->nombre }}</td>
-                                <td>{{ $productosVistU->descripcion }}</td>
-                                <td>{{ $productosVistU->precio }}</td>
-                                <td>{{ $productosVistU->cantidad }}</td>
+                                <td>{{ $factura->usuario->name }}</td>
+                                <td>{{ $factura->producto->nombre }}</td>
+                                <td>{{ $factura->total }}</td>
+                                <td>{{ $factura->created_at  }}</td>
                                 <td style="text-align:center">
-                                    <a href="/usuario/{{ $productosVistU->id }}/edit"><button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                                </td>
-                                <td style="text-align:center">
-                                    <form action="/usuario/{{ $productosVistU->id }}" method="post">
+                                    <form action="/usuario/{{ $factura->id }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\facturaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productosController;
 use App\Http\Controllers\registerController;
@@ -40,12 +41,14 @@ Route::get('/carrito/{id}', [carritoController::class, 'anadircarrito'])->name('
 Route::delete('/remove/{id}', [carritoController::class, 'remove'])->name('carrito.remove');
 Route::post('/carrito/incrementar/{id}', [carritoController::class, 'incrementar'])->name('carrito.incrementar');
 Route::post('/carrito/disminuir/{id}', [carritoController::class, 'disminuir'])->name('carrito.disminuir');
+Route::post('/carrito/actualizar/{id}', [CarritoController::class, 'actualizar'])->name('carrito.actualizar');
 Route::delete('/carrito/limpiar', [carritoController::class, 'limpiarcarrito'])->name('carrito.limpiar');
 Route::post('/carrito/comprar', [carritoController::class, 'comprar'])->name('carrito.comprar');
-
+Route::get('/factura/{id}', [FacturaController::class, 'mostrar'])->name('factura.mostrar');
 
 Route::resource('/registro', registerController::class);
 Route::resource('/usuario', productosController::class);
+Route::post('/usuario/{id}', [productosController::class, 'show1'])->name('usuario.show1');
 Route::resource('/administrador', categoriasController::class);
 Route::resource('/iniciar-sesion', loginController::class);
 Route::get('/pasarela', [carritoController::class, 'pasarela'])->name('pasarela');

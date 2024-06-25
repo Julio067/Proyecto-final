@@ -178,19 +178,20 @@ header{
     height: 100%;
 }
 
-
 .categoria h4{
     position: absolute;
     z-index: 1;
-    font-size: 22px;
+    font-size: 24px;
     line-height: 23px;
     color: var(--blanco-color);
     padding: 15px;
+    font-weight: bold;
 }
 
 .categoria h4 small{
-    font-size: 15px;
+    font-size: 17px;
     display: block;
+    font-weight: bold;
 }
 
 .categoria a img{

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\producto;
 use App\Models\categoria;
+use App\Models\factura;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,9 @@ class productosController extends Controller
     {
         $user=Auth::user();
         $productosU=producto::where('productos_id',$user->id)->get();
-        return view('principal.usuario', ['productosContU'=>$productosU]);
+        $user=Auth::user();
+        $factu=factura::where('user_id',$user->id)->get();
+        return view('principal.usuario', ['productosContU'=>$productosU], ['facturas'=>$factu]);
     }
                                                                                                     
     /**
@@ -139,5 +142,16 @@ class productosController extends Controller
         $deleteproducto = producto:: findOrFail($id);
         $deleteproducto-> delete();
         return redirect('/usuario');
+    }
+    public function destroy1($id)
+    {
+        $delete = factura :: findOrFail($id);
+        $delete-> delete();
+        return redirect('/usuario');
+    }
+    public function show1($id)
+    {
+        $elimina = factura :: findOrFail($id);
+        return view ('principal.deleteven', ['facturaeli'=>$elimina]);
     }
 }

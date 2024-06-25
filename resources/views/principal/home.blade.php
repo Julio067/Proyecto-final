@@ -33,30 +33,56 @@
             </button>
 		</div>
 	</section>
-
 	<h1 class="heading-1" style="margin-bottom: 20px;">Productos recientes</h1>
 	<section class="container cards">
-        <div class="cards">
 		@foreach($productosCont as $productosVist)
-			<div class="cards-cuerpo">
-				<div class="cards-img">
-                    <img src="image_creada/{{$productosVist->imagen}}" alt="">
-				</div>
-				<h2>{{$productosVist->nombre}}</h2>
-				<h3>{{$productosVist->descripcion}}</h3>
-				<p>Cantidad: {{$productosVist->cantidad}} | Medida: {{$productosVist->medida}} | Categoria: {{$productosVist->categorias_id}}</p>
-				<h2>$ {{$productosVist->precio}}</h2>
-				<form action="/carrito/{{$productosVist->id}}" method="post">
-                    @csrf
-                    @method('get')
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
-                </form>
+		<div class="cards-cuerpo">
+			<div class="cards-img">
+				<img src="image_creada/{{$productosVist->imagen}}" alt="">
 			</div>
-
-        </div>
+			<h2>{{$productosVist->nombre}}</h2>
+			<h3>{{$productosVist->descripcion}}</h3>
+			<p>Cantidad: {{$productosVist->cantidad}} | Medida: {{$productosVist->medida}} | Categoria: {{$productosVist->categorias_id}}</p>
+			<h2>$ {{$productosVist->precio}}</h2>
+			<!--<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{$productosVist->id}}"><i class="fa-solid fa-cart-shopping"></i></button>-->
+			<form action="/carrito/{{$productosVist->id}}" method="post">
+				@csrf
+				@method('get')
+				<button type="submit"><i class="fa-solid fa-cart-shopping"></i></button>
+			</form>
+		</div>
 		@endforeach
-    </section>
-
+	</section>
+<!--
+	@foreach($productosCont as $productosVist)
+	<div class="modal fade" id="exampleModal{{$productosVist->id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$productosVist->id}}" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel{{$productosVist->id}}">¿Deseas agregar este producto al carrito?</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="cards-img">
+						<img src="image_creada/{{$productosVist->imagen}}" alt="">
+					</div>
+					<h2>{{$productosVist->nombre}}</h2>
+					<h3>{{$productosVist->descripcion}}</h3>
+					<p>Cantidad: {{$productosVist->cantidad}} | Medida: {{$productosVist->medida}} | Categoria: {{$productosVist->categorias_id}}</p>
+					<h2>$ {{$productosVist->precio}}</h2>
+				</div>
+				<div class="modal-footer">
+					<form action="/carrito/{{$productosVist->id}}" method="post">
+						@csrf
+						@method('get')
+						<button type="submit" class="btn">Agregar al Carrito</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	@endforeach
+-->
 	<section class="contactanos">
 		<h1 class="heading-1">Contactanos</h1>
 		<div class="form">

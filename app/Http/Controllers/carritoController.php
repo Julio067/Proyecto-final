@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\producto;
 use App\Models\carrito;
 use Illuminate\Support\Facades\Auth;
+use App\Models\factura;
 
 class carritoController extends Controller
 {
@@ -89,26 +90,49 @@ class carritoController extends Controller
     }
 
     public function comprar()
+{
+    $cart = carrito::where('user_id', Auth::id())->get();
+
+    if ($cart->isEmpty()) {
+        return redirect()->back()->with('error', 'No hay productos en el carrito para comprar.');
+    }
+    $total = 0;
+
+    foreach ($cart as $item) {
+        $producto = producto::findOrFail($item->producto_id);
+
+        if ($producto->cantidad < $item->cantidad) {
+            return redirect()->back()->with('error', "No hay suficiente stock para el producto: {$producto->nombre}.");
+        }
+
+        $producto->cantidad -= $item->cantidad;
+        $producto->save();
+
+        $total += $producto->precio * $item->cantidad;
+    }
+
+    carrito::where('user_id', Auth::id())->delete();
+    $factura = Factura::create([
+        'user_id' => Auth::id(),
+        'producto_id' => $cart->first()->producto_id, 
+        'total' => $total,
+    ]);
+
+    return redirect()->route('factura.mostrar', $factura->id)->with('success', 'Compra realizada correctamente.');
+}
+
+    public function actualizar(Request $request, $id)
     {
-        $cart = carrito::where('user_id', Auth::id())->get();
-
-        if ($cart->isEmpty()) {
-            return redirect()->back()->with('error', 'No hay productos en el carrito para comprar.');
+        $request->validate([
+            'cantidad' => 'required|integer|min:1',
+        ]);
+        
+        $cartItem = carrito::where('user_id', Auth::id())->where('producto_id', $id)->first();
+        if ($cartItem) {
+            $cartItem->cantidad = $request->cantidad;
+            $cartItem->save();
+            return redirect()->back()->with('success', 'Cantidad actualizada correctamente');
         }
-
-        foreach ($cart as $item) {
-            $producto = producto::findOrFail($item->producto_id);
-
-            if ($producto->cantidad < $item->cantidad) {
-                return redirect()->back()->with('error', "No hay suficiente stock para el producto: {$producto->nombre}.");
-            }
-
-            $producto->cantidad -= $item->cantidad;
-            $producto->save();
-        }
-
-        carrito::where('user_id', Auth::id())->delete();
-
-        return redirect("principal.carrito")->back()->with('success', 'Compra realizada correctamente.');
+        return response()->json(['success' => false, 'message' => 'Item no encontrado']);
     }
 }
