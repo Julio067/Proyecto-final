@@ -143,15 +143,4 @@ class productosController extends Controller
         $deleteproducto-> delete();
         return redirect('/usuario');
     }
-    public function destroy1($id)
-    {
-        $delete = factura :: findOrFail($id);
-        $delete-> delete();
-        return redirect('/usuario');
-    }
-    public function show1($id)
-    {
-        $elimina = factura :: findOrFail($id);
-        return view ('principal.deleteven', ['facturaeli'=>$elimina]);
-    }
 }

@@ -1,14 +1,4 @@
-
-document.querySelector('.go-contact-container').classList.add('show');
-   
-  document.querySelector('.go-contact-container').addEventListener('click', () => {
-    window.scroll({
-      bottom: 500,
-      behavior: 'smooth'
-    });
-  });
-
-  function App() {}
+function App() {}
   window.onload = function (event) {
       var app = new App();
       window.app = app;

@@ -41,12 +41,11 @@ class carritoController extends Controller
                 'producto_id' => $id,
                 'cantidad' => 1,
             ]);
+            $cartCount = carrito::where('user_id', Auth::id())->count();
+            session(['cartCount'=>$cartCount]);
         } else {
-            $cartItem->cantidad++;
             $cartItem->save();
         }
-    
-        $cartCount = carrito::where('user_id', Auth::id())->count();
         return redirect()->back()->with('success', 'El producto se añadió correctamente');
     }
 
@@ -55,6 +54,8 @@ class carritoController extends Controller
         $cartItem = carrito::where('user_id', Auth::id())->where('producto_id', $id)->first();
         if ($cartItem) {
             $cartItem->delete();
+            $cartCount = carrito::where('user_id', Auth::id())->count();
+            session(['cartCount' => $cartCount]);
         }
         return redirect()->back()->with('success', 'El producto se eliminó correctamente');
     }
@@ -86,11 +87,12 @@ class carritoController extends Controller
     public function limpiarcarrito()
     {
         carrito::where('user_id', Auth::id())->delete();
+        session(['cartCount' => 0]);
         return redirect()->back()->with('success', 'El carrito se vació correctamente');
     }
 
     public function comprar()
-{
+    {
     $cart = carrito::where('user_id', Auth::id())->get();
 
     if ($cart->isEmpty()) {
@@ -112,14 +114,16 @@ class carritoController extends Controller
     }
 
     carrito::where('user_id', Auth::id())->delete();
+    $cartCount = carrito::where('user_id', Auth::id())->count();
+    session(['cartCount' => $cartCount]);
     $factura = Factura::create([
         'user_id' => Auth::id(),
         'producto_id' => $cart->first()->producto_id, 
         'total' => $total,
     ]);
 
-    return redirect()->route('factura.mostrar', $factura->id)->with('success', 'Compra realizada correctamente.');
-}
+        return redirect()->route('factura.mostrar', $factura->id)->with('success', 'Compra realizada correctamente.');  
+    }
 
     public function actualizar(Request $request, $id)
     {

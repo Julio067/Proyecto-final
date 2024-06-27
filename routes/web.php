@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\facturaController;
+use App\Http\Controllers\ventaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productosController;
 use App\Http\Controllers\registerController;
@@ -35,7 +36,6 @@ Route::middleware('guest')->group(function () {
     Route::post('nueva_contra', [NewPasswordController::class, 'store'])->name('password.update');
 });
 
-
 Route::get('/carrito', [carritoController::class, 'carrito'])->name('carrito');
 Route::get('/carrito/{id}', [carritoController::class, 'anadircarrito'])->name('carrito.anadir');
 Route::delete('/remove/{id}', [carritoController::class, 'remove'])->name('carrito.remove');
@@ -46,9 +46,9 @@ Route::delete('/carrito/limpiar', [carritoController::class, 'limpiarcarrito'])-
 Route::post('/carrito/comprar', [carritoController::class, 'comprar'])->name('carrito.comprar');
 Route::get('/factura/{id}', [FacturaController::class, 'mostrar'])->name('factura.mostrar');
 
+Route::get('/usuario/misVentas', [ventaController::class, 'misVentas'])->name('usuario.misVentas')->middleware('auth');
 Route::resource('/registro', registerController::class);
 Route::resource('/usuario', productosController::class);
-Route::post('/usuario/{id}', [productosController::class, 'show1'])->name('usuario.show1');
 Route::resource('/administrador', categoriasController::class);
 Route::resource('/iniciar-sesion', loginController::class);
 Route::get('/pasarela', [carritoController::class, 'pasarela'])->name('pasarela');

@@ -126,41 +126,36 @@
                 </div>
             </div>
             
+            @auth
             <div class="content">
                 <div class="container">
                     <h1 class="heading-1">Ventas</h1>
                     <table class="table table-dark table-striped table-bordered">
                         <thead>
                             <tr style="text-align:center">
-                                <td>Cliente</td>
-                                <td>Producto</td>
-                                <td>Total</td>
-                                <td>Fecha de compra</td>
-                                <td>Eliminar</td>
+                                <th>#</th>
+                                <th>Comprador</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio Total</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($facturas as $factura)
+                            @foreach(Auth::user()->ventas as $venta)
                             <tr>
-                                <td>{{ $factura->usuario->name }}</td>
-                                <td>{{ $factura->producto->nombre }}</td>
-                                <td>{{ $factura->total }}</td>
-                                <td>{{ $factura->created_at  }}</td>
-                                <td style="text-align:center">
-                                    <form action="/usuario/{{ $factura->id }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
-                                </td>
+                                <td>{{ $venta->id }}</td>
+                                <td>{{ $venta->comprador->name }}</td>
+                                <td>{{ $venta->producto->nombre }}</td>
+                                <td>{{ $venta->cantidad }}</td>
+                                <td>{{ $venta->precio_total }}</td>
                             </tr>
                             @endforeach
-                        </tbody> 
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
+        @endauth
 
         <center>
             <div class="container-btns">

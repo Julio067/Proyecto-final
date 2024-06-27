@@ -21,4 +21,8 @@ class producto extends Model
         return $query->where('nombre', 'like', "%$valor%")
                 ->orwhere('descripcion', 'like', "%$valor%");
     }
+    public function ventas()
+    {
+        return $this->hasMany(venta::class, 'producto_id');
+    }
 }
