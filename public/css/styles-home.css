@@ -208,6 +208,7 @@ header{
 
 .categoria h4 small{
     font-size: 17px;
+    margin: 15px;
     display: block;
     font-weight: bold;
 }
@@ -837,6 +838,12 @@ table button i{
     .row2{
         display: grid;
         grid-template-columns: repeat(2, 1fr);    
+        grid-gap: 30px;
+    }
+
+    .form2{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);    
         grid-gap: 30px;
     }
 
