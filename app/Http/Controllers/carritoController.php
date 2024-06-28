@@ -62,13 +62,14 @@ class CarritoController extends Controller
     public function incrementar($id)
     {
         $cartItem = carrito::where('user_id', Auth::id())->where('producto_id', $id)->first();
-        if ($cartItem) {
+        $producto = producto::findOrFail($id);
+        if ($cartItem && $cartItem->cantidad < $producto->cantidad) {
             $cartItem->cantidad++;
             $cartItem->save();
+            return redirect()->back();
+        } else {
+            return redirect()->back()->with('success', 'lo siento no hay sufientes productos');
         }
-    
-        return redirect()->back();
-        return redirect()->back();
     }
 
     public function disminuir($id)
@@ -148,12 +149,14 @@ class CarritoController extends Controller
         $request->validate([
             'cantidad' => 'required|integer|min:1',
         ]);
-
+        $producto = producto::findOrFail($id);
         $cartItem = carrito::where('user_id', Auth::id())->where('producto_id', $id)->first();
-        if ($cartItem) {
+        if ($cartItem && $request->cantidad <= $producto->cantidad) {
             $cartItem->cantidad = $request->cantidad;
             $cartItem->save();
             return redirect()->back();
+        } else {
+            return redirect()->back()->with('success', 'lo siento no hay sufientes productos');
         }
     }
 }

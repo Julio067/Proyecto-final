@@ -16,6 +16,7 @@
                     <th>Imagen</th>
                     <th>Nombre</th>
                     <th>Precio</th>
+                    <th>Cantidad disponible</th>
                     <th>Acciones</th>
                     <th>Comprar</th>
                     <th>Eliminar</th>
@@ -28,6 +29,7 @@
                         <td><img src="image_creada/{{$item->producto->imagen}}" width='50' height='50' alt="foto"></td>
                         <td>{{ $item->producto->nombre }}</td>
                         <td>{{ $item->producto->precio }}</td>
+                        <td>{{ $item->producto->cantidad }}</td>
                         <td>
                             <div class="d-flex align-items-center">
                                 <form action="{{ route('carrito.incrementar', $item->producto_id) }}" method="POST" style="display:inline;">
