@@ -96,24 +96,24 @@ class CarritoController extends Controller
             'codigo_postal' => 'required|integer',
             'metodo_pago' => 'required|string|max:50',
         ]);
-
+    
         $item = carrito::where('user_id', Auth::id())->where('producto_id', $producto_id)->first();
-
+    
         if (!$item) {
             return redirect()->back()->with('error', 'Producto no encontrado en el carrito.');
         }
-
+    
         $producto = producto::findOrFail($producto_id);
-
+    
         if ($producto->cantidad < $item->cantidad) {
             return redirect()->back()->with('error', "No hay suficiente stock para el producto: {$producto->nombre}.");
         }
-
+    
         $producto->cantidad -= $item->cantidad;
         $producto->save();
-
+    
         $total = $producto->precio * $item->cantidad;
-
+    
         $factura = factura::create([
             'user_id' => Auth::id(),
             'correo' => $request->correo,
@@ -124,13 +124,14 @@ class CarritoController extends Controller
             'cantidad_compra' => $item->cantidad,
             'total' => $total,
         ]);
-
-        carrito::where('user_id', Auth::id())->delete();
+    
+        // Eliminar solo el item comprado del carrito
+        $item->delete();
+    
+        // Actualizar la cantidad de items en el carrito en la sesión
         $cartCount = carrito::where('user_id', Auth::id())->count();
         session(['cartCount' => $cartCount]);
-
-        $item->delete();
-
+    
         return redirect()->route('factura.mostrar', $factura->id)->with('success', 'Compra realizada correctamente.');
     }
 
