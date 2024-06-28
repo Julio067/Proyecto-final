@@ -10,7 +10,12 @@ class factura extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
+        'correo',
+        'direccion',
+        'codigo_postal',
+        'metodo_pago',
         'producto_id',
+        'cantidad_compra',
         'total',
     ];
     public function producto()

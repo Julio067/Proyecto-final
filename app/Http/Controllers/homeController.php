@@ -11,20 +11,30 @@ use Illuminate\Support\Facades\Auth;
 class homeController extends Controller
 {
     protected $NUMBER_PAGES = 50;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
-        $productos = producto::all();
+        $productos = producto::query();
+
+        if ($request->has('categoria_id')) {
+            $productos->where('categorias_id', $request->categoria_id);
+        }
+
+        // Aplicar búsqueda y ordenamiento como antes
+        $search_value = $request->search_value;
+        $productos = $productos->search($search_value)
+                               ->orderBy('id', 'desc')
+                               ->paginate($this->NUMBER_PAGES)
+                               ->withQueryString();
+
         $categorias = categoria::all();
-        $user=Auth::user();
-        $search_value=$request->search_value;
-        $productos = producto::search($search_value)->orderBy('id', 'desc')->Paginate($this->NUMBER_PAGES)->withQueryString();
-        return view('principal.home', ['productosCont'=>$productos], ['categoriasCont'=>$categorias]);
+
+        return view('principal.home', [
+            'productosCont' => $productos,
+            'categoriasCont' => $categorias,
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

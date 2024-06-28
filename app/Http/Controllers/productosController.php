@@ -16,13 +16,23 @@ class productosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $user=Auth::user();
         $productosU=producto::where('productos_id',$user->id)->get();
-        $user=Auth::user();
+
+        if ($request->has('categoria_id')) {
+            $productosU->where('categorias_id', $request->categoria_id);
+        }
+
+        $categorias = categoria::all();
+
         $factu=factura::where('user_id',$user->id)->get();
-        return view('principal.usuario', ['productosContU'=>$productosU], ['facturas'=>$factu]);
+        return view('principal.usuario', [
+            'productosContU' => $productosU,
+            'categoriasContU' => $categorias,
+            'facturas'=>$factu
+        ]);
     }
                                                                                                     
     /**

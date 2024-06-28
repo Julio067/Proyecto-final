@@ -18,7 +18,7 @@
 			
 			<div class="container-user">
 				<a href="/usuario"><i class="fa-solid fa-user"></i></a>
-				<a href="/carrito"><i class="fa-solid fa-basket-shopping"></i></a>
+				<a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a>
 			<div class="content-shopping-cart">
 				<span class="text">Carrito</span>
 				<span class="number">({{ session('cartCount') }})</span>
@@ -36,7 +36,6 @@
 		</div>
 
     	@yield('content')
-
 		<footer class="pie-pagina">
       		<div class="grupo-2">
         		<small>&copy; 2024 <b>SENAAPP</b> - Todos los derechos reservados, las imagenes y/o videos usados en esta pagina son usadas son propias del SENA</small>

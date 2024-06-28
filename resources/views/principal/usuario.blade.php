@@ -28,14 +28,18 @@
         <div class="row2">
             <div class="service">
                 <i class="fa-solid fa-shop"></i>
-                <h2>Productos subidos</h2>
+                <h2>Mis roductos</h2>
             </div>
             <div class="service">
                 <i class="fa-solid fa-gears"></i>
-                <h2>Tu cuenta</h2>
+                <h2>Mi cuenta</h2>
             </div>
             <div class="service">
-                <i class="fa-solid fa-shop"></i>
+                <i class="fa-solid fa-basket-shopping"></i>
+                <h2>Mis Compras</h2>
+            </div>
+            <div class="service">
+                <i class="fa-brands fa-shopify"></i>
                 <h2>Mis ventas</h2>
             </div>
         </div>
@@ -64,7 +68,13 @@
                                 <td>{{ $productosVistU->descripcion }}</td>
                                 <td>{{ $productosVistU->precio }}</td>
                                 <td>{{ $productosVistU->cantidad }}</td>
-                                <td>{{ $productosVistU->categorias_id}}</td>
+                                <td>
+                                @foreach($categoriasContU as $categoria)
+                                    @if($categoria->id == $productosVistU->categorias_id)
+                                        {{$categoria->nombre}}
+                                    @endif
+                                @endforeach
+                                </td>
                                 <td>{{ $productosVistU->medida }}</td>
                                 <td style="text-align:center">
                                     <a href="/usuario/{{ $productosVistU->id }}/edit"><button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button></a>
@@ -126,36 +136,65 @@
                 </div>
             </div>
             
-            @auth
+            <div class="content">
+                <div class="contenedor-formP">
+                    @foreach($facturas as $factura)
+                    <div class="card m-auto">
+                        <div class="card-body">
+                            <center><h5 class="card-title">Factura #{{ $factura->id }}</h5></center>
+                            <p class="card-text">Nombre: {{ $factura->usuario->name }}</p>
+                            <p class="card-text"><strong>Correo:</strong> {{ $factura->correo }}</p>
+                            <p class="card-text"><strong>Dirección:</strong> {{ $factura->direccion }}</p>
+                            <p class="card-text"><strong>Código Postal:</strong> {{ $factura->codigo_postal }}</p>
+                            <p class="card-text"><strong>Método de Pago:</strong> {{ $factura->metodo_pago }}</p>
+                            <p class="card-text"><strong>Producto:</strong> {{ $factura->producto->nombre }}</p>
+                            <p class="card-text"><strong>Cantidad:</strong> {{ $factura->cantidad_compra }}</p>
+                            <hr>
+                            <p class="card-text"><strong>Total:</strong> ${{ $factura->total }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                
+            </div>
+
             <div class="content">
                 <div class="container">
                     <h1 class="heading-1">Ventas</h1>
                     <table class="table table-dark table-striped table-bordered">
                         <thead>
                             <tr style="text-align:center">
-                                <th>#</th>
-                                <th>Comprador</th>
-                                <th>Producto</th>
-                                <th>Cantidad</th>
-                                <th>Precio Total</th>
+                                <td>Nombre del Comprador</td>
+                                <td>Producto</td>
+                                <td>Cantidad</td>
+                                <td>Total</td>
+                                <td>Fecha de compra</td>
+                                <td>Eliminar</td>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(Auth::user()->ventas as $venta)
+                            @foreach($facturas as $factura)
                             <tr>
-                                <td>{{ $venta->id }}</td>
-                                <td>{{ $venta->comprador->name }}</td>
-                                <td>{{ $venta->producto->nombre }}</td>
-                                <td>{{ $venta->cantidad }}</td>
-                                <td>{{ $venta->precio_total }}</td>
+                                <td>{{ $factura->usuario->name }}</td>
+                                <td>{{ $factura->producto->nombre }}</td>
+                                <td>{{ $factura->cantidad_compra }}</td>
+                                <td>{{ $factura->total }}</td>
+                                <td>{{ $factura->created_at  }}</td>
+                                <td style="text-align:center">
+                                    <form action="/usuario/{{ $factura->id }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
-                        </tbody>
+                        </tbody> 
                     </table>
                 </div>
             </div>
         </div>
-        @endauth
+
 
         <center>
             <div class="container-btns">

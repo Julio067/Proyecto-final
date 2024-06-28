@@ -13,16 +13,18 @@ class producto extends Model
         return $this->belongsTo(User::class,'productos_id');
     }
     
-    public function categorias(){
-        return $this->hasMany(categoria::class,'productos_id');
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class, 'categorias_id');
     }
 
     public function scopeSearch($query, $valor){
         return $query->where('nombre', 'like', "%$valor%")
-                ->orwhere('descripcion', 'like', "%$valor%");
+                ->orwhere('descripcion', 'like', "%$valor%")
+                ->orwhere('categorias_id', 'like', "%$valor%");
     }
-    public function ventas()
-    {
-        return $this->hasMany(venta::class, 'producto_id');
+
+    public function scopeSearchCategory($query, $valor){
+        return $query->where('categorias_id', 'like', "%$valor%");
     }
 }

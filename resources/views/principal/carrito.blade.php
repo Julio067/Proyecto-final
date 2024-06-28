@@ -16,9 +16,10 @@
                     <th>Imagen</th>
                     <th>Nombre</th>
                     <th>Precio</th>
-                    <th>Cantidad</th>
                     <th>Acciones</th>
+                    <th>Comprar</th>
                     <th>Eliminar</th>
+                    <th>Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +28,6 @@
                         <td><img src="image_creada/{{$item->producto->imagen}}" width='50' height='50' alt="foto"></td>
                         <td>{{ $item->producto->nombre }}</td>
                         <td>{{ $item->producto->precio }}</td>
-                        <td>{{ $item->cantidad }}</td>
                         <td>
                             <div class="d-flex align-items-center">
                                 <form action="{{ route('carrito.incrementar', $item->producto_id) }}" method="POST" style="display:inline;">
@@ -47,27 +47,27 @@
                             </div>
                         </td>
                         <td>
+                            <a href="{{ route('pasarela', $item->producto_id) }}"><button class="btn btn-success mb-2">Comprar</button></a>
+                        </td>
+                        <td>
                             <form action="{{ route('carrito.remove', $item->producto_id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                <button type="submit" class="btn btn-danger mb-2">Eliminar</button>
                             </form>
                         </td>
+                        <td class="table-dark">Total: ${{ $item->producto->precio * $item->cantidad }}</td>
                     </tr>
                 @endforeach
-                <td class="table-dark">Total: ${{ $total }}</td>
             </tbody>
         </table>
         <center>
-            <a href="{{ route('pasarela') }}"><button class="btn btn-success mb-2" >Comprar</button></a>
             <form action="{{ route('carrito.limpiar') }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger mb-5">Vaciar Carrito</button>
             </form>
         </center>
-            </tbody>
-        </table>
     @endif
 </div>
 @endsection
