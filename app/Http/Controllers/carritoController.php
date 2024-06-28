@@ -7,6 +7,7 @@ use App\Models\producto;
 use App\Models\carrito;
 use Illuminate\Support\Facades\Auth;
 use App\Models\factura;
+use App\Models\venta;
 
 class CarritoController extends Controller
 {
@@ -55,7 +56,7 @@ class CarritoController extends Controller
             $cartCount = carrito::where('user_id', Auth::id())->count();
             session(['cartCount' => $cartCount]);
         }
-        return redirect()->back()->with('success', 'El producto se eliminó correctamente');
+        return redirect()->back();
     }
 
     public function incrementar($id)
@@ -66,8 +67,8 @@ class CarritoController extends Controller
             $cartItem->save();
         }
     
-        return redirect()->back()->with('success', 'El producto se añadió correctamente');
-        return redirect()->back()->with('success', 'Cantidad aumentada correctamente');
+        return redirect()->back();
+        return redirect()->back();
     }
 
     public function disminuir($id)
@@ -81,13 +82,13 @@ class CarritoController extends Controller
                 return $this->remove($id);
             }
         }
-        return redirect()->back()->with('success', 'Cantidad disminuida correctamente');
+        return redirect()->back();
     }
 
     public function limpiarcarrito()
     {
         carrito::where('user_id', Auth::id())->delete();
-        return redirect()->back()->with('success', 'El carrito se vació correctamente');
+        return redirect()->back();
     }
 
     public function comprar(Request $request, $producto_id)
@@ -100,13 +101,13 @@ class CarritoController extends Controller
         $item = carrito::where('user_id', Auth::id())->where('producto_id', $producto_id)->first();
     
         if (!$item) {
-            return redirect()->back()->with('error', 'Producto no encontrado en el carrito.');
+            return redirect()->back();
         }
     
         $producto = producto::findOrFail($producto_id);
     
         if ($producto->cantidad < $item->cantidad) {
-            return redirect()->back()->with('error', "No hay suficiente stock para el producto: {$producto->nombre}.");
+            return redirect()->back();
         }
     
         $producto->cantidad -= $item->cantidad;
@@ -125,14 +126,21 @@ class CarritoController extends Controller
             'total' => $total,
         ]);
     
-        // Eliminar solo el item comprado del carrito
+        venta::create([
+            'vendedor_id' => $producto->productos_id,
+            'cliente_id' => Auth::id(),
+            'producto_id' => $producto_id,
+            'cantidad' => $item->cantidad,
+            'metodo_pago' => $request->metodo_pago,
+            'precio_total' => $total,
+        ]);
+    
         $item->delete();
     
-        // Actualizar la cantidad de items en el carrito en la sesión
         $cartCount = carrito::where('user_id', Auth::id())->count();
         session(['cartCount' => $cartCount]);
     
-        return redirect()->route('factura.mostrar', $factura->id)->with('success', 'Compra realizada correctamente.');
+        return redirect()->route('factura.mostrar', $factura->id);
     }
 
     public function actualizar(Request $request, $id)
@@ -145,8 +153,7 @@ class CarritoController extends Controller
         if ($cartItem) {
             $cartItem->cantidad = $request->cantidad;
             $cartItem->save();
-            return redirect()->back()->with('success', 'Cantidad actualizada correctamente');
+            return redirect()->back();
         }
-        return response()->json(['success' => false, 'message' => 'Item no encontrado']);
     }
 }

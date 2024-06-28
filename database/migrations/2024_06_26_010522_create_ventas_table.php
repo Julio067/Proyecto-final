@@ -6,31 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateVentasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('comprador_id'); 
-            $table->unsignedBigInteger('producto_id'); 
+            $table->unsignedBigInteger('vendedor_id'); // Añade el ID del vendedor
+            $table->unsignedBigInteger('cliente_id');
+            $table->unsignedBigInteger('producto_id');
             $table->integer('cantidad');
+            $table->string('metodo_pago');
             $table->integer('precio_total');
             $table->timestamps();
 
-            $table->foreign('comprador_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('vendedor_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('cliente_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('ventas');

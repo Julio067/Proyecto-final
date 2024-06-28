@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\producto;
 use App\Models\categoria;
 use App\Models\factura;
+use App\Models\Venta;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,10 +29,13 @@ class productosController extends Controller
         $categorias = categoria::all();
 
         $factu=factura::where('user_id',$user->id)->get();
+        $ventas = venta::where('vendedor_id', Auth::id())->get();
+
         return view('principal.usuario', [
             'productosContU' => $productosU,
             'categoriasContU' => $categorias,
-            'facturas'=>$factu
+            'facturas' => $factu,
+            'ventas' => $ventas
         ]);
     }
                                                                                                     

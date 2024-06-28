@@ -9,22 +9,22 @@ class producto extends Model
 {
     use HasFactory;
 
-    public function user(){
-        return $this->belongsTo(User::class,'productos_id');
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'productos_id');
     }
-    
+
     public function categoria()
     {
-        return $this->belongsTo(Categoria::class, 'categorias_id');
+        return $this->belongsTo(categoria::class, 'categorias_id');
     }
 
-    public function scopeSearch($query, $valor){
+    public function scopeSearch($query, $valor)
+    {
         return $query->where('nombre', 'like', "%$valor%")
-                ->orwhere('descripcion', 'like', "%$valor%")
-                ->orwhere('categorias_id', 'like', "%$valor%");
-    }
-
-    public function scopeSearchCategory($query, $valor){
-        return $query->where('categorias_id', 'like', "%$valor%");
+                     ->orWhere('descripcion', 'like', "%$valor%")
+                     ->orWhereHas('categoria', function($cate) use ($valor) {
+                         $cate->where('nombre', 'like', "%$valor%");
+                     });
     }
 }

@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\venta;
+use App\Models\Venta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ventaController extends Controller
+class VentaController extends Controller
 {
     public function misVentas()
     {
-        $ventas = venta::where('comprador_id', Auth::id())->get();
-        return view('principal.usuario', compact('ventas'));
+        $ventas = Venta::where('cliente_id', Auth::id())->with('cliente', 'producto')->get();
+
+        return view('ventas.misVentas', compact('ventas'));
     }
 }

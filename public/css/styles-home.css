@@ -213,17 +213,13 @@ header{
     font-weight: bold;
 }
 
-.categoria a img{
+.categoria img{
     object-fit: cover;
     height: 275px;
     width: 100%;
     border-radius: 4px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.5);
     transition: .3s ease-in-out;
-}
-
-.categoria a img:hover{
-    background: rgba(0,0,0,.5);
 }
 
 .flecha{

@@ -18,6 +18,7 @@ class factura extends Model
         'cantidad_compra',
         'total',
     ];
+    
     public function producto()
     {
         return $this->belongsTo(Producto::class, 'producto_id');

@@ -13,12 +13,10 @@
                 @foreach($categoriasCont as $categoria)
                 <div class="categoria">
                     <div class="descrip-categoria">
-                        <a href="/">
-                            <h4>{{ $categoria->nombre }}<small>{{ $categoria->descripcion }}</small></h4>
-                            <picture>
-                                <img src="image_categoria/{{ $categoria->imagen }}" alt="Image">
-                            </picture>
-                        </a>
+                        <h4>{{ $categoria->nombre }}<small>{{ $categoria->descripcion }}</small></h4>
+                        <picture>
+                            <img src="image_categoria/{{ $categoria->imagen }}" alt="Image">
+                        </picture>
                     </div>
                 </div>
                 @endforeach

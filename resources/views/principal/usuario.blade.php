@@ -28,7 +28,7 @@
         <div class="row2">
             <div class="service">
                 <i class="fa-solid fa-shop"></i>
-                <h2>Mis roductos</h2>
+                <h2>Mis productos</h2>
             </div>
             <div class="service">
                 <i class="fa-solid fa-gears"></i>
@@ -142,7 +142,7 @@
                     <div class="card m-auto">
                         <div class="card-body">
                             <center><h5 class="card-title">Factura #{{ $factura->id }}</h5></center>
-                            <p class="card-text">Nombre: {{ $factura->usuario->name }}</p>
+                            <p class="card-text"><strong>Nombre: </strong> {{ $factura->usuario->name }}</p>
                             <p class="card-text"><strong>Correo:</strong> {{ $factura->correo }}</p>
                             <p class="card-text"><strong>Dirección:</strong> {{ $factura->direccion }}</p>
                             <p class="card-text"><strong>Código Postal:</strong> {{ $factura->codigo_postal }}</p>
@@ -160,25 +160,27 @@
 
             <div class="content">
                 <div class="container">
-                    <h1 class="heading-1">Ventas</h1>
+                    <h1 class="heading-1">Mis Ventas</h1>
                     <table class="table table-dark table-striped table-bordered">
                         <thead>
                             <tr style="text-align:center">
-                                <td>Nombre del Comprador</td>
-                                <td>Producto</td>
-                                <td>Cantidad</td>
-                                <td>Total</td>
-                                <td>Fecha de compra</td>
+                                <th>Nombre del cliente que compró</th>
+                                <th>Producto comprado</th>
+                                <th>Cantidad</th>
+                                <th>Método de pago</th>
+                                <th>Total</th>
+                                <th>Fecha de compra</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($facturas as $factura)
+                            @foreach($ventas as $venta)
                             <tr>
-                                <td>{{ $factura->usuario->name }}</td>
-                                <td>{{ $factura->producto->nombre }}</td>
-                                <td>{{ $factura->cantidad_compra }}</td>
-                                <td>{{ $factura->total }}</td>
-                                <td>{{ $factura->created_at  }}</td>
+                                <td>{{ $venta->cliente->name }}</td>
+                                <td>{{ $venta->producto->nombre }}</td>
+                                <td>{{ $venta->cantidad }}</td>
+                                <td>{{ $venta->metodo_pago }}</td>
+                                <td>{{ $venta->precio_total }}</td>
+                                <td>{{ $venta->created_at}}</td>
                             </tr>
                             @endforeach
                         </tbody> 
