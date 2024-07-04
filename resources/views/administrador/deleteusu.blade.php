@@ -1,6 +1,5 @@
-@extends('plantilla')
+@extends('plantilla_admin')
 @section('content')
-@role('admin')
 <div class="container">
 <center><h1 style="margin-top: 12px;" >¿Desea eliminar a este usuario?</h1></center>
     <form action="/administrador/{{$usuarioeli->id}}" method="POST">
@@ -37,5 +36,4 @@
     </form>
     <br>
 </div>
-@endrole
 @endsection

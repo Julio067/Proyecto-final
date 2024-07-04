@@ -164,7 +164,7 @@
                     <table class="table table-dark table-striped table-bordered">
                         <thead>
                             <tr style="text-align:center">
-                                <th>Nombre del cliente que compró</th>
+                                <th>Nombre del comprador</th>
                                 <th>Producto comprado</th>
                                 <th>Cantidad</th>
                                 <th>Método de pago</th>

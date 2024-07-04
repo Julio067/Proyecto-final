@@ -1,6 +1,6 @@
-@extends('plantilla')
+@extends('plantilla_admin')
 @section ('content')
-@role('admin')
+
 @if ($errors->any())
     <div class="container">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -22,15 +22,7 @@
         @method('put')
         <div class="mb-3">
             <label>Nombre</label>
-            <select class="form-select" type="text" aria-label="Default select example" name="nombCaE">
-                <option value="{{$cateEditar->nombre}}">{{$cateEditar->nombre}}</option>
-                <option value="Fruta">Fruta</option>
-                <option value="Verdura">Verdura</option>
-                <option value="Legumbre">Legumbre</option>
-                <option value="Lacteos">Lacteos</option>
-                <option value="Artesanales">Artesanales</option>
-                <option value="Granos">Granos</option>
-            </select>
+            <input type="text" class="form-control" id="exampleInputPassword1" value="{{$cateEditar->nombre}}" name="nombCaE">
         </div>
         <div class="mb-3">
             <label>Descripcion</label>
@@ -46,5 +38,5 @@
         </center>
     </form>
 </div>
-@endrole
+
 @endsection

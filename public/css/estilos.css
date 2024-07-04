@@ -320,6 +320,22 @@ header{
     .wrap-login {
         padding: 77px 15px 33px 15px;
     }
+
+    .container-logo h1 a {
+        font-size: 25px;
+    }
+
+    .header .btn a{
+        font-size: 12px;
+        font-weight: 700;
+        padding: 7px 15px;
+    }
+
+    .header .btn-register a{
+        font-size: 12px;
+        font-weight: 700;
+        padding: 7px 15px;
+    }
 }
 
 

@@ -1,7 +1,7 @@
 @auth
-@extends('plantilla')
+@extends('plantilla_admin')
 @section ('content')
-@role('admin')
+
     @if ($errors->any())
     <div class="container">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -38,6 +38,5 @@
         </center>
     </form>
 </div>
-@endrole
 @endsection
 @endauth
