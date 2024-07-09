@@ -20,6 +20,8 @@ class CreateFacturasTable extends Migration
             $table->string('direccion');
             $table->integer('codigo_postal');
             $table->string('metodo_pago');
+            $table->string('medida');
+            $table->string('especificaciones');
             $table->unsignedBigInteger('producto_id');
             $table->integer('cantidad_compra');
             $table->integer('total');

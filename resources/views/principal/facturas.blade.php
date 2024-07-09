@@ -9,12 +9,14 @@
             <p class="card-text"><strong>Nombre: </strong>{{ $factura->usuario->name }}</p>
             <p class="card-text"><strong>Correo:</strong> {{ $factura->correo }}</p>
             <p class="card-text"><strong>Dirección:</strong> {{ $factura->direccion }}</p>
+            <p class="card-text"><strong>Especificaciones:</strong> {{ $factura->especificaciones }}</p>
             <p class="card-text"><strong>Código Postal:</strong> {{ $factura->codigo_postal }}</p>
             <p class="card-text"><strong>Método de Pago:</strong> {{ $factura->metodo_pago }}</p>
             <p class="card-text"><strong>Producto:</strong> {{ $factura->producto->nombre }}</p>
             <p class="card-text"><strong>Cantidad:</strong> {{ $factura->cantidad_compra }}</p>
+            <p class="card-text"><strong>Medida:</strong> {{ $factura->medida }}</p>
             <hr>
-            <p class="card-text"><strong>Total: ${{ $factura->total }}</strong></p>
+            <p class="card-text"><strong>Total:  $ {{ number_format($factura->total, 0, ',') }}</strong></p>
         </div>
     </div>
 </div>

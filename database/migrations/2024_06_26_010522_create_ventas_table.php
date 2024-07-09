@@ -14,7 +14,10 @@ class CreateVentasTable extends Migration
             $table->unsignedBigInteger('cliente_id');
             $table->unsignedBigInteger('producto_id');
             $table->integer('cantidad');
+            $table->string('medida');
             $table->string('metodo_pago');
+            $table->string('especificaciones');
+            $table->integer('codigo_postal');
             $table->integer('precio_total');
             $table->timestamps();
 

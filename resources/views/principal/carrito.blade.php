@@ -17,6 +17,7 @@
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th>Cantidad disponible</th>
+                    <th>Medida</th>
                     <th>Acciones</th>
                     <th>Comprar</th>
                     <th>Eliminar</th>
@@ -28,8 +29,9 @@
                     <tr>
                         <td><img src="image_creada/{{$item->producto->imagen}}" width='50' height='50' alt="foto"></td>
                         <td>{{ $item->producto->nombre }}</td>
-                        <td>{{ $item->producto->precio }}</td>
+                        <td>$ {{ number_format($item->producto->precio, 0, ',') }}</td>
                         <td>{{ $item->producto->cantidad }}</td>
+                        <td>{{ $item->producto->medida }}</td>
                         <td>
                             <div class="d-flex align-items-center">
                                 <form action="{{ route('carrito.incrementar', $item->producto_id) }}" method="POST" style="display:inline;">
@@ -58,16 +60,16 @@
                                 <button type="submit" class="btn btn-danger mb-2">Eliminar</button>
                             </form>
                         </td>
-                        <td class="table-dark">Total: ${{ $item->producto->precio * $item->cantidad }}</td>
+                        <td class="table-dark">Total: $ {{ number_format($item->producto->precio * $item->cantidad, 0, ',') }} </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
         <center>
-            <form action="{{ route('carrito.limpiar') }}" method="POST">
+            <form id="form-vaciar-carrito" action="{{ route('carrito.limpiar') }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger mb-5">Vaciar Carrito</button>
+                <button id="btn-vaciar-carrito" type="submit" class="btn btn-danger mb-5">Vaciar Carrito</button>
             </form>
         </center>
     @endif

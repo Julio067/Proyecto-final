@@ -32,21 +32,24 @@ class CarritoController extends Controller
     {
         $producto = producto::findOrFail($id);
         $cartItem = carrito::where('user_id', Auth::id())->where('producto_id', $id)->first();
-    
+
         if (!$cartItem) {
             carrito::create([
                 'user_id' => Auth::id(),
                 'producto_id' => $id,
                 'cantidad' => 1,
             ]);
-            $cartCount = carrito::where('user_id', Auth::id())->count();
-            session(['cartCount' => $cartCount]);
         } else {
+            $cartItem->cantidad++;
             $cartItem->save();
         }
 
-        return redirect()->back();
+        $cartCount = carrito::where('user_id', Auth::id())->count();
+        session(['cartCount' => $cartCount]);
+
+        return response()->json(['cartCount' => $cartCount]);
     }
+
 
     public function remove($id)
     {
@@ -89,7 +92,9 @@ class CarritoController extends Controller
     public function limpiarcarrito()
     {
         carrito::where('user_id', Auth::id())->delete();
-        return redirect()->back();
+        $cartCount = 0;
+        session(['cartCount' => $cartCount]);
+        return response()->json(['cartCount' => $cartCount]);
     }
 
     public function comprar(Request $request, $producto_id)
@@ -116,22 +121,33 @@ class CarritoController extends Controller
     
         $total = $producto->precio * $item->cantidad;
     
+        if($request->especificaciones == null){
+            $request->especificaciones = "N/A";
+        }
+
         $factura = factura::create([
             'user_id' => Auth::id(),
             'correo' => $request->correo,
             'direccion' => $request->direccion,
+            'especificaciones' => $request->especificaciones,
             'codigo_postal' => $request->codigo_postal,
-            'metodo_pago' => $request->metodo_pago,
             'producto_id' => $producto_id,
             'cantidad_compra' => $item->cantidad,
+            'medida' => $producto->medida,
+            'metodo_pago' => $request->metodo_pago,
             'total' => $total,
         ]);
     
         venta::create([
             'vendedor_id' => $producto->productos_id,
             'cliente_id' => Auth::id(),
+            'correo' => $request->correo,
+            'direccion' => $request->direccion,
+            'especificaciones' => $request->especificaciones,
+            'codigo_postal' => $request->codigo_postal,
             'producto_id' => $producto_id,
             'cantidad' => $item->cantidad,
+            'medida' => $producto->medida,
             'metodo_pago' => $request->metodo_pago,
             'precio_total' => $total,
         ]);

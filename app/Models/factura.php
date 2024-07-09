@@ -15,6 +15,8 @@ class factura extends Model
         'codigo_postal',
         'metodo_pago',
         'producto_id',
+        'especificaciones',
+        'medida',
         'cantidad_compra',
         'total',
     ];

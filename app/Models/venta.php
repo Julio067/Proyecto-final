@@ -14,6 +14,9 @@ class Venta extends Model
         'vendedor_id',
         'producto_id',
         'cantidad',
+        'medida',
+        'especificaciones',
+        'codigo_postal',
         'metodo_pago',
         'precio_total'
     ];

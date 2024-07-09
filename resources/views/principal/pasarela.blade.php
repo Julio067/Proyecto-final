@@ -1,7 +1,7 @@
 @extends('plantilla')
 @section('content')
 @auth
-<form action="{{ route('carrito.comprar', $item->producto_id) }}" method="POST" class="m-3">
+<form id="purchaseForm" action="{{ route('carrito.comprar', $item->producto_id) }}" method="POST" class="m-3">
     @csrf
     <div class="contenedor-compra">
         <center>
@@ -24,7 +24,7 @@
                 <p>Dirección</p>
                 <input name="direccion" type="text" class="campo" value="{{ Auth::user()->direccion}}">
                 <p>Especificaciones</p>
-                <input type="text" class="campo" placeholder="Apartamento, torre, barrio...">
+                <input name="especificaciones" type="text" class="campo" placeholder="Apartamento, torre, barrio...">
                 <p>Código Postal</p>
                 <input name="codigo_postal" type="number" class="campo" placeholder="El codigo postal de la ciudad de origen">
                 <a href="{{ route('carrito') }}"><button type="button" class="btn-enviar">Cancelar</button></a>
@@ -32,16 +32,30 @@
     
             <div class="result">
                 <p>Valor de la compra x Unidad</p>
-                <h1 class="text" id="precio">{{ $item->producto->precio }}</h1>
+                <h1 class="text" id="precio">$ {{ number_format($item->producto->precio, 0, ',') }}</h1>
                 <p>Cantidad a comprar</p>
                 <h1 class="text" id="canti">{{ $item->cantidad }}</h1>
                 <p>Total</p>
-                <h1 class="text" id="result">{{ $total }}</h1>
+                <h1 class="text" id="result">$ {{ number_format($total, 0, ',') }}</h1>
                 <br>
-                <button type="submit" class="btn-enviar">Comprar</button>
+                <button type="button" id="comprar" class="btn-enviar">Comprar</button>
             </div>
         </div>
     </div>
 </form>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById('comprar').addEventListener('click', function() {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "La compra a sido realizada con exito",
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function() {
+            document.getElementById('purchaseForm').submit();
+        });
+    });
+</script>
 @endauth
 @endsection

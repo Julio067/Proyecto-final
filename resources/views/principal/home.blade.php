@@ -44,11 +44,11 @@
                     @endif
                 @endforeach
             </p>
-            <h2>$ {{ $producto->precio }}</h2>
-            <form action="/carrito/{{ $producto->id }}" method="post">
+            <h2>$ {{ number_format($producto->precio, 0, ',') }}</h2>
+            <form id="form-{{ $producto->id }}" action="/carrito/{{ $producto->id }}" method="post">
                 @csrf
                 @method('get')
-                <button type="submit"><i class="fa-solid fa-cart-shopping"></i></button>
+                <button id="btn-carrito-{{ $producto->id }}" type="submit"><button id="btn-carrito-{{ $producto->id }}" type="button"><i class="fa-solid fa-cart-shopping"></button></i></button>
             </form>
         </div>
         @endforeach
@@ -75,5 +75,7 @@
         </div>
     </section>
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endauth
 @endsection

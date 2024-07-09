@@ -146,11 +146,13 @@
                             <p class="card-text"><strong>Correo:</strong> {{ $factura->correo }}</p>
                             <p class="card-text"><strong>Dirección:</strong> {{ $factura->direccion }}</p>
                             <p class="card-text"><strong>Código Postal:</strong> {{ $factura->codigo_postal }}</p>
+                            <p class="card-text"><strong>Especificaciones:</strong> {{ $factura->especificaciones }}</p>
                             <p class="card-text"><strong>Método de Pago:</strong> {{ $factura->metodo_pago }}</p>
                             <p class="card-text"><strong>Producto:</strong> {{ $factura->producto->nombre }}</p>
                             <p class="card-text"><strong>Cantidad:</strong> {{ $factura->cantidad_compra }}</p>
+                            <p class="card-text"><strong>Medida:</strong> {{ $factura->medida }}</p>
                             <hr>
-                            <p class="card-text"><strong>Total:</strong> ${{ $factura->total }}</p>
+                            <p class="card-text"><strong>Total:</strong> $ {{ number_format($factura->total, 0, ',') }}</p>
                         </div>
                     </div>
                     @endforeach
@@ -165,6 +167,9 @@
                         <thead>
                             <tr style="text-align:center">
                                 <th>Nombre del comprador</th>
+                                <th>Direccion</th>
+                                <th>Especificaciones</th>
+                                <th>Codigo postal</th>
                                 <th>Producto comprado</th>
                                 <th>Cantidad</th>
                                 <th>Método de pago</th>
@@ -176,10 +181,13 @@
                             @foreach($ventas as $venta)
                             <tr>
                                 <td>{{ $venta->cliente->name }}</td>
+                                <td>{{ $venta->cliente->direccion }}</td>
+                                <td>{{ $venta->especificaciones }}</td>
+                                <td>{{ $venta->codigo_postal }}</td>
                                 <td>{{ $venta->producto->nombre }}</td>
                                 <td>{{ $venta->cantidad }}</td>
                                 <td>{{ $venta->metodo_pago }}</td>
-                                <td>{{ $venta->precio_total }}</td>
+                                <td>$ {{ number_format($venta->precio_total, 0, ',') }}</td>
                                 <td>{{ $venta->created_at}}</td>
                             </tr>
                             @endforeach
