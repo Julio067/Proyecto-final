@@ -37,11 +37,25 @@
                         </div>
                         <h2>{{$productosVist->nombre}}</h2>
                         <h3>{{$productosVist->descripcion}}</h3>
-                        <p>Cantidad: {{$productosVist->cantidad}} | Medida: {{$productosVist->medida}} | Categoria: {{$productosVist->categorias_id}}</p>
-                        <h2>$ {{$productosVist->precio}}</h2>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </button>
+                        <p>Cantidad: {{ $productosVist->cantidad }} | Medida: {{ $productosVist->medida }} | 
+				        @foreach($categoriasCont as $categoria)
+                            @if($categoria->id == $productosVist->categorias_id)
+                                Categoría: {{$categoria->nombre}}
+                            @endif
+                        @endforeach
+                        </p>
+                        <h2>$ {{ number_format($productosVist->precio, 0, ',') }}</h2>
+                        @guest
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        @else
+                            <form id="form-{{ $productosVist->id }}" action="/carrito/{{ $productosVist->id }}" method="post">
+                                @csrf
+                                @method('get')
+                                <button id="btn-carritos-{{ $productosVist->id }}" type="submit"><i class="fa-solid fa-cart-shopping"></i></button>
+                            </form>
+                        @endguest
                     </div>
 
                 </div>

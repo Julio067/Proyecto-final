@@ -22,7 +22,7 @@
 				<a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a>
 			<div class="content-shopping-cart">
 				<span class="text">Carrito</span>
-				<span class="number">({{ session('cartCount') }})</span>
+				<span class="number">{{ session('cartCount', 0) }}</span>
 			</div>
 		</header>
 		<div class="container-navbar">
@@ -39,7 +39,7 @@
     	@yield('content')
 		<footer class="pie-pagina">
       		<div class="grupo-2">
-        		<small>&copy; 2024 <b>SENAAPP</b> - Todos los derechos reservados, las imagenes y/o videos usados en esta pagina son usadas son propias del SENA</small>
+        		<small>&copy; 2024 <b>AGROAPP</b> - Todos los derechos reservados, las imagenes y/o videos usados en esta pagina son usadas son propias del SENA</small>
 			</div>
 		</footer>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

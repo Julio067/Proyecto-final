@@ -10,7 +10,7 @@ window.onload = function () {
         
         btn.addEventListener("click", function(e) {
             Swal.fire({
-                position: "top-end",
+                position: "top-center",
                 icon: "success",
                 title: "Se añadio al carrito correctamente",
                 showConfirmButton: false,
@@ -35,7 +35,6 @@ window.onload = function () {
             });
         });
     });
-
     if (vaciarButton) {
         vaciarButton.addEventListener("click", function(e) {
             e.preventDefault();

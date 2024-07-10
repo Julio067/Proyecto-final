@@ -65,7 +65,26 @@ header{
 .container-logo h1 a b{
 	color: var(--color-primario);
 }
+.container-user {
+	display: flex;
+	gap: 1rem;
+	cursor: pointer;
+}
+.container-user .fa-cart-shopping {
+	font-size: 30px;
+	color: var(--color-primario);
+	padding-left: 20px;
+}
 
+.content-shopping-cart {
+	display: flex;
+	flex-direction: column;
+}
+
+.content-shopping-cart span {
+	color: var(--blanco-color);
+	font-size: 13px;
+}
 .header .btn a{
     font-size: 15px;
     text-decoration: none;

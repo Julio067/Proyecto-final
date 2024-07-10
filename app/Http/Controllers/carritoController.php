@@ -19,12 +19,15 @@ class CarritoController extends Controller
     }
 
     public function carrito()
-    {
+    {   
+        
         $cart = carrito::where('user_id', Auth::id())->get();
         $total = 0;
         foreach ($cart as $item) {
             $total += $item->producto->precio * $item->cantidad;
         }
+        $cartCount = carrito::where('user_id', Auth::id())->count();
+        session(['cartCount' => $cartCount]);
         return view('principal.carrito', compact('cart', 'total'));
     }
 
@@ -49,8 +52,6 @@ class CarritoController extends Controller
 
         return response()->json(['cartCount' => $cartCount]);
     }
-
-
     public function remove($id)
     {
         $cartItem = carrito::where('user_id', Auth::id())->where('producto_id', $id)->first();
@@ -174,5 +175,15 @@ class CarritoController extends Controller
         } else {
             return redirect()->back()->with('success', 'lo siento no hay sufientes productos');
         }
+    }
+    protected function authenticated(Request $request, $user)
+    {
+        $cartCount = carrito::where('user_id', $user->id)->count();
+        session(['cartCount' => $cartCount]);
+    }
+
+    protected function loggedOut(Request $request)
+    {
+        session()->forget('cartCount');
     }
 }

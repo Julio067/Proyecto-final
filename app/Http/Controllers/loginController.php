@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\login;
+use App\Models\carrito;
 use Illuminate\Support\Facades\Auth;
 
 class loginController extends Controller
@@ -51,12 +52,17 @@ class loginController extends Controller
             return back()->withErrors(['invalid_credentials' => 'Usuario o contraseña no válidos']);
         }
     }
-
+    protected function authenticated(Request $request, $user)
+    {
+        $cartCount = carrito::where('user_id', $user->id)->count();
+        session(['cartCount' => $cartCount]);
+    }
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        session()->forget('cartCount');
         return redirect('/agroapp');
     }
 }

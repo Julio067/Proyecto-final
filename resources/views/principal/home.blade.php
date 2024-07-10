@@ -48,7 +48,7 @@
             <form id="form-{{ $producto->id }}" action="/carrito/{{ $producto->id }}" method="post">
                 @csrf
                 @method('get')
-                <button id="btn-carrito-{{ $producto->id }}" type="submit"><button id="btn-carrito-{{ $producto->id }}" type="button"><i class="fa-solid fa-cart-shopping"></button></i></button>
+                <button id="btn-carrito-{{ $producto->id }}" type="submit"><i class="fa-solid fa-cart-shopping"></i></button>
             </form>
         </div>
         @endforeach

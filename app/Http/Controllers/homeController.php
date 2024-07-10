@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\producto;
 use App\Models\categoria;
 use Illuminate\Support\Str;
+use App\Models\carrito;
 use Illuminate\Support\Facades\Auth;
 
 class homeController extends Controller
@@ -28,7 +29,10 @@ class homeController extends Controller
                                ->withQueryString();
 
         $categorias = categoria::all();
-
+        if (Auth::check()) {
+            $cartCount = carrito::where('user_id', Auth::id())->count();
+            session(['cartCount' => $cartCount]);
+        }
         return view('principal.home', [
             'productosCont' => $productos,
             'categoriasCont' => $categorias,
