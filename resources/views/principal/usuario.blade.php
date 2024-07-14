@@ -82,7 +82,7 @@
                                 <td style="text-align:center">
                                     <form action="/usuario/{{ $productosVistU->id }}" method="post">
                                         @csrf
-                                        @method('delete')
+                                        @method('get')
                                         <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </td>
