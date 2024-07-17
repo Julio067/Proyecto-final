@@ -27,7 +27,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/agroapp', freeController::class);
+Route::get('/agroapp', [freeController::class, 'index'])->name('agroapp');
 Route::post('/logout', [loginController::class, 'logout'])->name('logout');
 Route::middleware('guest')->group(function () {
     Route::get('recuperar', [PasswordResetLinkController::class, 'create'])->name('password.request');
