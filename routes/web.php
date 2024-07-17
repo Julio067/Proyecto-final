@@ -23,11 +23,8 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/agroapp', [freeController::class, 'index'])->name('agroapp');
+Route::get('', [freeController::class, 'index'])->name('agroapp');
 Route::post('/logout', [loginController::class, 'logout'])->name('logout');
 Route::middleware('guest')->group(function () {
     Route::get('recuperar', [PasswordResetLinkController::class, 'create'])->name('password.request');
