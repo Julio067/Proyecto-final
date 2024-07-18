@@ -83,7 +83,7 @@ class productosController extends Controller
             $newproducto->imagen=$nombreimagen;
         }
         $newproducto->save();
-        return redirect('/usuario');
+        return redirect('/usuario-cuenta');
     }
 
     /**
@@ -142,7 +142,7 @@ class productosController extends Controller
             $editproducto->imagen=$nombreimagen;
         }
         $editproducto->save();
-        return redirect('/usuario');
+        return redirect('/usuario-cuenta');
     }
 
     /**
@@ -155,6 +155,6 @@ class productosController extends Controller
     {
         $deleteproducto = producto:: findOrFail($id);
         $deleteproducto-> delete();
-        return redirect('/usuario');
+        return redirect('/usuario-cuenta');
     }
 }
