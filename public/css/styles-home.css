@@ -819,7 +819,7 @@ table button i{
 
 }
 
-@media (max-width: 390px) {
+@media (max-width: 450px) {
 
     .row2{
         display: grid;

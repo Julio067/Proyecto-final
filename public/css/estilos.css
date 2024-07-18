@@ -187,7 +187,8 @@ header{
     color: black;
 }
 
-/*---------------------------------------------*/ 
+/*--------------------------------------*/ 
+
 .focus-efecto {
     position: absolute;
     display: block;
@@ -316,29 +317,6 @@ header{
 
 /*--- Para dispositivos small responsive ---*/
 
-@media (max-width: 576px) {
-    .wrap-login {
-        padding: 77px 15px 33px 15px;
-    }
-
-    .container-logo h1 a {
-        font-size: 25px;
-    }
-
-    .header .btn a{
-        font-size: 12px;
-        font-weight: 700;
-        padding: 7px 15px;
-    }
-
-    .header .btn-register a{
-        font-size: 12px;
-        font-weight: 700;
-        padding: 7px 15px;
-    }
-}
-
-
 .content_box .content.active{
     display: block;
     margin-top: 30px;
@@ -364,23 +342,77 @@ header{
     background-color: transparent;
     padding: 1.5rem;
     border-radius: 10px;
-  }
-  
-  .custum-file-upload .text {
+}
+
+.custum-file-upload .text {
     font-family: "Barlow", sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
     font-size: 16px;
-  }
-  
-  .custum-file-upload .text span {
+}
+
+.custum-file-upload .text span {
     text-align: center;
     font-weight: 600;
     color: var(--negro-color);
-  }
-  
-  .custum-file-upload input {
+}
+
+.custum-file-upload input {
     display: none;
-  }
+}
+@media (max-width: 576px) {
+    .wrap-login {
+        padding: 77px 15px 33px 15px;
+    }
+
+    .container-logo h1 a {
+        font-size: 25px;
+    }
+
+    .header .btn a{
+        font-size: 12px;
+        font-weight: 700;
+        padding: 7px 15px;
+    }
+
+    .header .btn-register a{
+        font-size: 12px;
+        font-weight: 700;
+        padding: 7px 15px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .form{
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 50px;
+    }
+
+    header{
+        padding: 10px ;
+    }
+
+    .container-logo h1 a {
+        font-size: 25px;
+    }
+
+    .header .btn-salir button{
+        font-size: 10px;
+        font-weight: 700;
+        padding: 7px 10px;
+    }
+
+    .header .btn a{
+        font-size: 10px;
+        font-weight: 700;
+    }
+    
+    .header .btn-register a{
+        font-size: 10px;
+        font-weight: 700;
+    }
+}
