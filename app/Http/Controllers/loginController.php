@@ -63,6 +63,6 @@ class loginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         session()->forget('cartCount');
-        return redirect('/agroapp');
+        return redirect('/');
     }
 }
