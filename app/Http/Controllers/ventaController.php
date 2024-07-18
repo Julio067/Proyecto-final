@@ -6,7 +6,7 @@ use App\Models\venta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class VentaController extends Controller
+class ventaController extends Controller
 {
     public function misVentas()
     {

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\factura;
 use App\Models\venta;
 
-class CarritoController extends Controller
+class carritoController extends Controller
 {
     public function pasarela($producto_id)
     {
