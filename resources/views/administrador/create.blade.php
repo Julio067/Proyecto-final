@@ -17,7 +17,7 @@
     @endif
 
 <center><h1 class="heading-1">Registrar nueva categoria</h1></center>
-<div class="contenedor-formP">
+<div class="container mb-3">
     <form action="/administrador" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3 mt-2">

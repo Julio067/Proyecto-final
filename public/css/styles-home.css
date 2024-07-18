@@ -507,7 +507,7 @@ hr{
 .seccion-perfil-usuario .perfil-usuario-bio {
     display: flex;
     flex-wrap: wrap;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1rem;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     background-color:  var(--blanco-color);
     border-radius: 15px;
@@ -552,42 +552,6 @@ hr{
     color:  var(--blanco-color);
     cursor: pointer;
 }
-
-.contenedor-formP{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-	margin: 20px;
-}
-
-.contenedor-formP input{
-    border: 1px solid var(--color-secundario);
-	font-size: 17px;
-	width: 400px;
-}
-
-.contenedor-formP select{
-    border: 1px solid var(--color-secundario);
-	font-size: 17px;
-	width: 400px;
-}
-
-.contenedor-formP button{
-    font-size: 14px;
-	margin: 10px;
-}
-
-.contenedor-formP label{
-    font-size: 14px;
-	margin-bottom: 10px;
-}
-
-.contenedor-formP button{
-    font-size: 14px;
-	margin: 10px;
-}
-
 
 table {
     font-size: 14px;
@@ -855,6 +819,42 @@ table button i{
 
 }
 
+@media (max-width: 390px) {
+
+    .row2{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);    
+        grid-gap: 30px;
+    }
+    .seccion-perfil-usuario .perfil-usuario-body .titulo {
+        font-size: 17px;
+        margin-bottom: 0.5rem;
+    }
+
+    .container-logo h1 a {
+        font-size: 35px;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+    }
+    
+    .container-user .fa-user {
+        font-size: 25px;
+        padding-right: 20px;
+    }
+
+    .container-user .fa-cart-shopping {
+        font-size: 25px;
+        color: var(--color-primario);
+        padding-left: 10px;
+    }
+
+    .content-shopping-cart span {
+        color: var(--blanco-color);
+        font-size: 11px;
+    }
+    
+}
+
 /*carrito input*/
 
 .cantidad-input{
@@ -862,5 +862,5 @@ table button i{
     text-align: center; 
     margin: 0 10px; 
     background-color: var(--negro-color);
-    color: #ffff;
+    color: #ffff;
 }

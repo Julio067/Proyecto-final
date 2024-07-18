@@ -16,7 +16,7 @@
 @endif
 
 <center><h1 class="heading-1">Actualizar categoria</h1></center>
-<div class="contenedor-formP"> 
+<div class="container mb-3"> 
     <form action="/administrador/{{$cateEditar->id}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('put')

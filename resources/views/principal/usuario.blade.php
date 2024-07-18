@@ -95,7 +95,7 @@
 
             <div class="content">
                 <h1 class="heading-1">Actualizar mis datos</h1>
-                <div class="contenedor-formP"> 
+                <div class="container mb-3"> 
                     <form action="/registro/{{ Auth::user()->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('put')
@@ -137,7 +137,7 @@
             </div>
             
             <div class="content">
-                <div class="contenedor-formP">
+                <div class="container mb-3">
                     @foreach($facturas as $factura)
                     <div class="card m-auto">
                         <div class="card-body">
