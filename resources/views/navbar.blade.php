@@ -12,7 +12,7 @@
     <body>
         <header class="header">
             <div class="container-logo">
-                <h1 class="logo"><a href="/agroapp">AGRO<b>APP</b></a></h1>
+                <h1 class="logo"><a href="/">AGRO<b>APP</b></a></h1>
             </div>
             <nav class="navigation">
                 <div class="btn"><a href="/iniciar-sesion">Iniciar sesión</a></div>
