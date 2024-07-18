@@ -158,7 +158,7 @@ class carritoController extends Controller
         $cartCount = carrito::where('user_id', Auth::id())->count();
         session(['cartCount' => $cartCount]);
     
-        return redirect()->route('factura.mostrar', $factura->id);
+        return redirect('/usuario');
     }
 
     public function actualizar(Request $request, $id)
