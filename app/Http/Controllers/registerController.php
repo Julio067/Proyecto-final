@@ -39,7 +39,7 @@ class registerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255:users,name',
+            'name' => 'required|string',
             'email' => 'required|unique:users,email',
             'password'=>'required|string|min:6',
             'password_confirmation'=>'required|string|min:6|same:password',
