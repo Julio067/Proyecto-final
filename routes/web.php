@@ -42,7 +42,7 @@ Route::post('/carrito/actualizar/{id}', [CarritoController::class, 'actualizar']
 Route::delete('/carrito/limpiar', [CarritoController::class, 'limpiarcarrito'])->name('carrito.limpiar');
 Route::post('/carrito/comprar/{producto}', [CarritoController::class, 'comprar'])->name('carrito.comprar');
 Route::get('/pasarela/{producto_id}', [CarritoController::class, 'pasarela'])->name('pasarela');
-Route::get('/factura/{id}', [FacturaController::class, 'mostrar'])->name('factura.mostrar');
+Route::get('/factura/{id}', [facturaController::class, 'mostrar'])->name('factura.mostrar');
 
 Route::get('/usuario/misVentas', [ventaController::class, 'misVentas'])->name('usuario.misVentas')->middleware('auth');
 Route::resource('/registro', registerController::class);
