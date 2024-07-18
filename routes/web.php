@@ -45,8 +45,8 @@ Route::get('/pasarela/{producto_id}', [CarritoController::class, 'pasarela'])->n
 Route::get('/factura/{id}', [FacturaController::class, 'mostrar'])->name('factura.mostrar');
 
 Route::get('/usuario/misVentas', [ventaController::class, 'misVentas'])->name('usuario.misVentas')->middleware('auth');
-Route::get('/registro', [registerController::class, 'index'])->name('registro');
-Route::get('/usuario', [productosController::class, 'index'])->name('usuario.index');
-Route::get('usuario', productosController::class);
-Route::get('/administrador', categoriasController::class);
-Route::get('/iniciar-sesion', loginController::class);
+Route::resource('/registro', registerController::class);
+Route::resource('/usuario', productosController::class);
+Route::resource('/administrador', categoriasController::class);
+Route::resource('/iniciar-sesion', loginController::class);
+Route::resource('/home', homeController::class);
