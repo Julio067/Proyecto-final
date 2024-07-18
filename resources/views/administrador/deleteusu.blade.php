@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
 <center><h1 style="margin-top: 12px;" >¿Desea eliminar a este usuario?</h1></center>
-    <form action="/administrador/{{$usuarioeli->id}}" method="POST">
+    <form action="/registro/{{$usuarioeli->id}}" method="POST">
         @csrf
         @method('delete')
     <table class="table table-dark table-striped table-bordered mt-5">
