@@ -12,6 +12,6 @@ class facturaController extends Controller
     {
         $factura = factura::findOrFail($id); 
 
-        return view('principal.facturas', compact('factura'));
+        return view('principal.facturas', ['factura'=>$factura]);
     }
 }
