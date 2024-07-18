@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Venta;
+use App\Models\venta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
