@@ -46,7 +46,7 @@ Route::get('/factura/{id}', [FacturaController::class, 'mostrar'])->name('factur
 
 Route::get('/usuario/misVentas', [ventaController::class, 'misVentas'])->name('usuario.misVentas')->middleware('auth');
 Route::resource('/registro', registerController::class);
-Route::get('/usuario', [productosController::class, 'index'])->name('usuario.index');
+Route::resource('usuario', productosController::class);
 Route::resource('/administrador', categoriasController::class);
 Route::resource('/iniciar-sesion', loginController::class);
 Route::resource('/home', homeController::class);
