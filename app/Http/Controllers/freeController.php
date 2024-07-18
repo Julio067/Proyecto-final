@@ -20,6 +20,6 @@ class freeController extends Controller
         $categorias = categoria::all();
         $search_value=$request->search_value;
         $productos = producto::search($search_value)->orderBy('id', 'desc')->Paginate($this->NUMBER_PAGES)->withQueryString();
-        return view('gratis.agroapp', ['productosCont'=>$productos], ['categoriasCont'=>$categorias]);
+        return view('gratis/agroapp', ['productosCont'=>$productos], ['categoriasCont'=>$categorias]);
     }
 }

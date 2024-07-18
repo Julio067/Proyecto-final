@@ -14,7 +14,7 @@
 	<body>
 		<header class="header">
 			<div class="container-logo">
-				<h1 class="logo"><a href="/home">AGRO<b>APP</b></a></h1>
+				<h1 class="logo"><a href="/">AGRO<b>APP</b></a></h1>
 			</div>
 			
 			<div class="container-user">
@@ -27,7 +27,7 @@
 		</header>
 		<div class="container-navbar">
 			<nav class="navbar container">
-				<form class="search-form" action="/home" method="get">
+				<form class="search-form" action="/" method="get">
 					<input type="text" name="search_value" value="{{ old('search_value', request()->search_value) }}" placeholder="Buscar..." />
 					<button class="btn-search" type="submit">
 						<i class="fa-solid fa-magnifying-glass"></i>

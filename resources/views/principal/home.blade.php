@@ -59,17 +59,17 @@
         <div class="form">
             <div class="info-form">
                 <p>Contactenos y con gusto le atenderemos y le ofreceremos un servicio de calidad</p>
-                <a href="tel:3102931271" class="btnllamar" onclick="return(navigator.userAgent.match(/Android | iPhone | movile /i)) != null;"><i class="fa-solid fa-phone"></i>+57 3102931271</a>
-                <a href="#"><i class="fa-solid fa-envelope"></i>altransportes.jg@gmail.com</a>
-                <a href="https://wa.me/573102931271?text=Hola%20necesito%20ayuda"><i class="fa-brands fa-whatsapp"></i>+57 3102931271</a>
+                <a href="tel:3222584157" class="btnllamar" onclick="return(navigator.userAgent.match(/Android | iPhone | movile /i)) != null;"><i class="fa-solid fa-phone"></i>+57 3222584157</a>
+                <a href="#"><i class="fa-solid fa-envelope"></i>bf68209@gmail.com</a>
+                <a href="https://wa.me/573222584157?text=Hola%20necesito%20ayuda"><i class="fa-brands fa-whatsapp"></i>+57 3222584157</a>
             </div>
-            <form action="https://formsubmit.co/julioguzmanortiz97@gmail.com" autocomplete="off" method="POST">
+            <form action="https://formsubmit.co/bf68209@gmail.com" autocomplete="off" method="POST">
                 <input type="text" name="name" id="name" value="{{ Auth::user()->name }}" class="campo-1">
                 <input type="email" name="email" value="{{ Auth::user()->email }}" class="campo-1">
                 <input type="text" name="subject" placeholder="Escribe el asunto" class="campo">
                 <textarea name="coments" id="coments" placeholder="Escribe tu mensaje..."></textarea>
                 <center><input type="submit" name="enviar" class="btn-enviar"></center>
-                <input type="hidden" name="_next" value="http://127.0.0.1:8000/home">
+                <input type="hidden" name="_next" value="/">
                 <input type="hidden" name="_captcha" value="false">
             </form>
         </div>

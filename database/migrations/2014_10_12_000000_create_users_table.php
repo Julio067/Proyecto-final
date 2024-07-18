@@ -32,14 +32,14 @@ class CreateUsersTable extends Migration
 
         // Insertar usuario por defecto
         DB::table('users')->insert([
-            'name' => 'Dickens :)',
-            'email' => 'palmara@gmail.com',
+            'name' => 'Administrador',
+            'email' => 'bf68209@gmail.com',
             'password' => Hash::make('12345asd'),
             'num_cedula' => 123456789,
             'direccion' => 'Cl. 17, Mosquera, Cundinamarca, Colombia',
-            'numero_telefono' => 1234567890,
+            'numero_telefono' => 15462323,
             'municipio' => 'Mosquera',
-            'foto_perfil' => 'dickens.jpg', // Ruta relativa a public/img
+            'foto_perfil' => 'administrador.jpg', // Ruta relativa a public/img
             'created_at' => now(),
             'updated_at' => now(),
         ]);

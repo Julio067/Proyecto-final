@@ -47,7 +47,7 @@ class loginController extends Controller
             'password.min'=>'la contraseña debe tener por lo menos 6 caracteres',
         ],);
         if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-            return redirect('/home');
+            return redirect('/');
         } else {
             return back()->withErrors(['invalid_credentials' => 'Usuario o contraseña no válidos']);
         }

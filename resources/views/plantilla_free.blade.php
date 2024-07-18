@@ -31,7 +31,7 @@
             	</div>
             </form>
 			<div class="service">
-				<div class="btn"><a href="/home">Cancelar</a></div>
+				<div class="btn"><a href="/">Cancelar</a></div>
             </div>
 			<div class="container-user">
 				<a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a>
