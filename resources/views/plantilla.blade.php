@@ -27,7 +27,7 @@
 		</header>
 		<div class="container-navbar">
 			<nav class="navbar container">
-				<form class="search-form" action="/" method="get">
+				<form class="search-form" action="/home" method="get">
 					<input type="text" name="search_value" value="{{ old('search_value', request()->search_value) }}" placeholder="Buscar..." />
 					<button class="btn-search" type="submit">
 						<i class="fa-solid fa-magnifying-glass"></i>
