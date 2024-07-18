@@ -553,6 +553,42 @@ hr{
     cursor: pointer;
 }
 
+.contenedor-formP{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+	margin: 20px;
+}
+
+.contenedor-formP input{
+    border: 1px solid var(--color-secundario);
+	font-size: 17px;
+	width: 400px;
+}
+
+.contenedor-formP select{
+    border: 1px solid var(--color-secundario);
+	font-size: 17px;
+	width: 400px;
+}
+
+.contenedor-formP button{
+    font-size: 14px;
+	margin: 10px;
+}
+
+.contenedor-formP label{
+    font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.contenedor-formP button{
+    font-size: 14px;
+	margin: 10px;
+}
+
+
 table {
     font-size: 14px;
 	margin: 20px 0px;
@@ -649,6 +685,7 @@ table button i{
     grid-gap: 50px;
     margin-top: 20px;
 }
+
 .contenedor-compra h1{
     color:  var(--blanco-color);
     margin-top: 12px;
@@ -731,13 +768,12 @@ table button i{
 }
 
 .result{
-    width: 96%;
+    width: 100%;
     color: var(--blanco-color);
     font-size: 25px;
     background-color: var(--color-secundario);
     display: grid;  
     padding: 10%;
-    margin-right: 50vh;
     text-align: center;
 	margin-bottom: 50px;
 }
@@ -800,18 +836,17 @@ table button i{
         grid-template-columns: repeat(2, 1fr);    
         grid-gap: 30px;
     }
-
-    .form2{
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);    
-        grid-gap: 30px;
-    }
-
 }
 
 @media (max-width: 658px) {
 
     .row1{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);    
+        grid-gap: 30px;
+    }
+
+    .form2{
         display: grid;
         grid-template-columns: repeat(1, 1fr);    
         grid-gap: 30px;
@@ -826,6 +861,7 @@ table button i{
         grid-template-columns: repeat(1, 1fr);    
         grid-gap: 30px;
     }
+
     .seccion-perfil-usuario .perfil-usuario-body .titulo {
         font-size: 17px;
         margin-bottom: 0.5rem;
