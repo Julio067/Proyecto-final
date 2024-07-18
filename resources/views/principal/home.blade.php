@@ -69,7 +69,7 @@
                 <input type="text" name="subject" placeholder="Escribe el asunto" class="campo">
                 <textarea name="coments" id="coments" placeholder="Escribe tu mensaje..."></textarea>
                 <center><input type="submit" name="enviar" class="btn-enviar"></center>
-                <input type="hidden" name="_next" value="/">
+                <input type="hidden" name="_next" value="/home">
                 <input type="hidden" name="_captcha" value="false">
             </form>
         </div>
