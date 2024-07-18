@@ -144,6 +144,6 @@ class registerController extends Controller
     {
         $elimausu =User::findOrFail($id);
         $elimausu -> delete();
-        dd($elimausu);
+        return redirect('/administrador');
     }
 }

@@ -114,16 +114,4 @@ class categoriasController extends Controller
         $elimicate -> delete();
         return redirect('/administrador');
     }
-
-    public function destroy1($id)
-    {
-        $elimausu =User::findOrFail($id);
-        $elimausu -> delete();
-        return redirect('/administrador');
-    }
-    public function show1($id)
-    {
-        $eliminarusu = User :: findOrFail($id);
-        return view ('administrador.deleteusu', ['usuarioeli'=>$eliminarusu]);
-    }
 }
