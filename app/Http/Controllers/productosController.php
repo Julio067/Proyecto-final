@@ -31,7 +31,7 @@ class productosController extends Controller
         $factu=factura::where('user_id',$user->id)->get();
         $ventas = venta::where('vendedor_id', Auth::id())->get();
 
-        return view('principal.cuenta', [
+        return view('principal.usuario-cuenta', [
             'productosContU' => $productosU,
             'categoriasContU' => $categorias,
             'facturas' => $factu,
