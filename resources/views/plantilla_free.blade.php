@@ -18,7 +18,7 @@
             </div>
             @guest
             <div class="service">
-                <div class="btn"><a href="/iniciar-sesion">Iniciar sesion</a></div>
+                <div class="btn"><a href="/iniciar-sesion">hola</a></div>
             </div>
             <div class="service">
                 <div class="btn-register"><a href="/registro">Registrarse</a></div>
