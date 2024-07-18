@@ -14,7 +14,7 @@
 	<body>
         <header class="header">
             <div class="container-logo">
-                <h1 class="logo"><a href="/">AGRO<b>APP</b></a></h1>
+                <h1 class="logo"><a href="/home">AGRO<b>APP</b></a></h1>
             </div>
             @guest
             <div class="service">
