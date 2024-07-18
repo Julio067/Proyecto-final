@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class facturaController extends Controller
 {
-    public function mostrar($id)
+    public function index($id)
     {
         $factura = factura::findOrFail($id); 
 
