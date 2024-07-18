@@ -44,6 +44,7 @@ Route::get('/pasarela/{producto_id}', [carritoController::class, 'pasarela'])->n
 
 Route::get('/usuario/misVentas', [ventaController::class, 'misVentas'])->name('usuario.misVentas')->middleware('auth');
 Route::resource('/registro', registerController::class);
+Route::delete('/registro/{id}', [registerController::class, 'destroy']);
 Route::resource('/usuario', productosController::class);
 Route::resource('/administrador', categoriasController::class);
 Route::resource('/iniciar-sesion', loginController::class);
