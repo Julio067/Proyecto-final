@@ -33,15 +33,15 @@ Route::middleware('guest')->group(function () {
     Route::post('nueva_contra', [NewPasswordController::class, 'store'])->name('password.update');
 });
 
-Route::get('/carrito', [CarritoController::class, 'carrito'])->name('carrito');
-Route::get('/carrito/{id}', [CarritoController::class, 'anadircarrito'])->name('carrito.anadir');
-Route::delete('/remove/{id}', [CarritoController::class, 'remove'])->name('carrito.remove');
-Route::post('/carrito/incrementar/{id}', [CarritoController::class, 'incrementar'])->name('carrito.incrementar');
-Route::post('/carrito/disminuir/{id}', [CarritoController::class, 'disminuir'])->name('carrito.disminuir');
-Route::post('/carrito/actualizar/{id}', [CarritoController::class, 'actualizar'])->name('carrito.actualizar');
-Route::delete('/carrito/limpiar', [CarritoController::class, 'limpiarcarrito'])->name('carrito.limpiar');
-Route::post('/carrito/comprar/{producto}', [CarritoController::class, 'comprar'])->name('carrito.comprar');
-Route::get('/pasarela/{producto_id}', [CarritoController::class, 'pasarela'])->name('pasarela');
+Route::get('/carrito', [carritoController::class, 'carrito'])->name('carrito');
+Route::get('/carrito/{id}', [carritoController::class, 'anadircarrito'])->name('carrito.anadir');
+Route::delete('/remove/{id}', [carritoController::class, 'remove'])->name('carrito.remove');
+Route::post('/carrito/incrementar/{id}', [carritoController::class, 'incrementar'])->name('carrito.incrementar');
+Route::post('/carrito/disminuir/{id}', [carritoController::class, 'disminuir'])->name('carrito.disminuir');
+Route::post('/carrito/actualizar/{id}', [carritoController::class, 'actualizar'])->name('carrito.actualizar');
+Route::delete('/carrito/limpiar', [carritoController::class, 'limpiarcarrito'])->name('carrito.limpiar');
+Route::post('/carrito/comprar/{producto}', [carritoController::class, 'comprar'])->name('carrito.comprar');
+Route::get('/pasarela/{producto_id}', [carritoController::class, 'pasarela'])->name('pasarela');
 Route::get('/factura/{id}', [facturaController::class, 'mostrar'])->name('factura.mostrar');
 
 Route::get('/usuario/misVentas', [ventaController::class, 'misVentas'])->name('usuario.misVentas')->middleware('auth');

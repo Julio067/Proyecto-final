@@ -154,12 +154,11 @@ class carritoController extends Controller
         ]);
     
         $item->delete();
-        $facturaid = $factura->id;
     
         $cartCount = carrito::where('user_id', Auth::id())->count();
         session(['cartCount' => $cartCount]);
     
-        return view('principal.facturas', ['factura'=>$facturaid]);
+        return redirect()->route('factura.mostrar', $factura->id);
     }
 
     public function actualizar(Request $request, $id)
