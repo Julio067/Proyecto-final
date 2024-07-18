@@ -31,7 +31,7 @@ class productosController extends Controller
         $factu=factura::where('user_id',$user->id)->get();
         $ventas = venta::where('vendedor_id', Auth::id())->get();
 
-        return view('principal/usuario', [
+        return view('principal.usuario', [
             'productosContU' => $productosU,
             'categoriasContU' => $categorias,
             'facturas' => $factu,
@@ -83,7 +83,7 @@ class productosController extends Controller
             $newproducto->imagen=$nombreimagen;
         }
         $newproducto->save();
-        return redirect('/usuario-cuenta');
+        return redirect('/usuario');
     }
 
     /**
@@ -142,7 +142,7 @@ class productosController extends Controller
             $editproducto->imagen=$nombreimagen;
         }
         $editproducto->save();
-        return redirect('/usuario-cuenta');
+        return redirect('/usuario');
     }
 
     /**
@@ -155,6 +155,6 @@ class productosController extends Controller
     {
         $deleteproducto = producto:: findOrFail($id);
         $deleteproducto-> delete();
-        return redirect('/usuario-cuenta');
+        return redirect('/usuario');
     }
 }
