@@ -18,7 +18,7 @@
 			</div>
 			
 			<div class="container-user">
-				<a href="{{ route('principal.cuenta') }}"><i class="fa-solid fa-user"></i></a>
+				<a href="/usuario-cuenta"><i class="fa-solid fa-user"></i></a>
 				<a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a>
 			<div class="content-shopping-cart">
 				<span class="text">Carrito</span>
