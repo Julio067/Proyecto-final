@@ -18,7 +18,7 @@
 			</div>
 			
 			<div class="container-user">
-				<a href="route('usuario.index')"><i class="fa-solid fa-user"></i></a>
+				<a href="route('principal.usuario')"><i class="fa-solid fa-user"></i></a>
 				<a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a>
 			<div class="content-shopping-cart">
 				<span class="text">Carrito</span>
